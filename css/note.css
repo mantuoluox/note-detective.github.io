@@ -1,0 +1,509 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    padding: 2rem 0;
+    background-image:
+        linear-gradient(rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.85)),
+        url('../images/cloud-texture.png'),
+        radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.05) 0%, transparent 40%);
+    background-blend-mode: overlay;
+    background-size: cover, 1000px 1000px, 100% 100%;
+    background-attachment: fixed;
+    background-repeat: repeat;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 页面加载动画 */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a0e17;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease;
+}
+
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 255, 255, 0.3);
+    border-top: 3px solid #00ffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.loader-text {
+    color: rgba(0, 255, 255, 0.7);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 动态背景元素 */
+.cloud-particle {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+    filter: blur(15px);
+    animation: float 30s infinite ease-in-out;
+}
+
+.data-stream {
+    position: absolute;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 255, 255, 0.3), transparent);
+    animation: flow 15s infinite linear;
+}
+
+.grid-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    background-repeat: repeat;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+
+    50% {
+        transform: translateY(-50px) translateX(50px);
+    }
+}
+
+@keyframes flow {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+.note-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem;
+    background-color: rgba(0, 255, 255, 0.03);
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(0, 255, 255, 0.03) 0%, transparent 20%),
+        linear-gradient(rgba(25, 25, 25, 0.9) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 5rem;
+    background-repeat: no-repeat, repeat;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(0, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards 0.3s;
+    transition: filter 0.3s ease;
+    /* 添加边框动态效果相关样式 */
+    border: 1px solid transparent;
+}
+
+/* 边框动态效果 */
+.note-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: linear-gradient(90deg,
+            rgba(0, 255, 255, 0) 0%,
+            rgba(0, 255, 255, 0.5) 50%,
+            rgba(0, 255, 255, 0) 100%) border-box;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+    /* 添加标准属性 */
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+}
+
+@keyframes borderFlow {
+    0% {
+        background-position: -100% 0;
+    }
+
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+.note-container.blur {
+    filter: blur(5px);
+}
+
+.note-title {
+    color: #00ffff;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-variant: small-caps;
+    letter-spacing: 2px;
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 1s forwards 0.6s;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.note-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 2px;
+    background-color: #00ffff;
+    margin: 1rem auto;
+    transform: scaleX(0);
+    animation: scaleIn 1s forwards 0.9s;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.note-content {
+    position: relative;
+}
+
+.note-content p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    opacity: 0;
+    transform: translateX(-10px);
+    animation: slideIn 0.8s forwards;
+    /* 初始隐藏段落 */
+    display: none;
+    user-select: text;
+    -webkit-user-select: text;
+    white-space: normal !important;
+    /* 覆盖原有white-space，允许自动换行 */
+    word-wrap: break-word;
+    /* 长单词/连续字符强制换行 */
+    overflow-wrap: break-word;
+    /* 溢出时换行（兼容多浏览器） */
+    line-height: 1.8;
+    /* 提升可读性 */
+    word-break: break-all;
+    /* 极端场景下强制拆分字符换行 */
+}
+
+.highlight-char {
+    color: #00ffff !important;
+    /* 强制青色，和整体风格统一 */
+    font-weight: bold;
+    /* 加粗 */
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+    /* 发光效果 */
+}
+
+.typing-text {
+    display: inline-block;
+    border-right: 2px solid #00ffff;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: #00ffff
+    }
+}
+
+.note-img {
+    display: block;
+    max-width: 100%;
+    margin: 2rem auto;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4),
+        0 0 10px rgba(0, 255, 255, 0.1);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    /* 初始隐藏图片 */
+    display: none;
+}
+
+.note-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6),
+        0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 15, 0.95);
+    background-image:
+        linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-repeat: repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: 20px;
+}
+
+.image-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90vh;
+    position: relative;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(0, 255, 255, 0.6) 50%,
+            transparent 100%);
+    animation: scanLine 3s linear infinite;
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+    display: block;
+}
+
+.close-modal {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: #00ffff;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    background-color: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.modal-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px 15px;
+    background-color: rgba(10, 10, 15, 0.8);
+    border-top: 1px solid rgba(0, 255, 255, 0.2);
+    font-family: monospace;
+    font-size: 12px;
+    color: rgba(0, 255, 255, 0.7);
+}
+
+audio {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    z-index: 100;
+    filter: hue-rotate(180deg) saturate(0.8);
+}
+
+audio:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* 结局链接容器：居中 + 间距 */
+#endEntry {
+    text-align: center;
+    /* 核心：文本居中 */
+    margin-top: 30px;
+    /* 加大上下间距，更美观 */
+    margin-bottom: 20px;
+    display: none;
+}
+
+/* 结局链接样式 */
+#endEntry a {
+    color: #00ffff;
+    /* 青色调 */
+    text-decoration: none;
+    /* 取消下划线 */
+    font-size: 1.5em;
+    /* 放大字体 */
+    font-weight: bold;
+    /* 可选：加粗字体，更醒目 */
+    letter-spacing: 1px;
+    /* 可选：增加字间距，提升质感 */
+}
+
+/* 可选：鼠标悬停效果，增强交互 */
+#endEntry a:hover {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+    /* 发光效果 */
+    transform: scale(1.05);
+    /* 轻微放大 */
+    display: inline-block;
+    /* 让transform生效 */
+    transition: all 0.3s ease;
+    /* 过渡动画 */
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInImg {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scanLine {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* 移除点击提示样式 */
+
+@media (max-width: 768px) {
+    .note-container {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+
+    audio {
+        bottom: 10px;
+        right: 10px;
+        width: calc(100% - 20px);
+    }
+
+    .grid-bg {
+        background-size: 40px 40px;
+    }
+
+    .image-modal {
+        background-size: 30px 30px;
+    }
+
+    .modal-footer {
+        font-size: 10px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

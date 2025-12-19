@@ -1,0 +1,453 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Consolas, monospace;
+}
+
+body {
+    background-color: #1a0505;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 背景动画1：红色渐变流动 */
+.bg-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(139, 0, 0, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 70% 80%, rgba(178, 34, 34, 0.15) 0%, transparent 40%);
+    animation: gradientShift 20s ease-in-out infinite;
+    z-index: -2;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 0%, 100% 100%;
+    }
+
+    50% {
+        background-position: 10% 15%, 90% 85%;
+    }
+
+    100% {
+        background-position: 0% 0%, 100% 100%;
+    }
+}
+
+/* 背景动画2：红色扫描线 */
+.bg-scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            transparent 50%,
+            rgba(205, 92, 92, 0.05) 50%);
+    background-size: 100% 4px;
+    animation: scanlineMove 8s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes scanlineMove {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 100%;
+    }
+}
+
+/* 背景动画3：红色粒子浮动 */
+.bg-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    background: rgba(255, 107, 107, 0.4);
+    animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 角落禁止更改文字样式 - 大幅强化视觉反馈 */
+.corner-text {
+    position: fixed;
+    color: rgba(255, 0, 0, 0);
+    /* 初始完全透明 */
+    font-size: 20rem;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 0;
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* 非线性动画更突兀 */
+    text-shadow: 0 0 30px rgba(255, 0, 0, 0);
+    transform: scale(0.5) rotate(var(--rotate, 0deg)) skew(0deg);
+}
+
+/* 四个角落定位+不同旋转/倾斜增强诡异感 */
+.corner-top-left {
+    top: -2rem;
+    left: -2rem;
+    transform-origin: top left;
+    --rotate: -10deg;
+}
+
+.corner-top-right {
+    top: -2rem;
+    right: -2rem;
+    text-align: right;
+    transform-origin: top right;
+    --rotate: 10deg;
+}
+
+.corner-bottom-left {
+    bottom: -2rem;
+    left: -2rem;
+    transform-origin: bottom left;
+    --rotate: 8deg;
+}
+
+.corner-bottom-right {
+    bottom: -2rem;
+    right: -2rem;
+    text-align: right;
+    transform-origin: bottom right;
+    --rotate: -8deg;
+}
+
+/* 激活后视觉剧变 - 核心修改 */
+.corner-text.active {
+    color: rgba(255, 0, 0, 0.4);
+    /* 透明度提高到0.4，明显可见 */
+    text-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+    /* 红色光晕强化 */
+    transform: scale(1) rotate(var(--rotate, 0deg)) skew(var(--skew, 0deg));
+    animation: textGlitch 0.3s infinite alternate, textFlicker 4s infinite alternate;
+}
+
+/* 故障抖动动画（点击后瞬间抖动） */
+@keyframes textGlitch {
+    0% {
+        transform: scale(1) rotate(var(--rotate, 0deg)) skew(0deg);
+    }
+
+    50% {
+        transform: scale(1.02) rotate(calc(var(--rotate, 0deg) + 2deg)) skew(1deg);
+    }
+
+    100% {
+        transform: scale(0.98) rotate(calc(var(--rotate, 0deg) - 1deg)) skew(-1deg);
+    }
+}
+
+/* 闪烁动画强化 - 明暗交替更明显 */
+@keyframes textFlicker {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        text-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+    }
+
+    50% {
+        opacity: 0.2;
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    }
+}
+
+/* 输入框抖动动画 - 移到CSS中（核心修复！） */
+@keyframes inputShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* 容器整体居中 */
+.ending-container {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* 装饰元素 - 红色脉冲圆 */
+.decor {
+    position: absolute;
+    border: 1px solid rgba(178, 34, 34, 0.2);
+    border-radius: 50%;
+    opacity: 0;
+    animation: redPulse 6s ease-in-out infinite;
+}
+
+.decor1 {
+    top: -50px;
+    left: -50px;
+    width: 100px;
+    height: 100px;
+    animation-delay: 0s;
+}
+
+.decor2 {
+    bottom: -30px;
+    right: -30px;
+    width: 80px;
+    height: 80px;
+    animation-delay: 2s;
+}
+
+@keyframes redPulse {
+
+    0%,
+    100% {
+        transform: scale(0.8);
+        opacity: 0.2;
+        border-color: rgba(178, 34, 34, 0.2);
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.5;
+        border-color: rgba(255, 107, 107, 0.4);
+    }
+}
+
+/* 提示文字 - 浅猩红，带浮动+闪烁 */
+.hint-text {
+    color: #ff6b6b;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards, redFloat 4s ease-in-out infinite;
+    text-shadow: 0 0 5px rgba(255, 107, 107, 0.1);
+}
+
+@keyframes redFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* 搜索框容器 */
+.search-wrapper {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards 0.5s;
+}
+
+/* 搜索框样式 - 点击时也有反馈 */
+#fileInput {
+    flex: 1;
+    height: 55px;
+    padding: 0 1.5rem;
+    background: rgba(139, 0, 0, 0.2);
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    color: #ff0000;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    cursor: not-allowed;
+    /* 明确禁用光标 */
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#fileInput:active,
+#fileInput:focus {
+    border-color: #ff4444;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+    /* 点击时边框发光 */
+}
+
+#fileInput:read-only {
+    background: rgba(139, 0, 0, 0.1);
+}
+
+/* 按钮样式 - 箭头替代文字 */
+#submitBtn {
+    padding: 0 1.5rem;
+    height: 55px;
+    background: rgba(139, 0, 0, 0.15);
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    color: #ff0000;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#submitBtn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.15), transparent);
+    transition: all 0.6s ease;
+}
+
+#submitBtn:hover {
+    background: rgba(139, 0, 0, 0.25);
+    box-shadow: 0 0 15px rgba(178, 34, 34, 0.3);
+    transform: translateY(-2px);
+    border-color: #ff6b6b;
+}
+
+#submitBtn:hover::after {
+    left: 100%;
+}
+
+#submitBtn:active {
+    transform: translateY(0);
+}
+
+/* 警告文字 - 分层红色，带浮动+阴影 */
+.warning-text {
+    width: 100%;
+    color: #cd5c5c;
+    font-size: 1.3rem;
+    line-height: 2;
+    text-align: center;
+    letter-spacing: 3px;
+    opacity: 0;
+    text-shadow: 0 0 10px rgba(205, 92, 92, 0.1);
+}
+
+/* 模糊的"你"字 - 高亮红，hover效果强化 */
+.blur-you {
+    color: #ff6b6b;
+    filter: blur(3px);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.blur-you:hover {
+    filter: blur(0);
+    text-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+}
+
+.blur-you::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #ff6b6b;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.blur-you:hover::after {
+    transform: scaleX(1);
+}
+
+/* 基础渐显动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .hint-text {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .search-wrapper {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    #fileInput,
+    #submitBtn {
+        width: 100%;
+        height: 50px;
+        font-size: 1rem;
+    }
+
+    .warning-text {
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+    }
+
+    /* 移动端角落文字调整 - 仍保持明显 */
+    .corner-text {
+        font-size: 4rem;
+    }
+}

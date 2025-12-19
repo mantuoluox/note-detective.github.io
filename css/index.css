@@ -1,0 +1,393 @@
+/* 全局粒子容器（覆盖整个页面） */
+#globalDotsContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -9999;
+    /* 最低层级，不遮挡任何内容 */
+    pointer-events: none;
+    /* 不影响点击交互 */
+}
+
+.bg-dot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(0, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: float 6s infinite linear, pulse 3s infinite alternate;
+    box-shadow: 0 0 5px #00ffff;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(15px, 10px) rotate(90deg);
+    }
+
+    50% {
+        transform: translate(0, 20px) rotate(180deg);
+    }
+
+    75% {
+        transform: translate(-15px, 10px) rotate(270deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
+}
+
+/* 1. 初始开始游戏页面（降低刺眼度） */
+.init-start-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.init-title {
+    font-size: 72px;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+    /* 降低阴影强度 */
+    margin-bottom: 20px;
+    letter-spacing: 8px;
+    opacity: 0.9;
+    /* 降低不透明度 */
+}
+
+.init-subtitle {
+    font-size: 16px;
+    color: #aaa;
+    /* 稍微提亮，减少对比度 */
+    margin-bottom: 80px;
+    letter-spacing: 4px;
+    animation: fadeSub 3s infinite alternate;
+}
+
+@keyframes fadeSub {
+    0% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 0.9;
+    }
+}
+
+.init-start-btn {
+    padding: 18px 50px;
+    background: transparent;
+    border: 2px solid #00ffff;
+    color: #00ffff;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-shadow: 0 0 8px #00ffff;
+    /* 降低阴影强度 */
+    position: relative;
+    overflow: hidden;
+}
+
+.init-start-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+    transition: left 0.8s;
+}
+
+.init-start-btn:hover {
+    background: rgba(0, 255, 255, 0.1);
+    /* 降低背景强度 */
+    color: #00ffff;
+    box-shadow: 0 0 20px #00ffff;
+    /* 降低阴影强度 */
+    transform: scale(1.05);
+}
+
+.init-start-btn:hover::before {
+    left: 100%;
+}
+
+.init-decoration {
+    position: absolute;
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00ffff, transparent);
+    margin-top: 150px;
+    animation: lineMove 4s infinite alternate;
+}
+
+@keyframes lineMove {
+    0% {
+        transform: scaleX(0.8);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scaleX(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* 2. 加载动画样式 */
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    display: none;
+}
+
+.loading-text {
+    font-size: 18px;
+    color: #00ffff;
+    /* 主题色 */
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #00ffff;
+    min-height: 24px;
+    /* 固定高度防止抖动 */
+}
+
+.loading-bar {
+    width: 300px;
+    height: 20px;
+    border: 1px solid #00ffff;
+    /* 主题色边框 */
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.loading-progress {
+    height: 100%;
+    background: #00ffff;
+    width: 0;
+    transition: width 3s linear;
+}
+
+/* 3. 弹窗样式（边框契合主题色） */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9998;
+    display: none;
+}
+
+.popup-content {
+    width: 600px;
+    padding: 40px;
+    border: 5px solid #00ffff;
+    /* 主题色边框 */
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    /* 主题色阴影 */
+}
+
+.popup-title {
+    font-size: 36px;
+    color: #00ffff;
+    margin-bottom: 30px;
+}
+
+.popup-rule-item {
+    margin: 15px 0;
+    color: #ddd;
+    transition: all 0.3s;
+    text-align: left;
+    padding: 8px 10px;
+    border-radius: 4px;
+}
+
+.popup-rule-item:hover {
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+    transform: translateX(5px);
+    background: rgba(0, 255, 255, 0.1);
+}
+
+.popup-input {
+    width: 80%;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+.popup-input:focus {
+    border-color: #00ffff;
+    color: #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    background: rgba(0, 255, 255, 0.05);
+}
+.popup-input::placeholder {
+    color: #aaa;
+    opacity: 1;
+}
+.popup-input:focus::placeholder {
+    color: #00ffff;
+}
+
+.popup-btn {
+    padding: 10px 30px;
+    background: transparent;
+    border: 1px solid #00ffff;
+    /* 主题色边框 */
+    color: #00ffff;
+    /* 主题色文字 */
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.popup-btn:hover {
+    background: #00ffff;
+    color: #000;
+    border-color: #00ffff;
+    box-shadow: 0 0 15px #00ffff;
+}
+
+/* 4. 正文样式（关键词倾斜） */
+.note-container {
+    width: 100%;
+    max-width: 800px;
+    display: none;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.content-container {
+    font-size: 18px;
+    line-height: 2.5;
+    margin: 60px auto;
+    min-height: 320px;
+    position: relative;
+    padding: 30px;
+    max-width: 700px;
+    text-align: left;
+}
+
+.char-span {
+    opacity: 0;
+    transform: translateY(5px);
+    animation: fadeInChar 0.3s forwards;
+}
+
+.special-code {
+    color: #00ffff;
+    text-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff, 0 0 25px #00ffff;
+    font-weight: bold;
+    font-size: 22px;
+    animation: blink 1.5s infinite alternate;
+}
+
+.italic-text {
+    font-style: italic;
+    color: #ccc;
+    text-shadow: 0 0 5px #ccc;
+}
+
+@keyframes fadeInChar {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+        text-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
+    }
+
+    100% {
+        opacity: 0.9;
+        text-shadow: 0 0 12px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+    }
+}
+
+/* 5. 按钮样式 */
+.btn-fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 30px;
+    font-size: 18px;
+    background: transparent;
+    border: 1px solid #00ffff;
+    /* 主题色边框 */
+    color: #00ffff;
+    /* 主题色文字 */
+    cursor: pointer;
+}
+
+.btn-fade:hover {
+    background: #00ffff;
+    color: #000;
+    border-color: #00ffff;
+    box-shadow: 0 0 15px #00ffff;
+}
+
+.btn-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 全局基础样式 */
+body {
+    background: #000;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}

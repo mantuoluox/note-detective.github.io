@@ -1,0 +1,339 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: #00ffff;
+    font-family: 'Courier New', Consolas, monospace;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+/* 背景粒子动画 */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(0, 255, 255, 0.7);
+    border-radius: 50%;
+    animation: float linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 点击波纹效果 */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 255, 255, 0.2);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* 加载动画 - 云端同步效果 */
+.sync-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 1s ease-out;
+}
+
+.sync-text {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    color: #ff0000;
+    animation: fadePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes fadePulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 10px #ff0000;
+    }
+}
+
+.data-stream {
+    width: 80%;
+    max-width: 600px;
+    height: 200px;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    padding: 1rem;
+    overflow: hidden;
+    background: rgba(255, 0, 0, 0.05);
+}
+
+.data-line {
+    font-size: 0.9rem;
+    color: rgba(255, 0, 0, 0.7);
+    margin-bottom: 0.5rem;
+    animation: dataScroll 0.5s linear forwards, dataFlicker 2s ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes dataScroll {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes dataFlicker {
+
+    0%,
+    100% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+    }
+}
+
+/* 内容容器 - 初始隐藏 */
+.content-container {
+    width: 100%;
+    max-width: 700px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* 系统日志样式 - 居中显示（移除竖线） */
+.system-log {
+    margin-bottom: 3rem;
+    padding-left: 1.5rem;
+    text-align: center;
+    /* 文本居中 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 容器内元素居中 */
+}
+
+.log-title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    animation: textFlicker 3s ease-in-out infinite;
+}
+
+.log-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: center;
+    /* 日志内容居中 */
+    animation: subtleFlicker 4s ease-in-out infinite;
+}
+
+/* 文字闪烁动画 */
+@keyframes textFlicker {
+
+    0%,
+    100% {
+        opacity: 0.9;
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+}
+
+@keyframes subtleFlicker {
+
+    0%,
+    100% {
+        opacity: 0.95;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* 录音文本样式 */
+.recording {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 4px;
+    background: rgba(0, 255, 255, 0.03);
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    animation: breathBorder 3s ease-in-out infinite;
+}
+
+/* 呼吸边框动画 */
+@keyframes breathBorder {
+
+    0%,
+    100% {
+        border-color: rgba(0, 255, 255, 0.3);
+        box-shadow: 0 0 5px rgba(0, 255, 255, 0.1);
+    }
+
+    50% {
+        border-color: rgba(0, 255, 255, 0.8);
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    }
+}
+
+.recording.visible {
+    opacity: 1;
+}
+
+.recording-title {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    letter-spacing: 2px;
+    animation: textFlicker 3s ease-in-out infinite;
+}
+
+.recording-content {
+    font-size: 1.1rem;
+    line-height: 2;
+    text-align: left;
+    white-space: pre-line;
+    animation: subtleFlicker 4s ease-in-out infinite;
+}
+
+/* 离开按钮 */
+.leave-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 0.8rem 2.5rem;
+    background: transparent;
+    border: 2px solid #00ffff;
+    color: #00ffff;
+    font-size: 1.1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    animation: btnBreath 2s ease-in-out infinite;
+}
+
+@keyframes btnBreath {
+
+    0%,
+    100% {
+        border-color: rgba(0, 255, 255, 0.7);
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+
+    50% {
+        border-color: rgba(0, 255, 255, 1);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+}
+
+.leave-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.leave-btn:hover {
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    transform: scale(1.05);
+}
+
+.leave-btn:active {
+    transform: scale(0.98);
+}
+
+/* 逐字显示容器 */
+.typing-container {
+    overflow: hidden;
+    height: fit-content;
+}
+
+@media (max-width: 768px) {
+    .data-stream {
+        height: 150px;
+    }
+
+    .log-title {
+        font-size: 1.1rem;
+    }
+
+    .log-content,
+    .recording-content {
+        font-size: 1rem;
+    }
+
+    .recording {
+        padding: 1.5rem;
+    }
+
+    .leave-btn {
+        padding: 0.7rem 2rem;
+        font-size: 1rem;
+    }
+}

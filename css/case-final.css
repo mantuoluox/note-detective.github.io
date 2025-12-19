@@ -1,0 +1,392 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 初始电子科技风格 - 全局样式 */
+body {
+    /* 电子科技背景 */
+    background-color: #0a1929;
+    background-image:
+        radial-gradient(circle, rgba(52, 152, 219, 0.1) 1px, transparent 1px),
+        linear-gradient(to right, rgba(52, 152, 219, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(52, 152, 219, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px, 50px 50px, 50px 50px;
+    min-height: 100vh;
+    padding: 3rem 2rem;
+    color: #e0e6ed;
+    line-height: 2.2;
+    position: relative;
+    overflow-x: hidden;
+    /* 风格过渡动画 */
+    transition:
+        background-color 1.5s ease-out,
+        background-image 1.5s ease-out,
+        color 1.5s ease-out;
+}
+
+/* 手写笔记风格 - 切换后添加此类 */
+body.handwritten-style {
+    background-color: #f5f1e9;
+    background-image:
+        url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 50h100M50 0v100" stroke="%23e0d8d0" stroke-width="0.5" stroke-dasharray="2 4"/></svg>'),
+        radial-gradient(circle, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px, 15px 15px;
+    color: #3e2723;
+}
+
+/* 加载容器 - 覆盖全屏 */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a1929;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    /* 加载容器过渡 */
+    transition:
+        opacity 1s ease-out,
+        background-color 1.5s ease-out;
+}
+
+/* 手写风格下的加载容器 */
+.loader-container.handwritten-style {
+    background: #f5f1e9;
+}
+
+/* 电子科技风格加载动画 */
+.digital-loader {
+    width: 180px;
+    height: 4px;
+    position: relative;
+    margin-bottom: 2.5rem;
+    background: rgba(0, 255, 255, 0.03);
+    border-radius: 2px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.03);
+    opacity: 1;
+    transition: opacity 0.8s ease-out;
+}
+
+.digital-loader::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 30%;
+    background: #00ffff;
+    border-radius: 2px;
+    box-shadow: 0 0 20px #00ffff;
+    animation: digitalProgress 1.2s linear infinite;
+}
+
+@keyframes digitalProgress {
+    0% {
+        left: 0;
+        width: 30%;
+    }
+
+    50% {
+        left: 70%;
+        width: 30%;
+    }
+
+    100% {
+        left: 0;
+        width: 30%;
+    }
+}
+
+/* 手写风格加载动画 */
+.pen-loader {
+    width: 120px;
+    height: 40px;
+    position: relative;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+}
+
+.pen-loader::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background: #8b5a2b;
+    animation: penLine 2s linear infinite;
+}
+
+.pen-loader::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 15px;
+    height: 15px;
+    background: #8b5a2b;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    animation: penMove 2s linear infinite;
+}
+
+@keyframes penLine {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes penMove {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* 加载文字 - 电子/手写风格过渡 */
+.loader-text {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    animation: fadePulse 1.5s ease-in-out infinite;
+    /* 文字颜色过渡 */
+    transition: color 1.5s ease-out;
+}
+
+.loader-text.digital {
+    color: #00ffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.03);
+}
+
+.loader-text.handwritten {
+    color: #8b5a2b;
+    text-shadow: none;
+}
+
+@keyframes fadePulse {
+
+    0%,
+    100% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* 纸张容器 - 初始隐藏，过渡显示 */
+.paper-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 4rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    background-image: linear-gradient(0deg, rgba(245, 241, 233, 0.3) 1px, transparent 1px);
+    background-size: 100% 2.2em;
+    border-radius: 2px;
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(139, 90, 43, 0.1),
+        5px 5px 0 rgba(139, 90, 43, 0.05),
+        10px 10px 0 rgba(139, 90, 43, 0.03);
+    position: relative;
+    transform: rotate(-0.5deg);
+    transition:
+        transform 0.5s ease,
+        opacity 1s ease-out 0.5s;
+    opacity: 0;
+}
+
+.paper-container.show {
+    opacity: 1;
+}
+
+.paper-container:hover {
+    transform: rotate(0deg);
+}
+
+.paper-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l100 100M100 0l-100 100" stroke="%23000" stroke-width="0.1" opacity="0.05"/></svg>'),
+        url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="0.5" fill="%23000" opacity="0.02"/></svg>');
+    pointer-events: none;
+}
+
+/* 标题样式 - 非手写体 */
+.report-title {
+    font-size: 2rem;
+    color: #8b5a2b;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.report-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #8b5a2b, transparent);
+    border-radius: 1px;
+}
+
+/* 正文样式 - 仅此处使用手写体 */
+.report-content {
+    font-size: 1.2rem;
+    text-align: justify;
+    margin-bottom: 3rem;
+    position: relative;
+    letter-spacing: 0.5px;
+    /* 仅正文使用手写字体 */
+    font-family: 'Ma Shan Zheng', 'Kalam', '手写体', '微软雅黑', cursive;
+}
+
+.report-content p {
+    margin-bottom: 1.8rem;
+    text-indent: 2em;
+    position: relative;
+    overflow: hidden;
+    height: fit-content;
+    /* 初始隐藏段落内容 */
+    opacity: 0;
+}
+
+/* 段落显示时的样式 */
+.report-content p.visible {
+    opacity: 1;
+}
+
+.report-content p::before {
+    content: '';
+    position: absolute;
+    left: -1em;
+    top: 0.8em;
+    width: 0.4em;
+    height: 0.4em;
+    background-color: #ff69b4;
+    border-radius: 50%;
+    opacity: 0.7;
+    box-shadow: 0 0 2px rgba(255, 105, 180, 0.3);
+}
+
+/* 按钮样式 - 非手写体 */
+.btn-container {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.cloud-btn {
+    padding: 0.9rem 2.5rem;
+    background-color: #8b5a2b;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(139, 90, 43, 0.3);
+    transform: rotate(1deg);
+    background-image: linear-gradient(to bottom, #8b5a2b 0%, #6d4c41 100%);
+}
+
+.cloud-btn:hover {
+    background-color: #6d4c41;
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 0 5px 12px rgba(139, 90, 43, 0.4);
+    background-image: linear-gradient(to bottom, #7a4a23 0%, #5c3c31 100%);
+}
+
+.cloud-btn:active {
+    transform: rotate(0deg) scale(0.98);
+}
+
+/* 装饰元素 */
+.decor-element {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.paperclip {
+    top: 2rem;
+    right: 3rem;
+    width: 90px;
+    transform: rotate(15deg);
+    filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.1));
+}
+
+.stamp {
+    bottom: 2rem;
+    left: 3rem;
+    width: 110px;
+    transform: rotate(-10deg);
+    filter: blur(0.5px);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    body {
+        padding: 2rem 1rem;
+    }
+
+    .paper-container {
+        padding: 2rem 1.5rem;
+        transform: rotate(0deg);
+        background-size: 100% 2em;
+    }
+
+    .report-title {
+        font-size: 1.7rem;
+    }
+
+    .report-content {
+        font-size: 1.1rem;
+        line-height: 2;
+    }
+
+    .report-content p {
+        text-indent: 1.5em;
+        margin-bottom: 1.5rem;
+    }
+
+    .cloud-btn {
+        padding: 0.8rem 2rem;
+        font-size: 1.1rem;
+    }
+
+    .paperclip {
+        width: 70px;
+    }
+
+    .stamp {
+        width: 90px;
+    }
+}

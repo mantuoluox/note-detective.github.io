@@ -1,0 +1,346 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0e17;
+    min-height: 100vh;
+    font-family: 'Courier New', monospace;
+    overflow-x: hidden;
+    cursor: pointer;
+}
+
+/* 页面加载动画 */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a0e17;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease;
+}
+
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 255, 255, 0.3);
+    border-top: 3px solid #00ffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.loader-text {
+    color: rgba(0, 255, 255, 0.7);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 主体容器 - 添加高度过渡动画 */
+.evidence-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgba(15, 20, 30, 0.95);
+    background-image:
+        linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease, height 0.6s ease-out;
+    overflow: hidden;
+}
+
+.evidence-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 头部样式 */
+.page-header {
+    padding-bottom: 1.2rem;
+    margin-bottom: 1.8rem;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+    position: relative;
+}
+
+.page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, #00ffff, transparent);
+    animation: scanLine 3s linear infinite;
+}
+
+@keyframes scanLine {
+    0% {
+        background-position: -100% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.page-title {
+    color: #00ffff;
+    font-size: 1.6rem;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+    margin-bottom: 0.3rem;
+    opacity: 0;
+}
+
+.page-subtitle {
+    color: rgba(0, 255, 255, 0.6);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    opacity: 0;
+}
+
+/* 线索列表样式 - 添加高度过渡 */
+.clue-list {
+    margin-top: 1.5rem;
+    display: none;
+    /* 默认隐藏线索列表 */
+    transform: scale(0.98);
+    opacity: 0;
+    transition: all 0.6s ease-out;
+}
+
+.clue-list.visible {
+    display: block;
+    transform: scale(1);
+    opacity: 1;
+}
+
+.clue-item {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 3px solid rgba(0, 255, 255, 0.5);
+    border-radius: 4px;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    transform: translateX(-20px) scale(0.95);
+    cursor: pointer;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.clue-item.visible {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    max-height: 300px;
+    /* 足够容纳内容的高度 */
+}
+
+.clue-item:hover {
+    border-left-color: #00ffff;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+.clue-content {
+    color: #e0e0e0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+}
+
+.clue-item .annotation-content {
+    display: none;
+    /* 隐藏线索中的批注内容 */
+}
+
+/* 批注对话框样式 - 优化滑入动画 */
+.annotation-modal {
+    position: fixed;
+    background: rgba(15, 20, 30, 0.98);
+    color: #00ffff;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 2.2rem;
+    max-width: 600px;
+    width: 90%;
+    z-index: 10000;
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.15);
+    opacity: 0;
+    pointer-events: none;
+    /* 核心：修改过渡为 translateX 为主 */
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateY(0);
+    /* 移除固定的垂直居中 */
+}
+
+/* 气泡箭头 */
+.annotation-modal::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: inherit;
+    border: inherit;
+    border-right: none;
+    border-top: none;
+    transform: rotate(45deg);
+}
+
+/* 左侧弹窗：初始在屏幕外左侧，激活后滑入 */
+.annotation-modal.left {
+    left: -100%;
+    /* 初始在左侧外 */
+    right: auto;
+}
+
+.annotation-modal.left::after {
+    left: -7px;
+    top: 40px;
+    box-shadow: -3px 3px 5px rgba(0, 255, 255, 0.05);
+}
+
+.annotation-modal.left.active {
+    left: 2% !important;
+    /* 滑入到左侧随机位置 */
+}
+
+/* 右侧弹窗：初始在屏幕外右侧，激活后滑入 */
+.annotation-modal.right {
+    right: -100%;
+    /* 初始在右侧外 */
+    left: auto;
+}
+
+.annotation-modal.right::after {
+    right: -7px;
+    top: 40px;
+    box-shadow: 3px -3px 5px rgba(0, 255, 255, 0.05);
+}
+
+.annotation-modal.right.active {
+    right: 2% !important;
+    /* 滑入到右侧随机位置 */
+}
+
+/* 弹窗激活状态 - 保持发光效果 */
+.annotation-modal.active {
+    opacity: 1;
+    pointer-events: all;
+    animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    from {
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+        border-color: rgba(0, 255, 255, 0.3);
+    }
+
+    to {
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
+        border-color: rgba(0, 255, 255, 0.5);
+    }
+}
+
+/* 移除背景调暗效果 */
+.modal-overlay {
+    display: none;
+}
+
+/* 弹窗文字样式 */
+.annotation-content {
+    color: #ffffff;
+    font-size: 1.25rem;
+    line-height: 1.8;
+}
+
+/* 底部提示 */
+.page-footer {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 255, 255, 0.1);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease 0.5s, transform 0.6s ease-out;
+    transform: translateY(20px);
+}
+
+.page-footer.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer-text {
+    color: rgba(0, 255, 255, 0.5);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    animation: blink 3s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .evidence-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .page-title {
+        font-size: 1.4rem;
+    }
+
+    .clue-content {
+        font-size: 1rem;
+    }
+
+    .annotation-modal {
+        max-width: 90%;
+        padding: 1.8rem;
+    }
+
+    .annotation-content {
+        font-size: 1.15rem;
+    }
+
+    .annotation-modal.left.active {
+        left: 1% !important;
+    }
+
+    .annotation-modal.right.active {
+        right: 1% !important;
+    }
+}

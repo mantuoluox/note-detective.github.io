@@ -1,0 +1,438 @@
+/* 保持原有样式不变 */
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0e17;
+    min-height: 100vh;
+    font-family: 'Courier New', monospace;
+}
+
+/* 页面加载动画 */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a0e17;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease;
+}
+
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 255, 255, 0.3);
+    border-top: 3px solid #00ffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.loader-text {
+    color: rgba(0, 255, 255, 0.7);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* 证物页面专属样式 - 科技分析感 */
+.evidence-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: rgba(15, 20, 30, 0.9);
+    background-image:
+        linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+        radial-gradient(circle at bottom right, rgba(0, 255, 255, 0.08) 0%, transparent 30%);
+    background-size: 40px 40px, 40px 40px, 100% 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.15);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards 0.3s;
+}
+
+/* 证物头部信息栏 */
+.evidence-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+    position: relative;
+}
+
+.evidence-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.4), transparent);
+    animation: scanLine 4s linear infinite;
+}
+
+.evidence-title {
+    color: #00ffff;
+    font-size: 1.8rem;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+    margin: 0;
+}
+
+.evidence-id {
+    color: rgba(0, 255, 255, 0.6);
+    font-family: monospace;
+    font-size: 0.9rem;
+    background: rgba(0, 255, 255, 0.05);
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+/* 证物信息面板（非块状/非卡片式） */
+.evidence-info {
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateX(5px);
+}
+
+.info-label {
+    color: rgba(0, 255, 255, 0.7);
+    font-size: 0.8rem;
+    margin-right: 0.8rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.info-value {
+    color: #e0e0e0;
+    font-size: 1rem;
+    font-family: 'Courier New', monospace;
+}
+
+/* 证物内容区 - 录音专属样式 */
+.evidence-content {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.evidence-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #00ffff, transparent);
+    animation: flowRight 3s linear infinite;
+}
+
+/* 自定义播放按钮 */
+.play-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    margin: 2rem auto;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #00ffff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.play-button::before {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.2) 0%, transparent 70%);
+    transform: scale(0);
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+}
+
+.play-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+.play-button:active::before {
+    transform: scale(1);
+}
+
+.play-icon {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px 0 20px 30px;
+    border-color: transparent transparent transparent #00ffff;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+}
+
+.play-button.playing .play-icon {
+    border-style: double;
+    border-width: 0 0 0 30px;
+}
+
+.play-button.loading {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(0, 255, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 255, 0);
+    }
+}
+
+/* 录音文本样式 - 初始隐藏在播放按钮后 */
+.recording-text {
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #e0e0e0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    border-left: 3px solid #00ffff;
+    min-height: 200px;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.8s ease;
+    margin-top: -60px;
+    position: relative;
+    z-index: 5;
+}
+
+.recording-text.active {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+    margin-top: 1rem;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+/* 特殊关键词高亮 - 修复显示问题 */
+.recording-highlight {
+    color: #00ffff !important;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+    animation: highlightPulse 2s infinite;
+    display: inline-block;
+    padding: 0 2px;
+}
+
+@keyframes highlightPulse {
+
+    0%,
+    100% {
+        text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+        color: #00ffff !important;
+    }
+
+    50% {
+        text-shadow: 0 0 15px rgba(0, 255, 255, 0.9);
+        color: #4dffff !important;
+    }
+}
+
+/* 底部数据状态条 */
+.evidence-footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 255, 255, 0.1);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.data-status {
+    color: rgba(0, 255, 255, 0.6);
+    font-size: 0.8rem;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+}
+
+.data-status::after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #00ffff;
+    margin-left: 8px;
+    animation: statusBlink 2s infinite;
+}
+
+@keyframes statusBlink {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* 新增动画 */
+@keyframes flowRight {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes scanLine {
+    0% {
+        background-position: -100% 0;
+    }
+
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 音频波形动画 */
+.audio-visualizer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    margin: 1rem 0;
+    gap: 3px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.audio-visualizer.active {
+    opacity: 1;
+}
+
+.audio-bar {
+    width: 3px;
+    background-color: #00ffff;
+    border-radius: 3px;
+    height: 10%;
+    transition: height 0.1s ease;
+}
+
+/* 适配移动端 */
+@media (max-width: 768px) {
+    .evidence-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .evidence-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .evidence-content {
+        padding: 1rem;
+    }
+
+    .recording-text {
+        font-size: 1rem;
+        min-height: 150px;
+    }
+
+    .play-button {
+        width: 60px;
+        height: 60px;
+    }
+
+    .play-icon {
+        border-width: 15px 0 15px 25px;
+    }
+
+    .play-button.playing .play-icon {
+        border-width: 0 0 0 25px;
+    }
+
+    .evidence-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}

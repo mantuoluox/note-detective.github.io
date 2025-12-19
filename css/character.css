@@ -1,0 +1,470 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", "思源黑体", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f0f5ff 0%, #f5f0ff 50%, #f8f2ff 100%);
+    min-height: 100vh;
+    padding: 3rem 5rem;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 电子风背景效果 */
+.bg-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-image:
+        linear-gradient(rgba(106, 142, 232, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(106, 142, 232, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: gridFlow 20s linear infinite;
+    pointer-events: none;
+}
+
+.bg-scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(to bottom,
+            transparent 50%,
+            rgba(141, 120, 230, 0.03) 51%);
+    background-size: 100% 4px;
+    animation: scanlineMove 8s linear infinite;
+    pointer-events: none;
+}
+
+.bg-ripple {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 2px solid rgba(136, 192, 255, 0.2);
+    z-index: -1;
+    animation: ripplePulse 15s ease-out infinite;
+    pointer-events: none;
+}
+
+.bg-ripple:nth-child(2) {
+    animation-delay: 5s;
+    border-color: rgba(141, 120, 230, 0.2);
+}
+
+.bg-ripple:nth-child(3) {
+    animation-delay: 10s;
+    border-color: rgba(106, 142, 232, 0.2);
+}
+
+.bg-particle {
+    position: fixed;
+    width: 2px;
+    height: 8px;
+    background: linear-gradient(180deg, #88c0ff, #8d78e6);
+    border-radius: 2px;
+    z-index: -1;
+    pointer-events: none;
+    animation: particleFly linear infinite;
+}
+
+/* 电子风动画定义 */
+@keyframes gridFlow {
+    0% {
+        background-position: 0 0;
+        transform: scale(1);
+    }
+
+    50% {
+        background-position: 15px 15px;
+        transform: scale(1.02);
+    }
+
+    100% {
+        background-position: 0 0;
+        transform: scale(1);
+    }
+}
+
+@keyframes scanlineMove {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 100%;
+    }
+}
+
+@keyframes ripplePulse {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0.8;
+    }
+
+    100% {
+        width: 2000px;
+        height: 2000px;
+        opacity: 0;
+    }
+}
+
+@keyframes particleFly {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-10vh) rotate(90deg);
+        opacity: 0;
+    }
+}
+
+/* 大标题水印样式 */
+.page-title {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6rem;
+    letter-spacing: 5px;
+    background: linear-gradient(90deg, #6a8ee833, #8d78e633);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(145, 130, 255, 0.1);
+    z-index: 0;
+    opacity: 0.2;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* 测试按钮样式 - 新增 */
+.test-btn {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 999;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #8d78e6 0%, #6a8ee8 100%);
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(141, 120, 230, 0.3);
+    transition: all 0.3s ease;
+}
+
+.test-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(141, 120, 230, 0.4);
+    background: linear-gradient(135deg, #9d8aff 0%, #7aa5ff 100%);
+}
+
+.test-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(141, 120, 230, 0.2);
+}
+
+/* 文件夹容器 - 下移+居中 */
+.desktop-container {
+    max-width: 1400px;
+    margin: 20rem auto 10rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 4rem 3rem;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 12rem);
+    align-content: start;
+}
+
+/* 基础文件夹样式（统一非颜色样式） */
+.folder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: folderFadeIn 0.8s ease-out forwards;
+    position: relative;
+    width: 120px;
+    margin: 0 auto;
+}
+
+.folder-icon {
+    width: 70px;
+    height: 55px;
+    border-radius: 8px 8px 5px 5px;
+    position: relative;
+    margin-bottom: 0.8rem;
+    box-shadow: 0 3px 6px rgba(141, 120, 230, 0.2);
+}
+
+/* 文件夹底部阴影 */
+.folder-icon::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    border-radius: 0 0 5px 5px;
+}
+
+/* 文件夹左上角折角（恢复原有样式） */
+.folder-icon::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 0;
+    width: 40px;
+    height: 8px;
+    border-radius: 8px 0 0 0;
+}
+
+/* 文件夹名称（统一非颜色样式） */
+.folder-name {
+    font-size: 1rem;
+    text-align: center;
+    padding: 0.3rem 0.5rem;
+    border-radius: 3px;
+    width: 100%;
+    text-shadow: 0 1px 1px rgba(141, 120, 230, 0.1);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 统一hover效果（非颜色属性） */
+.folder:hover {
+    transform: translateY(-8px) scale(1.15);
+}
+
+.folder:hover .folder-icon {
+    box-shadow: 0 8px 16px;
+}
+
+.folder:hover .folder-name {
+    transform: scale(1.05);
+    text-shadow: 0 1px 2px;
+}
+
+/* 增强已访问文件夹样式（仅保留阴影/文字效果） */
+.folder.visited .folder-icon {
+    box-shadow: 0 4px 8px;
+}
+
+.folder.visited .folder-name {
+    font-weight: 600;
+    background: rgba(157, 138, 255, 0.1);
+}
+
+/* 默认文件夹颜色（蓝紫色系） */
+.folder:not(.credits-folder) .folder-icon {
+    background: linear-gradient(135deg, #6a8ee8 0%, #8d78e6 100%);
+}
+
+.folder:not(.credits-folder) .folder-icon::after {
+    background: linear-gradient(135deg, #5a7bd8 0%, #7b68d3 100%);
+}
+
+.folder:not(.credits-folder) .folder-icon::before {
+    background: linear-gradient(135deg, #7aa5ff 0%, #9d8aff 100%);
+}
+
+.folder:not(.credits-folder) .folder-name {
+    color: #5a7bc8;
+}
+
+/* 默认文件夹hover颜色 */
+.folder:not(.credits-folder):hover .folder-icon {
+    background: linear-gradient(135deg, #7aa5ff 0%, #9d8aff 100%);
+    box-shadow: 0 8px 16px rgba(141, 120, 230, 0.4);
+}
+
+.folder:not(.credits-folder):hover .folder-name {
+    background: rgba(136, 192, 255, 0.3);
+    color: #8d78e6;
+    text-shadow: 0 1px 2px rgba(141, 120, 230, 0.3);
+}
+
+/* 已访问的默认文件夹颜色 */
+.folder.visited:not(.credits-folder) .folder-icon {
+    background: linear-gradient(135deg, #9d8aff 0%, #a3c0ff 100%);
+    box-shadow: 0 4px 8px rgba(157, 138, 255, 0.3);
+}
+
+.folder.visited:not(.credits-folder) .folder-icon::after {
+    background: linear-gradient(135deg, #8d78e6 0%, #93b0e8 100%);
+}
+
+.folder.visited:not(.credits-folder) .folder-name {
+    color: #6a8ee8;
+}
+
+/* 制作名单文件夹 - 浅粉紫配色 */
+.credits-folder .folder-icon {
+    background: linear-gradient(135deg, #f8b8d8 0%, #d8b8e8 100%);
+}
+
+.credits-folder .folder-icon::after {
+    background: linear-gradient(135deg, #e8a8c8 100%, #c8a8d8 0%);
+}
+
+.credits-folder .folder-icon::before {
+    background: linear-gradient(135deg, #f8c8e8 100%, #e8c8f8 0%);
+}
+
+.credits-folder .folder-name {
+    color: #b898e6;
+}
+
+/* 制作名单文件夹hover颜色 */
+.credits-folder:hover .folder-icon {
+    background: linear-gradient(135deg, #fcd8e8 0%, #e8d8f8 100%);
+    box-shadow: 0 8px 16px rgba(200, 120, 230, 0.3);
+}
+
+.credits-folder:hover .folder-name {
+    background: rgba(255, 138, 209, 0.2);
+    color: #b898e6;
+    text-shadow: 0 1px 2px rgba(200, 120, 230, 0.2);
+}
+
+/* 已访问的制作名单文件夹样式 */
+.folder.visited.credits-folder .folder-icon {
+    background: linear-gradient(135deg, #fcd8e8 0%, #e8d8f8 100%);
+    box-shadow: 0 4px 8px rgba(200, 120, 230, 0.3);
+}
+
+.folder.visited.credits-folder .folder-icon::after {
+    background: linear-gradient(135deg, #f0b8d8 0%, #d0b8e8 100%);
+}
+
+.folder.visited.credits-folder .folder-name {
+    color: #a888e6;
+}
+
+/* 文件夹渐入动画 */
+.folder:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.folder:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.folder:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.folder:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.folder:nth-child(5) {
+    animation-delay: 1s;
+}
+
+.folder:nth-child(6) {
+    animation-delay: 1.2s;
+}
+
+.folder.credits-folder {
+    animation-delay: 1.5s;
+}
+
+@keyframes folderFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 响应式适配 */
+@media (max-width: 1200px) {
+    .page-title {
+        font-size: 4.5rem;
+        letter-spacing: 3px;
+    }
+
+    .desktop-container {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 3.5rem 2.5rem;
+        padding: 1.5rem;
+        margin-top: 15rem;
+    }
+
+    .test-btn {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 2rem 2rem;
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+        opacity: 0.25;
+    }
+
+    .desktop-container {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 3rem 2rem;
+        margin-top: 10rem;
+    }
+
+    .folder {
+        width: 100px;
+    }
+
+    .folder-icon {
+        width: 60px;
+        height: 45px;
+    }
+
+    .folder-name {
+        font-size: 0.9rem;
+    }
+
+    .test-btn {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+        top: 1rem;
+        right: 1rem;
+    }
+}

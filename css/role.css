@@ -1,0 +1,359 @@
+/* 全局重置 & 基础风格 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* 手绘漫画风格字体 */
+    font-family: "微软雅黑", "幼圆", "Comic Sans MS", sans-serif;
+}
+
+/* 手绘纸张背景 - 纯CSS生成，无超长Base64 */
+body {
+    /* 基础纸张色 */
+    background-color: #f9f9f9;
+    /* 手绘纸张纹理：轻微网格+噪点+纸张纹理 */
+    background-image:
+        /* 细网格（模拟漫画稿纸） */
+        linear-gradient(rgba(200, 200, 200, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 200, 200, 0.1) 1px, transparent 1px),
+        /* 轻微纸张噪点 */
+        radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.02) 0.5px, transparent 0.5px);
+    /* 纹理尺寸 */
+    background-size:
+        20px 20px,
+        /* 网格大小 */
+        20px 20px,
+        50px 50px;
+    /* 噪点密度 */
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 动态水墨波纹背景（增强效果） */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(100, 100, 150, 0.2) 0%,
+            rgba(150, 150, 200, 0.05) 40%,
+            transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+    transition: background 0.3s ease;
+}
+
+/* 档案卡片容器 */
+.character-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: cardFadeIn 1s ease-out 0.3s forwards;
+}
+
+/* 卡片头部 - 手绘标题栏 */
+.card-header {
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+    border-bottom: 2px solid #333;
+    padding: 1.5rem;
+    position: relative;
+}
+
+/* 标题栏手绘装饰线 */
+.card-header::before,
+.card-header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: repeating-linear-gradient(90deg, #333, #333 4px, transparent 4px, transparent 8px);
+}
+
+.card-header::before {
+    top: 0;
+}
+
+.card-header::after {
+    bottom: 0;
+}
+
+.character-title {
+    font-size: 2rem;
+    color: #222;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 0 #ddd;
+    position: relative;
+}
+
+/* 卡片主体 - 网格布局 */
+.card-body {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* 人物头像容器（手绘相框） */
+.avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar-frame {
+    width: 220px;
+    height: 280px;
+    border: 4px solid #333;
+    border-radius: 4px;
+    padding: 8px;
+    background: #f5f5f5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    position: relative;
+    /* 手绘相框轻微倾斜 */
+    transform: rotate(-1deg);
+    transition: transform 0.5s ease;
+}
+
+/* 相框hover交互 */
+.avatar-frame:hover {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 相框手绘装饰角 */
+.avatar-frame::before,
+.avatar-frame::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 4px solid #333;
+    z-index: 1;
+}
+
+.avatar-frame::before {
+    top: -4px;
+    left: -4px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.avatar-frame::after {
+    bottom: -4px;
+    right: -4px;
+    border-left: none;
+    border-top: none;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    background: #eee;
+    background-size: cover;
+    background-position: center;
+}
+
+.avatar-caption {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #333;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px dashed #666;
+}
+
+/* 人物信息面板 */
+.info-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* 信息模块 - 手绘边框 */
+.info-module {
+    border: 2px solid #333;
+    border-radius: 4px;
+    padding: 1.2rem;
+    background: #fafafa;
+    position: relative;
+    /* 逐个渐入动画 */
+    opacity: 0;
+    transform: translateX(20px);
+    animation: moduleFadeIn 0.8s ease-out forwards;
+}
+
+.info-module:nth-child(1) {
+    animation-delay: 0.6s;
+}
+
+.info-module:nth-child(2) {
+    animation-delay: 0.9s;
+}
+
+.info-module:nth-child(3) {
+    animation-delay: 1.2s;
+}
+
+/* 模块标题（手绘标签） */
+.module-title {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: #fff;
+    padding: 0 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #222;
+    border: 2px solid #333;
+    border-radius: 4px;
+    /* 手绘标签倾斜 */
+    transform: rotate(-1deg);
+}
+
+/* 基础信息列表 - 调整布局 */
+.basic-info-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+/* 让爱好、特长、性格单独占一行 */
+.basic-info-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.basic-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+/* 手绘图标占位 */
+.info-icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 3px;
+}
+
+.info-label {
+    font-weight: bold;
+    color: #444;
+    min-width: 60px;
+}
+
+.info-value {
+    color: #666;
+    flex: 1;
+    padding: 0.2rem 0;
+    border-bottom: 1px dotted #999;
+}
+
+/* 删除线样式增强 */
+.info-value del {
+    color: #999;
+    text-decoration: line-through #666;
+    text-decoration-thickness: 2px;
+}
+
+/* 性格/经历文本 */
+.text-content {
+    line-height: 1.8;
+    color: #333;
+    text-indent: 2em;
+    padding: 0.5rem 0;
+    /* 手绘文字轻微不规则 */
+    transform: scale(1, 1.02);
+}
+
+/* 交互效果：文本hover高亮 */
+.text-content:hover {
+    background: rgba(200, 200, 200, 0.1);
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+/* 返回按钮（手绘风格） */
+.back-btn {
+    display: block;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #f0f0f0;
+    border: 2px solid #333;
+    border-radius: 4px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 2rem auto;
+    transition: all 0.3s ease;
+    /* 手绘按钮倾斜 */
+    transform: rotate(1deg);
+}
+
+.back-btn:hover {
+    background: #e0e0e0;
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 动画定义 */
+/* 卡片整体渐入 */
+@keyframes cardFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 信息模块渐入 */
+@keyframes moduleFadeIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .card-body {
+        grid-template-columns: 1fr;
+    }
+
+    .avatar-frame {
+        width: 180px;
+        height: 220px;
+    }
+
+    .basic-info-list {
+        grid-template-columns: 1fr;
+    }
+
+    .character-title {
+        font-size: 1.6rem;
+    }
+}
