@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 真结局</title>
+    <link rel="stylesheet" href="../css/truth.css">
+</head>
+<body>
+    <!-- 背景粒子容器 -->
+    <div class="particles" id="particles"></div>
+
+    <!-- 加载动画 - 云端同步 -->
+    <div class="sync-loader" id="syncLoader">
+        <div class="sync-text">云端同步中... </div>
+        <div class="data-stream" id="dataStream">
+            <!-- 动态生成数据流 -->
+        </div>
+    </div>
+
+    <!-- 主体内容 -->
+    <div class="content-container" id="contentContainer">
+        <!-- 系统日志 -->
+        <div class="system-log">
+            <div class="log-title">新系统日志</div>
+            <div class="log-content typing-container" id="logContent">
+                同步状态：ON
+                上传者：Yao
+                最后同步：
+            </div>
+        </div>
+
+        <!-- 录音文本 -->
+        <div class="recording" id="recordingContainer">
+            <div class="recording-title">新录音</div>
+            <div class="recording-content typing-container" id="recordingContent">
+            </div>
+        </div>
+
+        <!-- 离开按钮 -->
+        <button class="leave-btn" id="leaveBtn">离开</button>
+    </div>
+
+    <!-- 音效文件 -->
+    <audio id="loadingSound" preload="auto">
+        <source src="../audio/bi.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="footstepSound" preload="auto">
+        <source src="../audio/footstep.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="knockSound" preload="auto">
+        <source src="../audio/knock.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="../js/truth.js"></script>
+</body>
+</html>

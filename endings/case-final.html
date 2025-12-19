@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 调查报告</title>
+    <link rel="stylesheet" href="../css/case-final.css">
+    <!-- 引入手写字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body id="body">
+    <!-- 加载动画 -->
+    <div class="loader-container" id="loader">
+        <div class="digital-loader"></div>
+        <div class="pen-loader"></div>
+        <div class="loader-text digital" id="loaderText">正在同步数据...</div>
+    </div>
+
+    <!-- 装饰元素 -->
+    <img src="data:image/svg+xml;utf8,<svg width='90' height='45' viewBox='0 0 90 45' xmlns='http://www.w3.org/2000/svg'><path d='M10 10C15 5 25 5 30 10C35 15 45 15 50 10C55 5 65 5 70 10C75 15 85 15 80 10' stroke='%238b5a2b' stroke-width='4' fill='none'/><path d='M10 35C15 30 25 30 30 35C35 40 45 40 50 35C55 30 65 30 70 35C75 40 85 40 80 35' stroke='%238b5a2b' stroke-width='4' fill='none'/><rect x='10' y='10' width='70' height='25' fill='none' stroke='%238b5a2b' stroke-width='1.5'/></svg>" class="decor-element paperclip">
+    <img src="data:image/svg+xml;utf8,<svg width='110' height='110' viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg'><circle cx='55' cy='55' r='45' fill='none' stroke='%23d32f2f' stroke-width='4' stroke-dasharray='3 2'/><text x='55' y='60' font-size='18' text-anchor='middle' fill='%23d32f2f' font-weight='bold' font-family='Ma Shan Zheng'>调查中</text></svg>" class="decor-element stamp">
+
+    <!-- 主体内容 -->
+    <div class="paper-container" id="paperContainer">
+        <h1 class="report-title">“我”的调查报告</h1>
+        <div class="report-content" id="reportContent">
+            <p id="p1">我在阅读完美子的最后一篇笔记后拜访了她的事务所，但却无人回应。临走时遇到了楼下的邻居，他告诉我已经好几天没见过美子了。</p>
+            <p id="p2">美子很可能已遭遇不测。而早瀬在她消失后登陆了她的云端，伪造多篇笔记，试图篡改事件真相。</p>
+            <p id="p3">说起来，美子和早瀬到底是怎么认识的？</p>
+            <p id="p4">总之，今晚我会整理出云端上全部的笔记和证物，明天我将带着这些证据去警局揭露早瀬的罪行。</p>
+        </div>
+        <div class="btn-container">
+            <button class="cloud-btn" id="cloudBtn">点击继续</button>
+        </div>
+    </div>
+
+    <script src="../js/case-final.js"></script>
+</body>
+</html>

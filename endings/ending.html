@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 结尾</title>
+    <link rel="stylesheet" href="../css/end.css">
+</head>
+<body>
+    <!-- 背景动画层 -->
+    <div class="bg-gradient"></div>
+    <div class="bg-scanline"></div>
+    <div class="bg-particles" id="bgParticles"></div>
+
+    <!-- 四个角落的禁止更改文字 -->
+    <div class="corner-text corner-top-left">禁</div>
+    <div class="corner-text corner-top-right">止</div>
+    <div class="corner-text corner-bottom-left">更</div>
+    <div class="corner-text corner-bottom-right">改</div>
+
+    <div class="ending-container">
+        <!-- 红色装饰元素 -->
+        <div class="decor decor1"></div>
+        <div class="decor decor2"></div>
+        
+        <!-- 提示文字 -->
+        <div class="hint-text">输入下一个文件名以继续调查</div>
+
+        <!-- 搜索框与箭头按钮 -->
+        <div class="search-wrapper">
+            <input type="text" id="fileInput" readonly placeholder="Your_name">
+            <button id="submitBtn">→</button>
+        </div>
+
+        <!-- 警告文字（分层红色） -->
+        <div class="warning-text" id="warningPart1">我不会放过任何一个知道真相的人，</div>
+        <div class="warning-text" id="warningPart2">下一个就是<span class="blur-you">“你”</span></div>
+    </div>
+
+    <script src="../js/end.js"></script>
+</body>
+</html>
