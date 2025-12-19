@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 安宅青</title>
+    <link rel="stylesheet" href="../css/role.css">
+    <style>
+        .avatar-img {
+            background-image: url("../images/atagi.jpeg");
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 人物档案卡片 -->
+    <div class="character-card">
+        <!-- 卡片头部 -->
+        <div class="card-header">
+            <h1 class="character-title">安宅青</h1>
+        </div>
+
+        <!-- 卡片主体 -->
+        <div class="card-body">
+            <!-- 头像区域 -->
+            <div class="avatar-container">
+                <div class="avatar-frame">
+                    <div class="avatar-img"></div>
+                </div>
+                <p class="avatar-caption">「财务助理」</p>
+            </div>
+
+            <!-- 信息面板 -->
+            <div class="info-panel">
+                <!-- 基础信息模块 -->
+                <div class="info-module">
+                    <h2 class="module-title">基础信息</h2>
+                    <ul class="basic-info-list">
+                        <li class="basic-info-item">
+                            <span class="info-icon">Y</span>
+                            <span class="info-label">年龄</span>
+                            <span class="info-value">24岁</span>
+                        </li>
+                        <li class="basic-info-item">
+                            <span class="info-icon">B</span>
+                            <span class="info-label">生日</span>
+                            <span class="info-value">1月7日</span>
+                        </li>
+                        <!-- 爱好单独一行 -->
+                        <li class="basic-info-item full-width">
+                            <span class="info-icon">L</span>
+                            <span class="info-label">爱好</span>
+                            <span class="info-value">阅读、跑步、做手账</span>
+                        </li>
+                        <!-- 特长单独一行 -->
+                        <li class="basic-info-item full-width">
+                            <span class="info-icon">F</span>
+                            <span class="info-label">特长</span>
+                            <span class="info-value">擅长数学、外语、<del>保密</del></span>
+                        </li>
+                        <!-- 性格单独一行 -->
+                        <li class="basic-info-item full-width">
+                            <span class="info-icon">C</span>
+                            <span class="info-label">性格</span>
+                            <span class="info-value">内心敏感，不善于表达自己的情绪；做事谨慎，有责任感，对朋友真诚。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 性格特点模块 -->
+                <div class="info-module">
+                    <h2 class="module-title">身份背景</h2>
+                    <p class="text-content">
+                        出身于工薪家庭，父亲是会计，母亲是护士。以优异的成绩毕业，后进入樱井集团。工作认真负责，很快就被樱井注意到。
+                    </p>
+                </div>
+
+                <!-- 人物经历模块 -->
+                <div class="info-module">
+                    <h2 class="module-title">核心经历</h2>
+                    <p class="text-content">
+                        知道早瀬才是造假事件的黑幕，决定通过假失踪的方式让警方注意到他。借走了录音笔，复制了一把别墅的钥匙并刻上信息，在家中练习如何伪装现场，且提前得知了樱井会参加酒会。原本计划在28日晚22点30分进入湖畔别墅，布置完现场后，留下伪造的早瀬写下的字条，并在紫光灯上留下文字。之后关好门窗点燃壁炉，伪装成早瀬约自己来这里并且已经等待很久的现场。开启录音，装成现场有两个人对话的样子，录音结束后离开现场，并在第二天把录音笔匿名寄到警局，从此自己远走高飞。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 返回按钮 -->
+    <a href="../character.html" class="back-btn">返回设定库</a>
+
+    <script>
+        // 鼠标跟随水墨波纹效果
+        document.addEventListener('mousemove', function (e) {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            document.body.style.setProperty('--mouse-x', `${x}%`);
+            document.body.style.setProperty('--mouse-y', `${y}%`);
+        });
+
+        // 滚动时的元素动效增强
+        window.addEventListener('scroll', function () {
+            const scrollY = window.scrollY;
+            const modules = document.querySelectorAll('.info-module');
+            modules.forEach(module => {
+                const offset = module.getBoundingClientRect().top;
+                if (offset < window.innerHeight * 0.8) {
+                    module.style.opacity = 1;
+                    module.style.transform = 'translateX(0)';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

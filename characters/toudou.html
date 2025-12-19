@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 藤堂七海</title>
+    <link rel="stylesheet" href="../css/role.css">
+    <style>
+        .avatar-img {
+            background-image: url("../images/toudou.jpeg");
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 人物档案卡片 -->
+    <div class="character-card">
+        <!-- 卡片头部 -->
+        <div class="card-header">
+            <h1 class="character-title">藤堂七海</h1>
+        </div>
+
+        <!-- 卡片主体 -->
+        <div class="card-body">
+            <!-- 头像区域 -->
+            <div class="avatar-container">
+                <div class="avatar-frame">
+                    <div class="avatar-img"></div>
+                </div>
+                <p class="avatar-caption">「自由插画师」</p>
+            </div>
+
+            <!-- 信息面板 -->
+            <div class="info-panel">
+                <!-- 基础信息模块 -->
+                <div class="info-module">
+                    <h2 class="module-title">基础信息</h2>
+                    <ul class="basic-info-list">
+                        <li class="basic-info-item">
+                            <span class="info-icon">Y</span>
+                            <span class="info-label">年龄</span>
+                            <span class="info-value">23岁</span>
+                        </li>
+                        <li class="basic-info-item">
+                            <span class="info-icon">B</span>
+                            <span class="info-label">生日</span>
+                            <span class="info-value">5月20日</span>
+                        </li>
+                        <!-- 爱好单独一行 -->
+                        <li class="basic-info-item full-width">
+                            <span class="info-icon">L</span>
+                            <span class="info-label">爱好</span>
+                            <span class="info-value">绘画、烘焙、听古典乐</span>
+                        </li>
+                        <!-- 特长单独一行 -->
+                        <li class="basic-info-item full-width">
+                            <span class="info-icon">F</span>
+                            <span class="info-label">特长</span>
+                            <span class="info-value">声音模仿、细节记忆、<del>鸽</del></span>
+                        </li>
+                        <!-- 性格单独一行 -->
+                        <li class="basic-info-item full-width">
+                            <span class="info-icon">C</span>
+                            <span class="info-label">性格</span>
+                            <span class="info-value">温和善良，不善与人争执；内心敏感脆弱，害怕冲突，容易惊慌。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 性格特点模块 -->
+                <div class="info-module">
+                    <h2 class="module-title">身份背景</h2>
+                    <p class="text-content">
+                        父母都是教师，从小受到良好的教育。与安宅是高中同学，两人在一次社团活动中相识。大学毕业后成为一名自由插画师，工作时间自由，经常去安宅的住处陪伴她。
+                    </p>
+                </div>
+
+                <!-- 人物经历模块 -->
+                <div class="info-module">
+                    <h2 class="module-title">核心经历</h2>
+                    <p class="text-content">
+                        在某次与安宅见面后得知了她的计划，决定帮助她，通过电话互相联系。没想到得知了安宅死亡的消息，以为她是意外死亡，害怕警方怀疑自己，删掉了两人的通话记录。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 返回按钮 -->
+    <a href="../character.html" class="back-btn">返回设定库</a>
+
+    <script>
+        // 鼠标跟随水墨波纹效果
+        document.addEventListener('mousemove', function (e) {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            document.body.style.setProperty('--mouse-x', `${x}%`);
+            document.body.style.setProperty('--mouse-y', `${y}%`);
+        });
+
+        // 滚动时的元素动效增强
+        window.addEventListener('scroll', function () {
+            const scrollY = window.scrollY;
+            const modules = document.querySelectorAll('.info-module');
+            modules.forEach(module => {
+                const offset = module.getBoundingClientRect().top;
+                if (offset < window.innerHeight * 0.8) {
+                    module.style.opacity = 1;
+                    module.style.transform = 'translateX(0)';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

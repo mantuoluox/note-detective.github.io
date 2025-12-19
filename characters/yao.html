@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 八尾美子</title>
+    <link rel="stylesheet" href="../css/role.css">
+    <style>
+        .avatar-img {
+            background-image: url("../images/yao.jpeg");
+        }
+    </style>
+</head>
+<body>
+    <!-- 人物档案卡片 -->
+    <div class="character-card">
+        <!-- 卡片头部 -->
+        <div class="card-header">
+            <h1 class="character-title">八尾美子</h1>
+        </div>
+
+        <!-- 卡片主体 -->
+        <div class="card-body">
+            <!-- 头像区域 -->
+            <div class="avatar-container">
+                <div class="avatar-frame">
+                    <div class="avatar-img"></div>
+                </div>
+                <p class="avatar-caption">「私家侦探」</p>
+            </div>
+
+            <!-- 信息面板 -->
+            <div class="info-panel">
+                <!-- 基础信息模块 -->
+                <div class="info-module">
+                    <h2 class="module-title">基础信息</h2>
+                    <ul class="basic-info-list">
+                        <li class="basic-info-item">
+                            <span class="info-icon">Y</span>
+                            <span class="info-label">年龄</span>
+                            <span class="info-value">18岁</span>
+                        </li>
+                        <li class="basic-info-item">
+                            <span class="info-icon">B</span>
+                            <span class="info-label">生日</span>
+                            <span class="info-value">2月28日</span>
+                        </li>
+                        <!-- 爱好单独一行 -->
+                        <li class="basic-info-item full-width">
+                            <span class="info-icon">L</span>
+                            <span class="info-label">爱好</span>
+                            <span class="info-value">收集各国老式钢笔、写推理小说、制作手工书签</span>
+                        </li>
+                        <!-- 特长单独一行 -->
+                        <li class="basic-info-item full-width">
+                            <span class="info-icon">F</span>
+                            <span class="info-label">特长</span>
+                            <span class="info-value">微表情分析、速记、<del>讲冷笑话</del></span>
+                        </li>
+                        <!-- 性格单独一行 -->
+                        <li class="basic-info-item full-width">
+                            <span class="info-icon">C</span>
+                            <span class="info-label">性格</span>
+                            <span class="info-value">理性主导但不失温度，面对案件时沉着冷静；与熟人相处时会展现活泼一面，尤其喜欢和别人分享事务所的趣事。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 性格特点模块 -->
+                <div class="info-module">
+                    <h2 class="module-title">身份背景</h2>
+                    <p class="text-content">
+                        出身于警察世家，祖父是退休刑警，父母在一次缉毒行动中牺牲。16岁时就凭借细致的观察能力帮警方破获了一起校园失窃案，擅长处理民事纠纷和小型刑事案件。
+                    </p>
+                </div>
+
+                <!-- 人物经历模块 -->
+                <div class="info-module">
+                    <h2 class="module-title">核心经历</h2>
+                    <p class="text-content">
+                        习惯将每次的委托都记录在云端里，这次也是一样。对当前进度进行梳理时，意识到安宅早就知道自己会被杀害，并提前留下了线索，但她没有选择报警，一定是因为她还有别的计划。得知录音笔时间不对后，用不在场证明排除了樱井的嫌疑。为了找到安宅想假装失踪的原因，调查了樱井公司的情况，发现了财务造假情况。再次登录云端时，却发现云端内容已被修改过。能知道自己的邮箱，登录自己的云端，在案发时有不在场证明，并且是安宅想嫁祸的人，就只剩下早瀬了。利用安宅留下的残缺的线索，在自己的云端记录里重新给出了指向早瀬的线索。虽然没有直接指向早瀬的证据，但可以凭涉嫌协助财务造假的嫌疑询问他，只是在去警局前，美子决定先跟早瀬见一面……
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 返回按钮 -->
+    <a href="../character.html" class="back-btn">返回设定库</a>
+
+    <script>
+        // 鼠标跟随水墨波纹效果
+        document.addEventListener('mousemove', function(e) {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            document.body.style.setProperty('--mouse-x', `${x}%`);
+            document.body.style.setProperty('--mouse-y', `${y}%`);
+        });
+
+        // 滚动时的元素动效增强
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            const modules = document.querySelectorAll('.info-module');
+            modules.forEach(module => {
+                const offset = module.getBoundingClientRect().top;
+                if (offset < window.innerHeight * 0.8) {
+                    module.style.opacity = 1;
+                    module.style.transform = 'translateX(0)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

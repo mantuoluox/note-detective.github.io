@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 樱井玲司</title>
+    <link rel="stylesheet" href="../css/role.css">
+    <style>
+        .avatar-img {
+            background-image: url("../images/sakurai.jpeg");
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 人物档案卡片 -->
+    <div class="character-card">
+        <!-- 卡片头部 -->
+        <div class="card-header">
+            <h1 class="character-title">樱井玲司</h1>
+        </div>
+
+        <!-- 卡片主体 -->
+        <div class="card-body">
+            <!-- 头像区域 -->
+            <div class="avatar-container">
+                <div class="avatar-frame">
+                    <div class="avatar-img"></div>
+                </div>
+                <p class="avatar-caption">「CEO」</p>
+            </div>
+
+            <!-- 信息面板 -->
+            <div class="info-panel">
+                <!-- 基础信息模块 -->
+                <div class="info-module">
+                    <h2 class="module-title">基础信息</h2>
+                    <ul class="basic-info-list">
+                        <li class="basic-info-item">
+                            <span class="info-icon">Y</span>
+                            <span class="info-label">年龄</span>
+                            <span class="info-value">27岁</span>
+                        </li>
+                        <li class="basic-info-item">
+                            <span class="info-icon">B</span>
+                            <span class="info-label">生日</span>
+                            <span class="info-value">8月15日</span>
+                        </li>
+                        <!-- 爱好单独一行 -->
+                        <li class="basic-info-item full-width">
+                            <span class="info-icon">L</span>
+                            <span class="info-label">爱好</span>
+                            <span class="info-value">收藏跑车、打高尔夫球、饲养稀有宠物</span>
+                        </li>
+                        <!-- 特长单独一行 -->
+                        <li class="basic-info-item full-width">
+                            <span class="info-icon">F</span>
+                            <span class="info-label">特长</span>
+                            <span class="info-value">擅长商业谈判、<del>花钱、推卸责任</del></span>
+                        </li>
+                        <!-- 性格单独一行 -->
+                        <li class="basic-info-item full-width">
+                            <span class="info-icon">C</span>
+                            <span class="info-label">性格</span>
+                            <span class="info-value">嚣张跋扈，情绪易怒，对下属严苛；内心极度自卑，害怕被家族成员取代，急于提升业绩。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 性格特点模块 -->
+                <div class="info-module">
+                    <h2 class="module-title">身份背景</h2>
+                    <p class="text-content">
+                        有四分之一的外国血统，樱井集团的继承人之一，从小在锦衣玉食的环境中长大，接受最好的教育，却始终无法达到家族期望。湖畔别墅是他名下的别墅之一，也是他用来处理秘密事务的地方。
+                </div>
+
+                <!-- 人物经历模块 -->
+                <div class="info-module">
+                    <h2 class="module-title">核心经历</h2>
+                    <p class="text-content">
+                        为了胁迫安宅参与财务造假，借给她湖畔别墅的钥匙。得知安宅以自己的名义借走录音笔后，把这件事告诉了早瀬。案发后怕财务造假被查出，逃到海外。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 返回按钮 -->
+    <a href="../character.html" class="back-btn">返回设定库</a>
+
+    <script>
+        // 鼠标跟随水墨波纹效果
+        document.addEventListener('mousemove', function (e) {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            document.body.style.setProperty('--mouse-x', `${x}%`);
+            document.body.style.setProperty('--mouse-y', `${y}%`);
+        });
+
+        // 滚动时的元素动效增强
+        window.addEventListener('scroll', function () {
+            const scrollY = window.scrollY;
+            const modules = document.querySelectorAll('.info-module');
+            modules.forEach(module => {
+                const offset = module.getBoundingClientRect().top;
+                if (offset < window.innerHeight * 0.8) {
+                    module.style.opacity = 1;
+                    module.style.transform = 'translateX(0)';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

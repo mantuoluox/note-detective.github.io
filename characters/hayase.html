@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 早瀬八百</title>
+    <link rel="stylesheet" href="../css/role.css">
+    <style>
+        .avatar-img {
+            background-image: url("../images/hayase.jpeg");
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 人物档案卡片 -->
+    <div class="character-card">
+        <!-- 卡片头部 -->
+        <div class="card-header">
+            <h1 class="character-title">早瀬八百</h1>
+        </div>
+
+        <!-- 卡片主体 -->
+        <div class="card-body">
+            <!-- 头像区域 -->
+            <div class="avatar-container">
+                <div class="avatar-frame">
+                    <div class="avatar-img"></div>
+                </div>
+                <p class="avatar-caption">「警方顾问」</p>
+            </div>
+
+            <!-- 信息面板 -->
+            <div class="info-panel">
+                <!-- 基础信息模块 -->
+                <div class="info-module">
+                    <h2 class="module-title">基础信息</h2>
+                    <ul class="basic-info-list">
+                        <li class="basic-info-item">
+                            <span class="info-icon">Y</span>
+                            <span class="info-label">年龄</span>
+                            <span class="info-value">25岁</span>
+                        </li>
+                        <li class="basic-info-item">
+                            <span class="info-icon">B</span>
+                            <span class="info-label">生日</span>
+                            <span class="info-value">2月29日</span>
+                        </li>
+                        <!-- 爱好单独一行 -->
+                        <li class="basic-info-item full-width">
+                            <span class="info-icon">L</span>
+                            <span class="info-label">爱好</span>
+                            <span class="info-value">品鉴红茶、下围棋、整理家务</span>
+                        </li>
+                        <!-- 特长单独一行 -->
+                        <li class="basic-info-item full-width">
+                            <span class="info-icon">F</span>
+                            <span class="info-label">特长</span>
+                            <span class="info-value">犯罪现场重建、解读法律条文、<del>伪造文书</del></span>
+                        </li>
+                        <!-- 性格单独一行 -->
+                        <li class="basic-info-item full-width">
+                            <span class="info-icon">C</span>
+                            <span class="info-label">性格</span>
+                            <span class="info-value">表面温和可靠，对谁都保持着礼貌距离，主动帮助邻里解决问题；内心高傲且自信，情绪管理能力极强。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 性格特点模块 -->
+                <div class="info-module">
+                    <h2 class="module-title">身份背景</h2>
+                    <p class="text-content">
+                        出身于法学世家，父亲是知名律师，母亲因病去世。大学时以优异成绩考入法学院，毕业后进入警方担任顾问，凭借出色的专业能力获得认可。偶然得知美子的存在后，搬到事务所附近，与美子成为邻居。
+                    </p>
+                </div>
+
+                <!-- 人物经历模块 -->
+                <div class="info-module">
+                    <h2 class="module-title">核心经历</h2>
+                    <p class="text-content">
+                        得知安宅借走了录音笔，猜测她可能想检举财务造假一事，因此监听了她，却发现她想假装失踪并陷害自己，准备将计就计一劳永逸。找樱井借了型号相同的录音笔，并改装了内置时间戳，趁着找樱井商谈的时候换掉安宅放在公司的录音笔。借了湖畔别墅的钥匙，封死了壁炉的通风口，并换成了高碳燃料。28日晚特意给自己制造了不在场证明。得知美子开始调查安宅的案件后，让樱井找借口出国，知道美子不会怀疑到自己，自作聪明的进行各种伪装工作。在美子消失后，再次登录她的云端，添加了虚假的笔记。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 返回按钮 -->
+    <a href="../character.html" class="back-btn">返回设定库</a>
+
+    <script>
+        // 鼠标跟随水墨波纹效果
+        document.addEventListener('mousemove', function (e) {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            document.body.style.setProperty('--mouse-x', `${x}%`);
+            document.body.style.setProperty('--mouse-y', `${y}%`);
+        });
+
+        // 滚动时的元素动效增强
+        window.addEventListener('scroll', function () {
+            const scrollY = window.scrollY;
+            const modules = document.querySelectorAll('.info-module');
+            modules.forEach(module => {
+                const offset = module.getBoundingClientRect().top;
+                if (offset < window.innerHeight * 0.8) {
+                    module.style.opacity = 1;
+                    module.style.transform = 'translateX(0)';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
