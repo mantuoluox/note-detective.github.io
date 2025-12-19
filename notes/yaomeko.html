@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 八尾美子</title>
+    <link rel="stylesheet" href="../css/easter.css">
+</head>
+<body>
+    <!-- 花瓣容器 -->
+    <div class="petal-container" id="petalContainer"></div>
+    
+    <!-- 烟花容器 -->
+    <div class="firework-container" id="fireworkContainer"></div>
+
+    <!-- 加载动画 -->
+    <div class="loader-container" id="loader">
+        <div class="pen-write" id="writeText">Yao Meko</div>
+        <div class="loader-subtext">正在解锁美子的小秘密...</div>
+    </div>
+
+    <!-- 装饰元素 -->
+    <img src="data:image/svg+xml;utf8,<svg width='180' height='220' viewBox='0 0 180 220' xmlns='http://www.w3.org/2000/svg'><path d='M30 20H150V200C150 210 140 220 130 220H50C40 220 30 210 30 200V20Z' fill='%238b5a2b'/><path d='M40 30H140V190C140 195 135 200 130 200H50C45 200 40 195 40 190V30Z' fill='%23f8f5f2'/><path d='M50 40H130V180C130 185 125 190 120 190H60C55 190 50 185 50 180V40Z' fill='%23f0e8e0'/><path d='M60 50H120V170C120 175 115 180 110 180H70C65 180 60 175 60 170V50Z' fill='%23e8dfd4'/><text x='90' y='100' font-size='14' text-anchor='middle' fill='%238b5a2b'>推理小说</text></svg>" class="desk-decoration old-book">
+    <img src="data:image/svg+xml;utf8,<svg width='120' height='30' viewBox='0 0 120 30' xmlns='http://www.w3.org/2000/svg'><path d='M10 15L110 15' stroke='%238b5a2b' stroke-width='8' stroke-linecap='round'/><path d='M110 15L105 10L108 15L105 20L110 15Z' fill='%236d4c41'/></svg>" class="desk-decoration pen">
+    <img src="data:image/svg+xml;utf8,<svg width='60' height='100' viewBox='0 0 60 100' xmlns='http://www.w3.org/2000/svg'><path d='M20 10H40V90C40 95 35 100 30 100C25 100 20 95 20 90V10Z' fill='%23ffd700'/><path d='M25 20H35V80C35 85 30 90 25 90V20Z' fill='%23fffacd'/></svg>" class="desk-decoration bookmark">
+
+    <!-- 互动小元素 -->
+    <img src="data:image/svg+xml;utf8,<svg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'><circle cx='40' cy='40' r='30' fill='%2387ceeb' stroke='%234fc3f7' stroke-width='2'/><circle cx='40' cy='40' r='10' fill='%23fff'/><path d='M10 40L70 40' stroke='%234fc3f7' stroke-width='3' stroke-linecap='round'/></svg>" class="interactive-element magnifier" id="magnifier">
+    <img src="data:image/svg+xml;utf8,<svg width='70' height='70' viewBox='0 0 70 70' xmlns='http://www.w3.org/2000/svg'><circle cx='35' cy='35' r='30' fill='%23ffd700' stroke='%23ffc107' stroke-width='3'/><text x='35' y='40' font-size='16' text-anchor='middle' fill='%238b5a2b'>点</text></svg>" class="interactive-element detective-badge" id="detectiveBadge">
+
+    <!-- 主体内容 -->
+    <div class="content-container" id="content">
+        <div class="profile-header">
+            <h1 class="profile-name">八尾美子 (Yao Meko)</h1>
+            <p class="profile-birthday">2007年2月28日 | 永远18岁的名侦探</p>
+            <p class="profile-motto" id="mottoText">"真相就像钢笔尖的墨水，只要书写，就一定会留下痕迹"</p>
+        </div>
+
+        <div class="secret-content" id="secretContent">
+            <p class="secret-paragraph">这里是名侦探——八尾美子。既然这里是彩蛋内容，那我就偷偷写点小秘密了。</p>
+            <p class="secret-paragraph">别看我现在是侦探事务所的侦探，其实我最初的梦想是成为一名<span class="highlight-text">推理小说作家</span>。在事务所的某个秘密角落里，放着我以前写过的推理小说。那时我天天幻想着出版以我为主角的，名为《名侦探美子》的系列推理小说集。</p>
+            <p class="secret-paragraph">只可惜计划赶不上变化，我成为了一名侦探，而不是推理小说作家，而有关我的推理小说集最终也只是被搁置在落灰的角落，真希望它们能有<span class="highlight-text">“重见天日”</span>的那一天啊。</p>
+            <p class="secret-paragraph">至于我为什么拥有一家侦探事务所，这种<span class="highlight-text">商业机密</span>就留到下次再见时说吧。对了，我在这里藏了些小彩蛋，找找看吧。</p>
+
+            <!-- 互动钢笔 -->
+            <img src="data:image/svg+xml;utf8,<svg width='80' height='30' viewBox='0 0 80 30' xmlns='http://www.w3.org/2000/svg'><path d='M5 15L75 15' stroke='%238b5a2b' stroke-width='6' stroke-linecap='round'/><path d='M75 15L70 10L73 15L70 20L75 15Z' fill='%236d4c41'/></svg>" class="interactive-pen" id="jokePen">
+        </div>
+    </div>
+
+    <!-- 冷笑话弹窗 -->
+    <div class="joke-modal" id="jokeModal">
+        <h3 class="joke-title">美子的冷笑话时间！</h3>
+        <div class="joke-content" id="jokeContent">
+            撒谎的人写出来的字都没墨水<br><br>
+            因为心虚到墨（没）底气啦！
+        </div>
+        <button class="joke-close" id="jokeClose">关闭</button>
+    </div>
+
+    <!-- 仅保留烟花音效 -->
+    <audio id="fireworkSound" preload="auto">
+        <source src="../audio/fireworks.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="../js/easter.js"></script>
+</body>
+</html>

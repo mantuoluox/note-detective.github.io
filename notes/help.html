@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 攻略</title>
+    <link rel="stylesheet" href="../css/help.css">
+</head>
+<body>
+    <div class="decor-element decor-top"></div>
+    <div class="decor-element decor-bottom"></div>
+
+    <!-- 加载动画 -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">LOADING...</div>
+    </div>
+
+    <!-- 主体内容 -->
+    <div class="guide-container" id="guideContainer">
+        <div class="guide-header">
+            <h1 class="guide-title">全流程攻略</h1>
+            <p class="guide-subtitle">解谜提示</p>
+            
+            <!-- 进度条 -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">已解锁: 1/10</div>
+            </div>
+            
+            <!-- <button class="sync-refresh-btn" id="syncRefreshBtn">刷新解锁进度</button> -->
+        </div>
+
+        <div class="guide-list" id="guideList">
+            <!-- 固定存在的“开头”项 -->
+            <div class="guide-item fixed-item">
+                <div class="guide-item-header" data-file="开头">
+                    开头
+                </div>
+                <div class="guide-item-content">
+                    <div class="guide-content-text">
+                        根据“我”的文字提示，在搜索框中输入：<br>
+                        <span>yaomeko</span>-解锁彩蛋“八尾美子”<br>
+                        <span>0303</span>-解锁笔记“委托开始”<br>
+                        <span>help</span>-解锁彩蛋“攻略”
+                    </div>
+                </div>
+            </div>
+            <!-- 动态项容器 -->
+            <div id="dynamicGuideItems"></div>
+        </div>
+    </div>
+
+    <script src="../js/help.js"></script>
+</body>
+</html>

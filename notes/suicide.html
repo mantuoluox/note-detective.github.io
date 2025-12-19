@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 自杀</title>
+    <!-- 引入通用CSS -->
+    <link rel="stylesheet" href="../css/note.css">
+</head>
+
+<body>
+    <!-- 页面加载动画 -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">LOADING...</div>
+    </div>
+    
+    <!-- 网格背景 -->
+    <div class="grid-bg"></div>
+    <!-- 动态背景容器 -->
+    <div id="dynamic-bg"></div>
+
+    <div class="note-container" id="noteContainer">
+        <h1 class="note-title">自杀</h1>
+        <div class="note-content">
+            <p id="p1"></p>
+            <p id="p2"></p>
+            <p id="p3"></p>
+            <p id="p4"></p>
+            <div id="endEntry">
+                <a href="../endings/suicide-end.html">由此进入结局</a>
+            </div>
+            <!-- 无图片 -->
+        </div>
+    </div>
+
+    <!-- 音频 -->
+    <audio id="typeAudio" src="../audio/type2.mp3" loop></audio>
+
+    <!-- 引入通用JS -->
+    <script src="../js/note.js"></script>
+    <script>
+        // 页面自定义配置
+        document.addEventListener('DOMContentLoaded', () => {
+            const notePage = new NotePage({
+                textContent: {
+                    p1: "尽管查了这么久，却推不出新的结论，那就只剩最后的可能了。",
+                    p2: "死者果然是弄假成真的意外自杀身亡。",
+                    p3: "因为之前只是在自己家里进行时间测试，却没考虑到案发现场和自己家的差异，导致一氧化碳浓度提升速度超过自己的预想，最终没来得及离开现场。",
+                    p4: "这局游戏，从一开始就不存在胜者。"
+                },
+                hasImage: false, // 无图片
+                hasEndEntry: true // 开启显示
+            });
+            // 初始化页面
+            notePage.init();
+        });
+    </script>
+</body>
+
+</html>

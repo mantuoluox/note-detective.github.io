@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 委托开始</title>
+    <!-- 引入通用CSS -->
+    <link rel="stylesheet" href="../css/note.css">
+</head>
+<body>
+    <!-- 页面加载动画 -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">LOADING...</div>
+    </div>
+    
+    <!-- 网格背景 -->
+    <div class="grid-bg"></div>
+    <!-- 动态背景容器 -->
+    <div id="dynamic-bg"></div>
+
+    <div class="note-container" id="noteContainer">
+        <h1 class="note-title">委托开始</h1>
+        <div class="note-content">
+            <p id="p1"></p>
+            <p id="p2"></p>
+            <p id="p3"></p>
+            <p id="p4"></p>
+            <p id="p5"></p>
+            <p id="p6"></p>
+            <!-- 有图片 -->
+            <img src="../images/lake250228.jpg" alt="lake250228" class="note-img" id="mainImage">
+        </div>
+    </div>
+
+    <!-- 图片弹窗 -->
+    <div class="image-modal" id="imageModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <img src="" alt="lake250228" class="modal-image" id="modalImage">
+            <div class="modal-footer">
+                FILE: lake250228.jpg | RESOLUTION: 1152x864
+            </div>
+        </div>
+    </div>
+
+    <!-- 音频 -->
+    <audio id="typeAudio" src="../audio/type1.mp3" loop></audio>
+
+    <!-- 引入通用JS -->
+    <script src="../js/note.js"></script>
+    <script>
+        // 页面自定义配置
+        document.addEventListener('DOMContentLoaded', () => {
+            const notePage = new NotePage({
+                textContent: {
+                    p1: "二零二五年三月三日。阴。",
+                    p2: "啊，窗外那棵半死不活的盆栽和我的心情很配。刚结束一场枯燥的资产调查案，正收拾事务所，一位名叫山本遥（Yamamoto Haruka）的女子走进来。她的故事让这个阴天彻底沉入了湖底——她的好友安宅青（Atagi Ao），死于湖畔别墅，警方断定自杀。",
+                    p3: "她递来一个透明证物袋，里面是一把金色钥匙，柄上刻着：Y.H.229。“她死前寄给我的，说‘在适当的时候交给警方’……可什么是适当的时候？”山本的声音在颤抖。",
+                    p4: "我接过钥匙——金属边缘有细微的磨损，像是被人反复摩挲。“警方结案后还给了我，我觉得这不对劲。”她顿了顿，眼神异常坚定，“青做事总有备用计划，就算她……也不会这么潦草。”山本离开时背挺得笔直，像赴一场承诺已久的约。",
+                    p5: "据山本说，安宅在樱井集团工作，直属上司是樱井玲司（Sakurai Reiji）。与她关系最亲密的则是高中时的闺蜜藤堂七海（Toudou Nanami）。",
+                    p6: "接下委托后我去了警局，托关系从早瀬（Hayase）那要来了案件档案复印件。这份档案一定能帮我继续探索这起案件的秘密。"
+                },
+                hasImage: true // 有图片
+            });
+            // 初始化页面
+            notePage.init();
+        });
+    </script>
+</body>
+</html>

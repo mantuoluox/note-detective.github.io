@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 挑战书</title>
+    <!-- 引入通用CSS -->
+    <link rel="stylesheet" href="../css/note.css">
+</head>
+<body>
+    <!-- 页面加载动画 -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">LOADING...</div>
+    </div>
+    
+    <!-- 网格背景 -->
+    <div class="grid-bg"></div>
+    <!-- 动态背景容器 -->
+    <div id="dynamic-bg"></div>
+
+    <div class="note-container" id="noteContainer">
+        <h1 class="note-title">挑战书</h1>
+        <div class="note-content">
+            <p id="p1"></p>
+            <p id="p2"></p>
+            <p id="p3"></p>
+            <p id="p4"></p>
+            </br>
+            </br>
+            </br>
+            </br>
+            <p id="p5" style="color: transparent;"></p>
+            <!-- 无图片 -->
+        </div>
+    </div>
+
+    <!-- 音频 -->
+    <audio id="typeAudio" src="../audio/type1.mp3" loop></audio>
+
+    <!-- 引入通用JS -->
+    <script src="../js/note.js"></script>
+    <script>
+        // 页面自定义配置
+        document.addEventListener('DOMContentLoaded', () => {
+            const notePage = new NotePage({
+                textContent: {
+                    p1: "我知道你在看，一直都知道。",
+                    p2: "但我已经加强了安全设置，你已无法再删除我写下的任何一个字符。无论你再怎么想将我的文字掩藏在虚假中，它们也会一直存在。",
+                    p3: "真相决不会被掩盖，这场捉迷藏游戏我一定会奉陪到底。",
+                    p4: "0228",
+                    p5: "0229"
+                },
+                hasImage: false // 无图片
+            });
+            // 初始化页面
+            notePage.init();
+        });
+    </script>
+</body>
+</html>

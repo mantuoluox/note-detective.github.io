@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 录音笔</title>
+    <!-- 引入通用CSS -->
+    <link rel="stylesheet" href="../css/note.css">
+</head>
+<body>
+    <!-- 页面加载动画 -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">LOADING...</div>
+    </div>
+    
+    <!-- 网格背景 -->
+    <div class="grid-bg"></div>
+    <!-- 动态背景容器 -->
+    <div id="dynamic-bg"></div>
+
+    <div class="note-container" id="noteContainer">
+        <h1 class="note-title">录音笔</h1>
+        <div class="note-content">
+            <p id="p1"></p>
+            <p id="p2"></p>
+            <p id="p3"></p>
+            <p id="p4"></p>
+            <!-- 无图片 -->
+        </div>
+    </div>
+
+    <!-- 音频 -->
+    <audio id="typeAudio" src="../audio/type1.mp3" loop></audio>
+
+    <!-- 引入通用JS -->
+    <script src="../js/note.js"></script>
+    <script>
+        // 页面自定义配置
+        document.addEventListener('DOMContentLoaded', () => {
+            const notePage = new NotePage({
+                textContent: {
+                    p1: "今天跑了一趟樱井集团，大楼亮得能当镜子用，不愧是大财阀。前台告诉我，这类录音笔常用于董事会议，取用时必须登记。我报出编号，她在电脑上搜索后，说：“这支录音笔登记在樱井先生名下。”",
+                    p2: "安宅作为助理，是怎么拿到董事级别设备的？要么她骗过了流程，要么……就是樱井亲自给她的。",
+                    p3: "我想见见这位樱井先生，但他“恰巧”出差了。秘书透露，樱井先生最近压力很大，似乎很怕接到警方的电话。我只好再回到警局。",
+                    p4: "再次听取录音时发现录音笔最后嵌入的时间码显示为23:08，这应该就是安宅准确的死亡时间。警方的记录中显示，山本当天在外地出差，第二天才回到本市；藤堂不住在本地，但家人证明她22点前一直在家，而且“那晚她在自己房间练习配音片段，我们听到了好几次重复的台词”；樱井二十三点前都待在公司聚会的现场，时间上的确来得及。"
+                },
+                hasImage: false // 无图片
+            });
+            // 初始化页面
+            notePage.init();
+        });
+    </script>
+</body>
+</html>

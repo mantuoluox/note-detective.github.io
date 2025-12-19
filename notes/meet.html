@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 桜屋偶遇</title>
+    <!-- 引入通用CSS -->
+    <link rel="stylesheet" href="../css/note.css">
+</head>
+<body>
+    <!-- 页面加载动画 -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">LOADING...</div>
+    </div>
+    
+    <!-- 网格背景 -->
+    <div class="grid-bg"></div>
+    <!-- 动态背景容器 -->
+    <div id="dynamic-bg"></div>
+
+    <div class="note-container" id="noteContainer">
+        <h1 class="note-title">桜屋偶遇</h1>
+        <div class="note-content">
+            <p id="p1"></p>
+            <p id="p2"></p>
+            <p id="p3"></p>
+            <p id="p4"></p>
+            <p id="p5"></p>
+            <p id="p6"></p>
+            <!-- 无图片 -->
+        </div>
+    </div>
+
+    <!-- 音频 -->
+    <audio id="typeAudio" src="../audio/type1.mp3" loop></audio>
+
+    <!-- 引入通用JS -->
+    <script src="../js/note.js"></script>
+    <script>
+        // 页面自定义配置
+        document.addEventListener('DOMContentLoaded', () => {
+            const notePage = new NotePage({
+                textContent: {
+                    p1: "我查询了与安宅和sakura相关的东西，发现她之前最爱去一家叫桜屋（Sakura Ya）的咖啡店。",
+                    p2: "命运有时很幽默。我刚在桜屋坐下，藤堂七海就推门走了进来。我直接坐到了她对面。当我告诉她安宅可能死于他杀时，她的防线崩溃了，说出了那个惊人的计划：",
+                    p3: "“青一开始是打算假装失踪的。那天她突然联系我，说她被人盯上了，需要靠假失踪离开，希望我能帮她出主意。你说的那些线索可能都是青留下的，她把钥匙寄给了一个绝对会帮她的人，录音笔也是她借出来的，都是为了将她的失踪栽赃给想害她的那个人。”",
+                    p4: "她们最后一次通话是22点40分，安宅还在确认“台词”。藤堂一直以为计划出了意外。“我害怕被当成帮凶……所以才删了通话记录。对不起，对不起……”",
+                    p5: "我安慰了她，但心里警报大作，凶手果然对证据做了手脚。我急忙回事务所再次查看之前的录音文件，却发现文件被人替换过了，创建者很可能就是凶手。TA一直在盯着我。我甚至能感觉到那双眼睛，可能就在不远处。",
+                    p6: "用tape02的命名形式已经不安全了，看来之后只好用机器语言排序了。"
+                },
+                hasImage: false // 无图片
+            });
+            // 初始化页面
+            notePage.init();
+        });
+    </script>
+</body>
+</html>

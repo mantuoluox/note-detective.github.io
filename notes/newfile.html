@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 录音文件·新</title>
+    <link rel="stylesheet" href="../css/evidence.css">
+</head>
+
+<body>
+    <!-- 页面加载动画 -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">LOADING...</div>
+    </div>
+    
+    <div class="grid-bg"></div>
+    <div id="dynamic-bg"></div>
+
+    <!-- 固化DOM结构（全程无需修改） -->
+    <div class="evidence-container">
+        <div class="evidence-header">
+            <h1 class="evidence-title">录音文件·新</h1>
+            <span class="evidence-id">EVIDENCE-ID: TAPE-10</span>
+        </div>
+        <div class="evidence-info">
+            <div class="info-item">
+                <span class="info-label">来源</span>
+                <span class="info-value">录音笔PX470</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">创建者</span>
+                <span class="info-value">Meko</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">时长</span>
+                <span class="info-value">00:16</span>
+            </div>
+        </div>
+        <div class="evidence-content">
+            <div class="play-button" id="playButton">
+                <div class="play-icon"></div>
+            </div>
+            <div class="audio-visualizer" id="audioVisualizer"></div>
+            <div class="recording-text" id="recordingText"></div>
+        </div>
+        <div class="evidence-footer">
+            <div class="data-status">DATA-SYNC: COMPLETE | VERIFY: PENDING</div>
+        </div>
+    </div>
+
+    <script src="../js/evidence.js"></script>
+    <script>
+        window.onload = function () {
+            // 页面1的文本内容（唯一需要修改的地方）
+            const textSegments = [
+                { time: 0.5, text: '……我受够了<br>' },
+                { time: 2.0, text: '我对我的所作所为感到后悔<br>' },
+                { time: 4.5, text: '……我希望能在今天重获新生<br>' },
+                { time: 7.0, text: '会找到你的……<br>' },
+                { time: 8.5, text: '<span class="recording-highlight">一切会暴露在灯光下</span><br>' },
+                { time: 11.0, text: '……<br>' },
+                { time: 12.0, text: '<span class="recording-highlight">还有钥匙</span><br>' },
+                { time: 13.5, text: '……<br>' },
+                { time: 14.5, text: '<span class="recording-highlight">就藏在火焰里</span><br>' },
+                { time: 16.5, text: '就在……等我吧' }
+            ];
+
+            // 初始化播放器（无需修改）
+            new AudioTextPlayer(textSegments);
+        };
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 真相......</title>
+    <!-- 引入通用CSS -->
+    <link rel="stylesheet" href="../css/note.css">
+</head>
+
+<body>
+    <!-- 页面加载动画 -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">LOADING...</div>
+    </div>
+    
+    <!-- 网格背景 -->
+    <div class="grid-bg"></div>
+    <!-- 动态背景容器 -->
+    <div id="dynamic-bg"></div>
+
+    <div class="note-container" id="noteContainer">
+        <h1 class="note-title">真相......</h1>
+        <div class="note-content">
+            <p id="p1"></p>
+            <p id="p2"></p>
+            <p id="p3"></p>
+            <p id="p4"></p>
+            <div id="endEntry">
+                <a href="../endings/case-final.html">由此进入结局</a>
+            </div>
+            <!-- 无图片 -->
+        </div>
+    </div>
+
+    <!-- 音频 -->
+    <audio id="typeAudio" src="../audio/type1.mp3" loop></audio>
+
+    <!-- 引入通用JS -->
+    <script src="../js/note.js"></script>
+    <script>
+        // 页面自定义配置
+        document.addEventListener('DOMContentLoaded', () => {
+            const notePage = new NotePage({
+                textContent: {
+                    p1: "早瀬八百（Hayase Yao），生于2000年2月29日，是我可靠的破案帮手，也是樱井集团财务造假的保护伞，以及杀害安宅青的真凶。",
+                    p2: "死者安宅青为了不再被迫参与公司财务造假，原定于2025年2月28日制造自己的失踪案件，并将嫌疑转嫁给造假事件最大的幕后黑手——早瀬八百。22点40分，她带着录音笔去到湖畔别墅，在现场留下指向早瀬的线索，并布置成打斗过的样子，但那时的录音笔已经是被早瀬掉包过的了。在她为了假装早瀬早已提前到达别墅而点燃壁炉的时候，也恰恰踏进了他设下的陷阱。迅速生成的一氧化碳充斥了整个房间，让她失去了离开现场的能力，同时也破坏了她留在现场的那些线索。",
+                    p3: "好了，推理结束。",
+                    p4: "但在去警局之前，我决定先去跟早瀬见一面，希望他能亲口告诉我真相。"
+                },
+                hasImage: false, // 无图片
+                hasEndEntry: true // 开启显示
+            });
+            // 初始化页面
+            notePage.init();
+        });
+    </script>
+</body>
+
+</html>

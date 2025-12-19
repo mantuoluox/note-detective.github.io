@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 录音文件2</title>
+    <link rel="stylesheet" href="../css/evidence.css">
+</head>
+
+<body>
+    <!-- 页面加载动画 -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">LOADING...</div>
+    </div>
+    
+    <div class="grid-bg"></div>
+    <div id="dynamic-bg"></div>
+
+    <!-- 固化DOM结构（全程无需修改） -->
+    <div class="evidence-container">
+        <div class="evidence-header">
+            <h1 class="evidence-title">录音文件2</h1>
+            <span class="evidence-id">EVIDENCE-ID: TAPE-02</span>
+        </div>
+        <div class="evidence-info">
+            <div class="info-item">
+                <span class="info-label">来源</span>
+                <span class="info-value">台式电脑</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">创建者</span>
+                <span class="info-value">Meko</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">时长</span>
+                <span class="info-value">00:01</span>
+            </div>
+        </div>
+        <div class="evidence-content">
+            <div class="play-button" id="playButton">
+                <div class="play-icon"></div>
+            </div>
+            <div class="audio-visualizer" id="audioVisualizer"></div>
+            <div class="recording-text" id="recordingText"></div>
+        </div>
+        <div class="evidence-footer">
+            <div class="data-status">DATA-SYNC: COMPLETE | VERIFY: PENDING</div>
+        </div>
+    </div>
+
+    <script src="../js/evidence.js"></script>
+    <script>
+        window.onload = function () {
+            // 页面1的文本内容（唯一需要修改的地方）
+            const textSegments = [
+                { time: 0.5, text: '很遗憾，这里确实什么也没有哦。' }
+            ];
+
+            // 初始化播放器（无需修改）
+            new AudioTextPlayer(textSegments);
+        };
+    </script>
+
+</body>
+
+</html>

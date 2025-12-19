@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 最后的谜题</title>
+    <!-- 引入通用CSS -->
+    <link rel="stylesheet" href="../css/note.css">
+</head>
+<body>
+    <!-- 页面加载动画 -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">LOADING...</div>
+    </div>
+    
+    <!-- 网格背景 -->
+    <div class="grid-bg"></div>
+    <!-- 动态背景容器 -->
+    <div id="dynamic-bg"></div>
+
+    <div class="note-container" id="noteContainer">
+        <h1 class="note-title">最后的谜题</h1>
+        <div class="note-content">
+            <p id="p1"></p>
+            <p id="p2"></p>
+            <!-- 有图片 -->
+            <img src="../images/ao.jpg" alt="ao" class="note-img" id="mainImage">
+        </div>
+    </div>
+
+    <!-- 图片弹窗 -->
+    <div class="image-modal" id="imageModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <img src="" alt="ao" class="modal-image" id="modalImage">
+            <div class="modal-footer">
+                FILE: ao.jpg | RESOLUTION: 1152x864
+            </div>
+        </div>
+    </div>
+
+    <!-- 音频 -->
+    <audio id="typeAudio" src="../audio/type1.mp3" loop></audio>
+
+    <!-- 引入通用JS -->
+    <script src="../js/note.js"></script>
+    <script>
+        // 页面自定义配置
+        document.addEventListener('DOMContentLoaded', () => {
+            const notePage = new NotePage({
+                textContent: {
+                    p1: "能看到这篇笔记，说明你已经获得了看破真相的所有条件。",
+                    p2: "破解这最后的谜题，见证真相吧。"
+                },
+                hasImage: true // 有图片
+            });
+            // 初始化页面
+            notePage.init();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 中场休息</title>
+    <link rel="stylesheet" href="../css/clue.css">
+</head>
+<body>
+    <!-- 页面加载动画 -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">LOADING...</div>
+    </div>
+
+    <!-- 主体内容 -->
+    <div class="evidence-container" id="evidenceContainer">
+        <div class="page-header">
+            <h1 class="page-title" id="mainTitle">线索整理</h1>
+            <p class="page-subtitle" id="subTitle">已收集的关键信息汇总</p>
+        </div>
+
+        <div class="clue-list" id="clueList">
+            <!-- 线索1：金色钥匙 -->
+            <div class="clue-item" data-index="1">
+                <div class="clue-content">
+                    <strong>线索1：</strong>金色钥匙，柄上刻有「Y.H.229」，由山本遥持有
+                </div>
+                <div class="annotation-content">
+                    Y.H.可能是某种缩写，但229又是什么意思？
+                </div>
+            </div>
+
+            <!-- 线索2：录音笔 -->
+            <div class="clue-item" data-index="2">
+                <div class="clue-content">
+                    <strong>线索2：</strong>录音笔PX470，登记在樱井玲司名下
+                </div>
+                <div class="annotation-content">
+                    安宅留下的话究竟是什么意思？还是凶手威胁她留下的？
+                </div>
+            </div>
+
+            <!-- 线索3：死亡时间 -->
+            <div class="clue-item" data-index="3">
+                <div class="clue-content">
+                    <strong>线索3：</strong>录音笔时间码显示23:08，疑似死亡时间
+                </div>
+                <div class="annotation-content">
+                    这个时间只有樱井有时间作案，但这是真实的死亡时间吗？
+                </div>
+            </div>
+
+            <!-- 线索4：烧毁纸条 -->
+            <div class="clue-item" data-index="4">
+                <div class="clue-content">
+                    <strong>线索4：</strong>灰烬中残留的烧毁纸条，仅存「s，e，a」三个字母
+                </div>
+                <div class="annotation-content">
+                    这些字母可能是某个单词的一部分，也可能就是指海。
+                </div>
+            </div>
+
+            <!-- 线索5：紫光灯字符 -->
+            <div class="clue-item" data-index="5">
+                <div class="clue-content">
+                    <strong>线索5：</strong>紫光灯下显现的字符「y0-a2」
+                </div>
+                <div class="annotation-content">
+                    这些字符组合更像公式或坐标，又为什么会被写在紫光灯上？
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer" id="pageFooter">
+            <p class="footer-text">真相已在线索中萌芽 — 继续深入调查...</p>
+        </div>
+    </div>
+
+    <!-- 批注对话框 -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="annotation-modal" id="annotationModal">
+        <div class="annotation-body" id="annotationBody"></div>
+    </div>
+
+    <!-- 音频资源 -->
+    <audio id="backgroundAudio" src="../audio/type1.mp3" preload="auto"></audio>
+
+    <script src="../js/clue.js"></script>
+</body>
+</html>

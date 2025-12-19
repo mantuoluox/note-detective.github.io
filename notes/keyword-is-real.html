@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - AES</title>
+    <!-- 引入通用CSS -->
+    <link rel="stylesheet" href="../css/note.css">
+</head>
+<body>
+    <!-- 页面加载动画 -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">LOADING...</div>
+    </div>
+    
+    <!-- 网格背景 -->
+    <div class="grid-bg"></div>
+    <!-- 动态背景容器 -->
+    <div id="dynamic-bg"></div>
+
+    <div class="note-container" id="noteContainer">
+        <h1 class="note-title">AES</h1>
+        <div class="note-content">
+            <p id="p1"></p>
+            <p id="p2"></p>
+            <p id="p3"></p>
+            <p id="p4"></p>
+            <p id="p5"></p>
+            <p id="p6"></p>
+            <!-- 无图片 -->
+        </div>
+    </div>
+
+    <!-- 音频 -->
+    <audio id="typeAudio" src="../audio/type1.mp3" loop></audio>
+
+    <!-- 引入通用JS -->
+    <script src="../js/note.js"></script>
+    <script>
+        // 页面自定义配置
+        document.addEventListener('DOMContentLoaded', () => {
+            const notePage = new NotePage({
+                textContent: {
+                    p1: "U2FsdGVkX1+F7Nrw9h9G91w95vAqze5U+xhGl8GLI6k5VufSL7jx5vb3gbJTrEF8SgeKUmFk/CzWwYNBm57qJwusESkcI2NxLiQve2W7GNOhyP8BYtDo0NLLovj4NRRrYAmRrqtGJdtAvHEPNjSY/jfCucVSxggwfq0ipydqJgNOjJQmTjSjdklxXds/X7Nnqbkqof1B3QjJxikp9jUemM4MqeYQrr2n1lrbYYDmeMuuNX6tceLELdLwU4BOMRLazCmznJnDsjvo181Dff7rNsIHNcX4WsETQXJIxf3bfhW51erE9ULtwOEKCNft/eS9tHKH9Z29Z44Sr5AZEFrB/ZURobucX5kp150u/qhTU5kcXWuv2jgOHiMxikcJky28wBnDG1dMWJvIfO6MLBu+53BR+RMF+x4C55ge2/4FQ2Yp3h92xafglSGbqu0LcZY8h7UhDEdTg8yUmVZx1LKWXi5t/0OpY4nOK15zI6VN48EKRNamP2AR5m6L/8ai4YnQ9Xt2lMjHW7r8WnZLr2f4Lw==",
+                    p2: "s{U}ITxc]cB[E9$s6]8w%8Fx^]8sZCw3Q69gzlehXFhWpiaUWb81sYrIpyi2$Wa#!zlY#qbjbd454%%fP]oD$q6Fd7SNuWMhPYdB]qrF259AxcZUmo4Wiq5B6ZmBEfBEH0JwXC9x!",
+                    p3: "U2FsdGVkX19XrKhIfyRJveH8/4JH1o2WAJ2KRm+PnLuG1jN/Z5GqlYdtgAZU7CU7VdSgxReTAtdON63TR3hMlfCYfXF2Y6mvmv+O99MIpA0cyXvviSD69hBBevFhMaHTls2TEBT6sUkcxOvcdWzrpfllQmu3Vtrfi3T4S5CG3Cyic4NOp0hNpxXhHkCL5uBe4r7EIEdjWxbaJJwAB+kraHSNX3pKZs7KmejTfAlFZKo7SH9DPaQlxeuxhaUhnmhaVgUqwwLg8jA5OCmf+WV3IhKjC/fe1aMwEVVCKzg+VB8=",
+                    p4: "UnEaT&!mnWVAc!3H{R}4%oulIs&TONApQe]srDU^QY9Q8^U#QNgkBstJ]9a8qc&#tNy$1euTOHjo%%54VOGu98o^hMhZiBvkSi4WxktCnjihK63Kw^",
+                    p5: "U2FsdGVkX19G/fNFF9SIchvPy5yxdF33/B7UnArFT2xFarfQulWzNpwDoccb3A/fOOz1nq/iZvL0csQNiYfZUnofBg7PoFNcka5nnt6At7FJBqA0YEAJZ3gZ0cVML04g4TaP0GNHt37h10mBTSTaXJ+eM7DObBs2US3FGjc/oh6U2nA9xXkUUzVF1TSKfQH29Fc/7PdFPQRd2yySqdsGiz7cxVR721fZ8p7L+DwvOP4=",
+                    p6: "He21OtUF87796cS2tcDM9N!g6$iS0uVI{L}49YJp0b*5ECjfkznyG@5"
+                },
+                hasImage: false // 无图片
+            });
+            // 初始化页面
+            notePage.init();
+        });
+    </script>
+</body>
+</html>

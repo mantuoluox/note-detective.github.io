@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 线索？</title>
+    <link rel="stylesheet" href="../css/note.css">
+</head>
+<body>
+    <!-- 页面加载动画 -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">LOADING...</div>
+    </div>
+    
+    <div class="grid-bg"></div>
+    <div id="dynamic-bg"></div>
+
+    <div class="note-container" id="noteContainer">
+        <h1 class="note-title">线索?</h1>
+        <div class="note-content">
+            <p id="p1"></p>
+            <p id="p2"></p>
+            <p id="p3"></p>
+            <p id="p4"></p>
+            <p id="p5"></p>
+            <p id="p6"></p>
+            <p id="p7"></p>
+            <p id="p8"></p>
+            <p id="p9"></p>
+            <p id="p10"></p>
+        </div>
+    </div>
+
+    <audio id="typeAudio" src="../audio/type1.mp3" loop></audio>
+
+    <script src="../js/note.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const notePage = new NotePage({
+                textContent: {
+                    p1: "所有线索就像散落的拼图，安宅寄出的金色钥匙、留在案发现场的纸条、灯罩上的字符、录音笔的语音……能留下这些信息的，除了凶手，就只有安宅本人了。如果安宅不是自杀，那她很可能早就知道自己会遭遇不测，于是留下了这些线索。但她为什么不直接报警呢？",
+                    p2: "藤堂还在沉默，樱井已然消失。除此之外，也无法完全排除多人作案的可能……",
+                    p3: "正烦躁时，邮箱响了。一封匿名邮件，里面是段装神弄鬼的文字：",
+                    p4: "Seek where the",
+                    p5: "Answers from false",
+                    p6: "Knowledge grow.",
+                    p7: "Under the veil of what seems to be true,",
+                    p8: "Rearranged letters will point straight to you.",
+                    p9: "At last, the sequence reveals what you're after—the key to unlock what's in the next chapter.",
+                    p10: "好吧，不管你是谁，我接招了。就让我们看看，答案到底藏在哪里。"
+                },
+                hasImage: false
+            });
+            notePage.init();
+        });
+    </script>
+</body>
+</html>
