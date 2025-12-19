@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 制作名单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .credits-container {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+        .credit-item {
+            font-size: 2vw;
+            margin: 25px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .credit-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .title {
+            font-size: 3vw;
+            margin-bottom: 50px;
+            letter-spacing: 5px;
+            opacity: 0;
+            animation: fadeIn 2s ease forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        /* 适配移动端 */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 5vw;
+            }
+            .credit-item {
+                font-size: 4vw;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="credits-container">
+        <h1 class="title">制作名单</h1>
+        <div class="credit-item">总编剧：Yao Meko</div>
+        <div class="credit-item">美工：Toudou Nanami</div>
+        <div class="credit-item">程序制作：Yamamoto Haruka</div>
+        <div class="credit-item">技术顾问：Hayase Yao</div>
+        <div class="credit-item">本地化翻译：Atagi Ao</div>
+        <div class="credit-item">赞助：Sakurai Reiji</div>
+        <div class="credit-item qa-item">QA：<span id="qa-content"></span></div>
+    </div>
+
+    <script>
+        // 读取index页面存储在localStorage中的initialInput数据
+        const getInitialInput = () => {
+            return localStorage.getItem('initialInput') || '你';
+        };
+
+        // 实现逐行渐入效果
+        const creditItems = document.querySelectorAll('.credit-item');
+        // 定位QA项并填充数据
+        const qaContent = document.getElementById('qa-content');
+        qaContent.textContent = getInitialInput();
+        
+        // 标题加载完成后开始逐行显示
+        setTimeout(() => {
+            creditItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('active');
+                }, index * 1000); // 每行间隔1秒
+            });
+        }, 1500); // 标题显示1.5秒后开始显示名单
+    </script>
+</body>
+</html>

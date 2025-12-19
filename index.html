@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 开头</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <!-- 全局粒子容器（覆盖所有页面） -->
+    <div id="globalDotsContainer"></div>
+
+    <!-- 1. 初始开始游戏页面 -->
+    <div id="initStartContainer" class="init-start-container">
+        <h1 class="init-title">笔记侦探</h1>
+        <p class="init-subtitle">—— 名侦探八尾美子篇 ——</p>
+        <button id="initStartBtn" class="init-start-btn">开始游戏</button>
+        <div class="init-decoration"></div>
+    </div>
+
+    <!-- 2. 加载动画 -->
+    <div id="loading" class="loading-container">
+        <p class="loading-text" id="loadingText"></p>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <audio id="loadingAudio" src="audio/loading.mp3" preload="auto"></audio>
+    </div>
+
+    <!-- 3. 游戏须知弹窗 -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h2 class="popup-title">游戏须知</h2>
+            <p class="popup-rule-item">- 受游戏部分谜题影响，建议在电脑端游玩</p>
+            <p class="popup-rule-item">- 游戏内包含音频，请提前设置音量大小</p>
+            <p class="popup-rule-item">- 游戏预计耗时1小时</p>
+            <p class="popup-rule-item">- 游戏故事均为虚构，如有雷同纯属巧合</p>
+            <input type="text" id="popupInput" class="popup-input" placeholder="Your_name">
+            <p>已阅读以上须知</p>
+            <button id="startBtn" class="popup-btn">开始游戏</button>
+        </div>
+    </div>
+
+    <!-- 4. 主体内容 -->
+    <div class="note-container" id="mainContent">
+        <div id="contentContainer" class="content-container"></div>
+        <button id="loginBtn" class="btn-fade">登录云端</button>
+    </div>
+
+    <!-- 音频资源（预加载） -->
+    <audio id="typingAudio" src="audio/type1.mp3" preload="auto"></audio>
+    <audio id="unlockAudio" src="audio/unlock.mp3" preload="auto"></audio>
+
+    <script src="js/index.js"></script>
+</body>
+</html>

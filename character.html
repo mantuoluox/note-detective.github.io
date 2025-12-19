@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 人物设定</title>
+    <link rel="stylesheet" href="css/character.css">
+</head>
+<body>
+    <!-- 电子风背景层 -->
+    <div class="bg-grid"></div>
+    <div class="bg-scanline"></div>
+    <div class="bg-ripple"></div>
+    <div class="bg-ripple"></div>
+    <div class="bg-ripple"></div>
+    <div id="particle-container"></div>
+
+    <!-- 测试按钮 - 新增 -->
+    <!-- <button class="test-btn" onclick="clearVisitedData()">清除访问记录</button> -->
+
+    <!-- 页面标题（水印样式） -->
+    <h1 class="page-title">人物设定库</h1>
+
+    <!-- 桌面文件夹容器 -->
+    <div class="desktop-container">
+        <!-- 八尾美子文件夹 -->
+        <div class="folder" id="folder-yaomeko" onclick="openFolder('characters/yao.html')">
+            <div class="folder-icon"></div>
+            <div class="folder-name">八尾美子</div>
+        </div>
+
+        <!-- 早瀬八百文件夹 -->
+        <div class="folder" id="folder-hayase" onclick="openFolder('characters/hayase.html')">
+            <div class="folder-icon"></div>
+            <div class="folder-name">早瀬八百</div>
+        </div>
+
+        <!-- 樱井玲司文件夹 -->
+        <div class="folder" id="folder-sakurai" onclick="openFolder('characters/sakurai.html')">
+            <div class="folder-icon"></div>
+            <div class="folder-name">樱井玲司</div>
+        </div>
+
+        <!-- 藤堂七海文件夹 -->
+        <div class="folder" id="folder-toudou" onclick="openFolder('characters/toudou.html')">
+            <div class="folder-icon"></div>
+            <div class="folder-name">藤堂七海</div>
+        </div>
+
+        <!-- 山本遥文件夹 -->
+        <div class="folder" id="folder-yamamoto" onclick="openFolder('characters/yamamoto.html')">
+            <div class="folder-icon"></div>
+            <div class="folder-name">山本遥</div>
+        </div>
+
+        <!-- 安宅青文件夹 -->
+        <div class="folder" id="folder-atagi" onclick="openFolder('characters/atagi.html')">
+            <div class="folder-icon"></div>
+            <div class="folder-name">安宅青</div>
+        </div>
+
+        <!-- 制作名单文件夹 -->
+        <div class="folder credits-folder" id="credits-folder" style="display: none;" onclick="openFolder('credits.html')">
+            <div class="folder-icon"></div>
+            <div class="folder-name">制作名单</div>
+        </div>
+    </div>
+
+    <script src="js/character.js"></script>
+</body>
+</html>

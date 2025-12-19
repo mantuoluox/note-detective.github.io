@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记侦探 - 云端列表</title>
+    <link rel="stylesheet" href="css/cloud.css">
+</head>
+
+<body>
+    <button id="clearSyncBtn"
+        style="position: fixed; top: 20px; right: 20px; padding: 8px 16px; background: #ff3333; color: #fff; border: none; border-radius: 4px; cursor: pointer; z-index: 99999; transition: all 0.3s ease;">
+        调试：清除同步记录
+    </button>
+    
+    <!-- 电脑弹窗样式的错误提示框 -->
+    <div id="errorToast" class="error-toast">
+        <div class="toast-header">
+            <span class="toast-title">错误提示</span>
+            <button class="toast-close">&times;</button>
+        </div>
+        <div class="toast-content">
+            <span id="toastMessage">未找到文件</span>
+        </div>
+        <div class="toast-footer">
+            <button class="toast-btn">确定</button>
+        </div>
+    </div>
+    
+    <!-- 全局粒子容器（与首页一致） -->
+    <div id="globalDotsContainer"></div>
+
+    <div class="cloud-container">
+        <!-- 顶部云端同步栏 -->
+        <div class="sync-bar">
+            <div class="sync-icon"></div>
+            <div class="sync-text">云端文件同步中 · 已解锁内容自动保存</div>
+        </div>
+
+        <!-- 搜索区域 -->
+        <div class="search-wrapper">
+            <input type="text" id="cloudSearch" class="cloud-search" placeholder="输入内容以解锁文件（仅支持字母和数字）">
+            <p class="search-hint">输入后按回车确认</p>
+        </div>
+
+        <!-- 笔记列表区域 -->
+        <h2 class="notes-header">已解锁文件</h2>
+        <div class="notes-list-container">
+            <ul id="notesList" class="notes-list">
+                <!-- 已解锁笔记将通过JS动态渲染 -->
+                <li class="empty-state" id="emptyState">
+                    <!-- 替换为主题色文件夹SVG图标 -->
+                    <svg class="empty-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 7H21L19 13H5L3 7Z" stroke="#00FFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3 7V5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5V7" stroke="#00FFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M5 13V21H19V13" stroke="#00FFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p style="margin-top: 10px; font-size: 14px;">暂无解锁笔记</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 音频资源（解锁音效） -->
+    <audio id="unlockAudio" src="audio/unlock.mp3" preload="auto"></audio>
+    <script src="js/cloud.js"></script>
+</body>
+
+</html>
