@@ -13,7 +13,7 @@ body {
     padding: 2rem 0;
     background-image:
         linear-gradient(rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.85)),
-        url('../images/cloud-texture.png'),
+        url('../images/cloud-texture.jpg'),
         radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.05) 0%, transparent 40%);
     background-blend-mode: overlay;
     background-size: cover, 1000px 1000px, 100% 100%;
@@ -506,4 +506,5 @@ audio:hover {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
