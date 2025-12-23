@@ -26,8 +26,8 @@ class NotePage {
             noteContainerSelector: '#noteContainer', // 笔记容器选择器
             audioSelector: '#typeAudio', // 音频选择器
             typingSpeed: {         // 打字速度配置
-                firstPara: 40,     // 第一段速度
-                otherPara: 30      // 其他段落速度
+                firstPara: 20,     // 第一段速度
+                otherPara: 10      // 其他段落速度
             }
         }, config);
 
@@ -249,4 +249,5 @@ class NotePage {
 }
 
 // 暴露给全局使用
+
 window.NotePage = NotePage;
