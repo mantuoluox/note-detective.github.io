@@ -46,7 +46,7 @@ function startTyping() {
             const para = paragraphs[currentParaIndex];
             const text = originalTexts[currentParaIndex];
 
-            typeWriter(text, para, 120, () => {
+            typeWriter(text, para, 80, () => {
                 currentParaIndex++;
                 typeNextPara(); // 继续下一段
             });
@@ -102,3 +102,4 @@ cloudBtn.addEventListener('click', () => {
     window.location.href = 'truth-end.html';
 
 });
+
