@@ -14,15 +14,32 @@
             <p>美子在这次的案件上耗费了太多的精力，好在最后还是解决了一切。</p>
             <p>为了奖励自己，美子决定休息一段时间，也许打算去世界各地旅游吧。</p>
             <p>总之，我们应该一段时间都见不到她了。</p>
-            <p style="margin-top: 2rem; text-align: center; color: #666;">至此，感谢见证这一段故事。</p>
+            <p id="specialText" style="margin-top: 2rem; text-align: center; color: #666;">至此，感谢见证这一段故事。</p>
         </div>
         <button class="back-btn" id="backBtn">返回云端</button>
     </div>
 
     <script>
+        const specialText = document.getElementById('specialText');
+        // 保存原始内容和样式
+        const originalText = specialText.textContent;
+        const originalColor = specialText.style.color;
+
+        specialText.addEventListener('mouseover', () => {
+            specialText.textContent = '这就是全部的真相吗？';
+            specialText.style.color = 'red';
+        });
+
+        specialText.addEventListener('mouseout', () => {
+            // 鼠标移开时恢复原始状态
+            specialText.textContent = originalText;
+            specialText.style.color = originalColor;
+        });
+
         document.getElementById('backBtn').addEventListener('click', () => {
             window.location.href = '../cloud.html';
         });
     </script>
 </body>
+
 </html>
