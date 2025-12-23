@@ -15,6 +15,7 @@ body {
     padding: 2rem;
     overflow: hidden;
     position: relative;
+    cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-new' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2.5' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow-new)'%3E%3Cline x1='12' y1='4' x2='12' y2='8' stroke='%23ff0040' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='12' y1='16' x2='12' y2='20' stroke='%23ff0040' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='4' y1='12' x2='8' y2='12' stroke='%23ff0040' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='16' y1='12' x2='20' y2='12' stroke='%23ff0040' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='12' cy='12' r='2.5' fill='%23ff0040' /%3E%3C/g%3E%3C/svg%3E") 12 12, auto;
 }
 
 /* 背景动画1：红色渐变流动 */
@@ -309,8 +310,7 @@ body {
     color: #ff0000;
     font-size: 1.1rem;
     letter-spacing: 1px;
-    cursor: not-allowed;
-    /* 明确禁用光标 */
+    cursor: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-btn' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='3' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow-btn)'%3E%3Ccircle cx='14' cy='14' r='8' fill='transparent' stroke='%23ff0040' stroke-width='1.5' opacity='0.6'/%3E%3Ccircle cx='14' cy='14' r='10' fill='transparent' stroke='%23ff0040' stroke-width='1' opacity='0.4'/%3E%3Cpath d='M14 6 L18 14 L14 22 L10 14 Z' fill='%23ff0040' /%3E%3Ccircle cx='14' cy='14' r='3' fill='%23ff0040' /%3E%3C/g%3E%3C/svg%3E") 14 14, pointer;
     outline: none;
     transition: all 0.3s ease;
 }
@@ -336,7 +336,7 @@ body {
     color: #ff0000;
     font-size: 1.3rem;
     font-weight: bold;
-    cursor: pointer;
+    cursor: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-btn' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='3' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow-btn)'%3E%3Ccircle cx='14' cy='14' r='8' fill='transparent' stroke='%23ff0040' stroke-width='1.5' opacity='0.6'/%3E%3Ccircle cx='14' cy='14' r='10' fill='transparent' stroke='%23ff0040' stroke-width='1' opacity='0.4'/%3E%3Cpath d='M14 6 L18 14 L14 22 L10 14 Z' fill='%23ff0040' /%3E%3Ccircle cx='14' cy='14' r='3' fill='%23ff0040' /%3E%3C/g%3E%3C/svg%3E") 14 14, pointer;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
