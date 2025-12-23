@@ -115,7 +115,7 @@ const noteData = [
         url: 'notes/truth.html',
         title: '真相……',
         desc: 'hayaseyao0229',
-        tag: '结局'
+        tag: '记录笔记'
     },
     // 彩蛋笔记
     {
@@ -515,3 +515,4 @@ document.getElementById('clearSyncBtn').addEventListener('click', function () {
     }
 
 });
+
