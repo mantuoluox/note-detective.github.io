@@ -16,7 +16,7 @@ const paragraphs = [
 ];
 
 // 逐字显示函数 - 加快速度到120ms/字
-function typeWriter(text, element, speed = 50, callback) {
+function typeWriter(text, element, speed = 30, callback) {
     let i = 0;
     element.textContent = '';
     element.classList.add('visible'); // 显示段落
@@ -100,4 +100,5 @@ window.addEventListener('DOMContentLoaded', () => {
 // 按钮跳转至真结局页面
 cloudBtn.addEventListener('click', () => {
     window.location.href = 'truth-end.html';
+
 });
