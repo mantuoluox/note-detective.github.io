@@ -14,15 +14,32 @@
             <p>经过了这次的案件，美子认识到自己虽然被称为名侦探，却依然无法看透真相。</p>
             <p>因此，美子决定将事务所关闭一段时间，用这段时间出国进修。</p>
             <p>总之，一段时间内，我们不会再见到美子了。</p>
-            <p style="margin-top: 2rem; text-align: center; color: #666;">至此，感谢陪伴。</p>
+            <p id="specialText" style="margin-top: 2rem; text-align: center; color: #666;">至此，感谢陪伴。</p>
         </div>
         <button class="back-btn" id="backBtn">返回云端</button>
     </div>
 
     <script>
+        const specialText = document.getElementById('specialText');
+        // 保存原始内容和样式
+        const originalText = specialText.textContent;
+        const originalColor = specialText.style.color;
+
+        specialText.addEventListener('mouseover', () => {
+            specialText.textContent = '这就是全部的真相吗？';
+            specialText.style.color = 'red';
+        });
+
+        specialText.addEventListener('mouseout', () => {
+            // 鼠标移开时恢复原始状态
+            specialText.textContent = originalText;
+            specialText.style.color = originalColor;
+        });
+
         document.getElementById('backBtn').addEventListener('click', () => {
             window.location.href = '../cloud.html';
         });
     </script>
 </body>
+
 </html>
