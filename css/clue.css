@@ -9,7 +9,7 @@ body {
     min-height: 100vh;
     font-family: 'Courier New', monospace;
     overflow-x: hidden;
-    cursor: pointer;
+    cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-new' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2.5' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow-new)'%3E%3Cline x1='12' y1='4' x2='12' y2='8' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='12' y1='16' x2='12' y2='20' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='4' y1='12' x2='8' y2='12' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='16' y1='12' x2='20' y2='12' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='12' cy='12' r='2.5' fill='%2300ffff' /%3E%3C/g%3E%3C/svg%3E") 12 12, auto;
 }
 
 /* 页面加载动画 */
@@ -147,7 +147,7 @@ body {
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     opacity: 0;
     transform: translateX(-20px) scale(0.95);
-    cursor: pointer;
+    cursor: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-btn' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='3' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow-btn)'%3E%3Ccircle cx='14' cy='14' r='8' fill='transparent' stroke='%2300ffff' stroke-width='1.5' opacity='0.6'/%3E%3Ccircle cx='14' cy='14' r='10' fill='transparent' stroke='%2300ffff' stroke-width='1' opacity='0.4'/%3E%3Cpath d='M14 6 L18 14 L14 22 L10 14 Z' fill='%2300ffff' /%3E%3Ccircle cx='14' cy='14' r='3' fill='%2300ffff' /%3E%3C/g%3E%3C/svg%3E") 14 14, pointer;
     max-height: 0;
     overflow: hidden;
 }
