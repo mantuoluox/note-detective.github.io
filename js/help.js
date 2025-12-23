@@ -2,13 +2,13 @@
 const guideData = [
     { file: "委托开始", unlockKey: "notes/start.html", content: "查看图片得知案件编号，在搜索框中输入：<br><span>lake250228</span>-解锁笔记“案件资料”" },
     { file: "案件资料", unlockKey: "notes/material.html", content: "根据笔记中提到的录音笔相关信息，在搜索框中输入：<br><span>px470</span>-解锁笔记“录音笔”<br><span>tape01</span>-解锁证物“录音文件”" },
-    { file: "录音笔", unlockKey: "notes/recorder.html", content: "得知准确死亡时间，在搜索框中输入：<br><span>2308</span>-解锁笔记“案发现场”" },
+    { file: "录音笔", unlockKey: "notes/recorder.html", content: "得知死亡时间，在搜索框中输入：<br><span>2308</span>-解锁笔记“案发现场”" },
     { file: "案发现场", unlockKey: "notes/scene.html", content: "通过笔记中的暗示，查看页面源代码，在搜索框中输入：<br><span>annotation</span>-解锁证物“中场休息”、笔记“线索？”" },
-    { file: "线索？", unlockKey: "notes/clue.html", content: "连接邮件开头字母（Seek/Answers/Under/Rearranged/At），在搜索框中输入：<br><span>sakura</span>-解锁笔记“樱井”、笔记“桜屋偶遇”" },
-    { file: "桜屋偶遇", unlockKey: "notes/meet.html", content: "查看证物“录音文件”得知创建者，根据二进制暗示，在搜索框中输入：<br><span>yao</span>-解锁笔记“挑战书”<br><span>tape02</span>-解锁彩蛋“录音文件2”<br><span>10/0010/tape0010/tape10</span>-解锁证物“录音文件·新”" },
+    { file: "线索？", unlockKey: "notes/clue.html", content: "连接邮件开头字母，在搜索框中输入：<br><span>sakura</span>-解锁笔记“樱井”、笔记“桜屋偶遇”" },
+    { file: "桜屋偶遇", unlockKey: "notes/meet.html", content: "查看证物“录音文件”得知创建者，根据二进制暗示，在搜索框中输入：<br><span>yao</span>-解锁笔记“挑战书”<br><span>tape02</span>-解锁彩蛋“录音文件2”<br><span>tape10</span>-解锁证物“录音文件·新”" },
     { file: "挑战书", unlockKey: "notes/challenge.html", content: "选中页面空白段落查看隐藏文字，在搜索框中输入：<br><span>0228</span>-解锁笔记“胜利”<br><span>0229</span>-解锁笔记“AES”" },
-    { file: "AES", unlockKey: "notes/keyword-is-real.html", content: "页面乱码需用AES解码，结合红字提示查看页面链接文件名，在搜索框中输入：<br><span>real</span>-解锁笔记“最后的谜题”" },
-    { file: "最后的谜题", unlockKey: "notes/last.html", content: "查看图片名称及物品上的字符，重新排序后在搜索框中输入：<br><span>ao</span>-解锁笔记“自杀”<br><span>hayaseyao0229/0229hayaseyao</span>-解锁笔记“真相……”" }
+    { file: "AES", unlockKey: "notes/keyword-is-real.html", content: "页面乱码可以用AES解码，结合特殊提示查看页面链接文件名，在搜索框中输入：<br><span>real</span>-解锁笔记“最后的谜题”" },
+    { file: "最后的谜题", unlockKey: "notes/last.html", content: "查看图片名称及物品上的字符，重新排序后在搜索框中输入：<br><span>ao</span>-解锁笔记“自杀”<br><span>hayaseyao0229</span>-解锁笔记“真相……”" }
 ];
 
 // 更新解锁进度条
@@ -112,4 +112,5 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => renderDynamicGuideItems(), 100);
         }
     });
+
 });
