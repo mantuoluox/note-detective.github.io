@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
         unlockAudio.volume = 0.1;
         unlockAudio.play().catch(err => console.log('跳转音效播放失败：', err));
         setTimeout(() => {
-            window.location.href = 'cloud.html';
+            window.open('cloud.html', '_blank');
         }, 300);
     });
 });
@@ -231,4 +231,5 @@ function typeText() {
             }, 800);
         }
     }, typeSpeed);
+
 }
