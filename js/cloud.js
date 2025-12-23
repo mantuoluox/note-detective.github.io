@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const inputLower = input.toLowerCase();
             const tempClosedKeys = ['hayaseyao', 'yamamotoharuka', 'sakuraireiji', 'atagiao', 'toudounanami', 'hayase'];
             const incompleteKeys = ['yh229', 'y0a2', 'sea'];
-            const formatErrorKeys = ['10', 'tape0010', '0010', '0229hayaseyao'];
+            const formatErrorKeys = ['10', 'tape0010', '0010', '0229hayaseyao','010','tape010'];
 
 
             if (tempClosedKeys.includes(inputLower)) {
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             if (incompleteKeys.includes(inputLower)) {
-                showToast('密码不全');
+                showToast('密码不完整');
                 this.style.borderColor = '#ffcc00';
                 setTimeout(() => {
                     this.style.borderColor = '';
@@ -513,4 +513,5 @@ document.getElementById('clearSyncBtn').addEventListener('click', function () {
         localStorage.removeItem('usedKeys'); // 清除已使用的解锁词记录
         location.reload(); // 清除后自动刷新页面
     }
+
 });
