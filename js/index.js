@@ -150,12 +150,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // 4. 登录按钮点击事件
+    // 4. 登录按钮点击事件（修改为新标签页打开）
     loginBtn.addEventListener('click', function () {
         const unlockAudio = document.getElementById('unlockAudio');
         unlockAudio.volume = 0.1;
         unlockAudio.play().catch(err => console.log('跳转音效播放失败：', err));
         setTimeout(() => {
+            // 使用window.open在新标签页打开页面，_blank参数指定新标签
             window.open('cloud.html', '_blank');
         }, 300);
     });
@@ -231,5 +232,4 @@ function typeText() {
             }, 800);
         }
     }, typeSpeed);
-
 }
