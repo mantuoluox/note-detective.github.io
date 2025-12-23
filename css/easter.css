@@ -13,7 +13,7 @@ body {
     padding: 2rem;
     background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10 10L90 90M90 10L10 90" stroke="%23e0d8d0" stroke-width="0.5" stroke-dasharray="2 4"/></svg>');
     background-size: 30px 30px;
-    cursor: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 10L18 10" stroke="%238b5a2b" stroke-width="2" stroke-linecap="round"/><path d="M18 10L15 7L18 10L15 13L18 10Z" fill="%236d4c41"/></svg>'), auto;
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="6" stroke="%2387ceeb" stroke-width="2" fill="transparent"/><line x1="16.5" y1="16.5" x2="21" y2="21" stroke="%2387ceeb" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="2" fill="%234fc3f7"/></svg>'), auto;
 }
 
 /* 樱花花瓣飘落 */
@@ -273,9 +273,9 @@ body {
 .interactive-element {
     position: fixed;
     z-index: 2;
-    cursor: pointer;
     transition: all 0.4s ease;
     filter: drop-shadow(0 3px 5px rgba(139, 90, 43, 0.2));
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M18 6V18M18 6H6" stroke="%234fc3f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'), pointer;
 }
 
 .magnifier {
@@ -396,6 +396,7 @@ body {
     padding: 1rem;
     background: rgba(255, 193, 233, 0.1);
     border-radius: 8px;
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><line x1="12" y1="4" x2="12" y2="20" stroke="%238b5a2b" stroke-width="var(--hand-draw-stroke)" stroke-linecap="round" stroke-dasharray="2,1"/><circle cx="12" cy="12" r="1" fill="%238b5a2b"/><path d="M10 4v2M14 4v2M10 18v2M14 18v2" stroke="%238b5a2b" stroke-width="var(--hand-draw-stroke)" stroke-linecap="round"/></svg>'), text;
 }
 
 .profile-motto:hover {
@@ -413,6 +414,7 @@ body {
     margin-bottom: 3rem;
     position: relative;
     animation: contentBreathe 8s ease-in-out infinite;
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><line x1="12" y1="4" x2="12" y2="20" stroke="%238b5a2b" stroke-width="var(--hand-draw-stroke)" stroke-linecap="round" stroke-dasharray="2,1"/><circle cx="12" cy="12" r="1" fill="%238b5a2b"/><path d="M10 4v2M14 4v2M10 18v2M14 18v2" stroke="%238b5a2b" stroke-width="var(--hand-draw-stroke)" stroke-linecap="round"/></svg>'), text;
 }
 
 @keyframes contentBreathe {
@@ -476,6 +478,7 @@ body {
     font-weight: bold;
     position: relative;
     cursor: pointer;
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M18 6V18M18 6H6" stroke="%234fc3f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'), pointer;
 }
 
 .highlight-text::after {
@@ -499,9 +502,9 @@ body {
     bottom: -20px;
     right: -20px;
     width: 80px;
-    cursor: pointer;
     transition: transform 0.3s ease;
     filter: drop-shadow(0 3px 5px rgba(139, 90, 43, 0.2));
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M18 6V18M18 6H6" stroke="%234fc3f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'), pointer;
 }
 
 .interactive-pen:hover {
@@ -561,6 +564,7 @@ body {
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 1.5rem;
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><line x1="12" y1="4" x2="12" y2="20" stroke="%238b5a2b" stroke-width="var(--hand-draw-stroke)" stroke-linecap="round" stroke-dasharray="2,1"/><circle cx="12" cy="12" r="1" fill="%238b5a2b"/><path d="M10 4v2M14 4v2M10 18v2M14 18v2" stroke="%238b5a2b" stroke-width="var(--hand-draw-stroke)" stroke-linecap="round"/></svg>'), text;
 }
 
 .joke-close {
@@ -571,7 +575,7 @@ body {
     color: #fff;
     font-family: inherit;
     font-size: 1rem;
-    cursor: pointer;
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M18 6V18M18 6H6" stroke="%234fc3f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'), pointer;
     transition: background 0.3s ease;
 }
 
