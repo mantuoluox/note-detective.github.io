@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>笔记侦探 - AES</title>
-    <!-- 引入通用CSS -->
     <link rel="stylesheet" href="../css/note.css">
 </head>
 <body>
@@ -14,7 +13,7 @@
         <div class="loader-text">LOADING...</div>
     </div>
     
-    <!-- 网格背景 -->
+    <!-- 背景 -->
     <div class="grid-bg"></div>
     <!-- 动态背景容器 -->
     <div id="dynamic-bg"></div>
@@ -28,17 +27,14 @@
             <p id="p4"></p>
             <p id="p5"></p>
             <p id="p6"></p>
-            <!-- 无图片 -->
         </div>
     </div>
 
     <!-- 音频 -->
     <audio id="typeAudio" src="../audio/type1.mp3" loop></audio>
 
-    <!-- 引入通用JS -->
     <script src="../js/note.js"></script>
     <script>
-        // 页面自定义配置
         document.addEventListener('DOMContentLoaded', () => {
             const notePage = new NotePage({
                 textContent: {
@@ -49,11 +45,11 @@
                     p5: "U2FsdGVkX19G/fNFF9SIchvPy5yxdF33/B7UnArFT2xFarfQulWzNpwDoccb3A/fOOz1nq/iZvL0csQNiYfZUnofBg7PoFNcka5nnt6At7FJBqA0YEAJZ3gZ0cVML04g4TaP0GNHt37h10mBTSTaXJ+eM7DObBs2US3FGjc/oh6U2nA9xXkUUzVF1TSKfQH29Fc/7PdFPQRd2yySqdsGiz7cxVR721fZ8p7L+DwvOP4=",
                     p6: "He21OtUF87796cS2tcDM9N!g6$iS0uVI{L}49YJp0b*5ECjfkznyG@5"
                 },
-                hasImage: false // 无图片
+                hasImage: false
             });
-            // 初始化页面
             notePage.init();
         });
     </script>
 </body>
+
 </html>
