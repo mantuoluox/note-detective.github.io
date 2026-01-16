@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>笔记侦探 - 案件资料</title>
-    <!-- 引入通用CSS -->
     <link rel="stylesheet" href="../css/note.css">
 </head>
 <body>
@@ -14,7 +13,7 @@
         <div class="loader-text">LOADING...</div>
     </div>
     
-    <!-- 网格背景 -->
+    <!-- 背景 -->
     <div class="grid-bg"></div>
     <!-- 动态背景容器 -->
     <div id="dynamic-bg"></div>
@@ -31,17 +30,14 @@
             <p id="p7"></p>
             <p id="p8"></p>
             <p id="p9"></p>
-            <!-- 无图片 -->
         </div>
     </div>
 
     <!-- 音频 -->
     <audio id="typeAudio" src="../audio/type1.mp3" loop></audio>
 
-    <!-- 引入通用JS -->
     <script src="../js/note.js"></script>
     <script>
-        // 页面自定义配置
         document.addEventListener('DOMContentLoaded', () => {
             const notePage = new NotePage({
                 textContent: {
@@ -55,11 +51,11 @@
                     p8: "我向早瀬要来了录音文件。“原本的录音笔找到时就被摔坏了，这是技术科修复后的音频。但因为损毁太严重，没有什么重要的内容”，他顿了一下，继续说道，“不过你也知道，那天我们在一起庆祝生日，第二天来上班我才知道这件事，所以很遗憾，我对具体情况也不是很了解。不过录音笔是死者公司的内部物品，你可以先去那看看。”",
                     p9: "我向他道谢后，回家把录音文件上传到云端——文件名是tape01。"
                 },
-                hasImage: false // 无图片
+                hasImage: false
             });
-            // 初始化页面
             notePage.init();
         });
     </script>
 </body>
+
 </html>
