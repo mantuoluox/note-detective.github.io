@@ -45,19 +45,16 @@
                             <span class="info-label">生日</span>
                             <span class="info-value">2月28日</span>
                         </li>
-                        <!-- 爱好单独一行 -->
                         <li class="basic-info-item full-width">
                             <span class="info-icon">L</span>
                             <span class="info-label">爱好</span>
                             <span class="info-value">收集各国老式钢笔、写推理小说、制作手工书签</span>
                         </li>
-                        <!-- 特长单独一行 -->
                         <li class="basic-info-item full-width">
                             <span class="info-icon">F</span>
                             <span class="info-label">特长</span>
                             <span class="info-value">微表情分析、速记、<del>讲冷笑话</del></span>
                         </li>
-                        <!-- 性格单独一行 -->
                         <li class="basic-info-item full-width">
                             <span class="info-icon">C</span>
                             <span class="info-label">性格</span>
@@ -89,7 +86,7 @@
     <a href="../character.html" class="back-btn">返回设定库</a>
 
     <script>
-        // 鼠标跟随水墨波纹效果
+        // 波纹效果
         document.addEventListener('mousemove', function(e) {
             const x = (e.clientX / window.innerWidth) * 100;
             const y = (e.clientY / window.innerHeight) * 100;
@@ -97,7 +94,6 @@
             document.body.style.setProperty('--mouse-y', `${y}%`);
         });
 
-        // 滚动时的元素动效增强
         window.addEventListener('scroll', function() {
             const scrollY = window.scrollY;
             const modules = document.querySelectorAll('.info-module');
@@ -111,4 +107,5 @@
         });
     </script>
 </body>
+
 </html>
