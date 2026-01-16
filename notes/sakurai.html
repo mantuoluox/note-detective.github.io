@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>笔记侦探 - 樱井</title>
-    <!-- 引入通用CSS -->
     <link rel="stylesheet" href="../css/note.css">
 </head>
 <body>
@@ -14,7 +13,7 @@
         <div class="loader-text">LOADING...</div>
     </div>
     
-    <!-- 网格背景 -->
+    <!-- 背景 -->
     <div class="grid-bg"></div>
     <!-- 动态背景容器 -->
     <div id="dynamic-bg"></div>
@@ -25,17 +24,14 @@
             <p id="p1"></p>
             <p id="p2"></p>
             <p id="p3"></p>
-            <!-- 无图片 -->
         </div>
     </div>
 
     <!-- 音频 -->
     <audio id="typeAudio" src="../audio/type2.mp3" loop></audio>
 
-    <!-- 引入通用JS -->
     <script src="../js/note.js"></script>
     <script>
-        // 页面自定义配置
         document.addEventListener('DOMContentLoaded', () => {
             const notePage = new NotePage({
                 textContent: {
@@ -43,11 +39,11 @@
                     p2: "但他现在下落不明，公司也没查出问题。",
                     p3: "目前只能先从别的地方下手，记录在下一篇笔记里。"
                 },
-                hasImage: false // 无图片
+                hasImage: false
             });
-            // 初始化页面
             notePage.init();
         });
     </script>
 </body>
+
 </html>
