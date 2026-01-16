@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>笔记侦探 - 胜利</title>
-    <!-- 引入通用CSS -->
     <link rel="stylesheet" href="../css/note.css">
 </head>
 
@@ -16,7 +15,7 @@
         <div class="loader-text">LOADING...</div>
     </div>
     
-    <!-- 网格背景 -->
+    <!-- 背景 -->
     <div class="grid-bg"></div>
     <!-- 动态背景容器 -->
     <div id="dynamic-bg"></div>
@@ -31,17 +30,14 @@
             <div id="endEntry">
                 <a href="../endings/win-end.html">由此进入结局</a>
             </div>
-            <!-- 无图片 -->
         </div>
     </div>
 
     <!-- 音频 -->
     <audio id="typeAudio" src="../audio/type2.mp3" loop></audio>
 
-    <!-- 引入通用JS -->
     <script src="../js/note.js"></script>
     <script>
-        // 页面自定义配置
         document.addEventListener('DOMContentLoaded', () => {
             const notePage = new NotePage({
                 textContent: {
@@ -50,13 +46,13 @@
                     p3: "趁着死者进入别墅时，他将门窗全部锁上，让死者无法逃出，最终窒息而死。",
                     p4: "这局游戏的胜者——永远是我。"
                 },
-                hasImage: false, // 无图片
-                hasEndEntry: true // 开启显示
+                hasImage: false,
+                hasEndEntry: true
             });
-            // 初始化页面
             notePage.init();
         });
     </script>
 </body>
+
 
 </html>
