@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>笔记侦探 - 录音笔</title>
-    <!-- 引入通用CSS -->
     <link rel="stylesheet" href="../css/note.css">
 </head>
 <body>
@@ -14,7 +13,7 @@
         <div class="loader-text">LOADING...</div>
     </div>
     
-    <!-- 网格背景 -->
+    <!-- 背景 -->
     <div class="grid-bg"></div>
     <!-- 动态背景容器 -->
     <div id="dynamic-bg"></div>
@@ -26,17 +25,14 @@
             <p id="p2"></p>
             <p id="p3"></p>
             <p id="p4"></p>
-            <!-- 无图片 -->
         </div>
     </div>
 
     <!-- 音频 -->
     <audio id="typeAudio" src="../audio/type1.mp3" loop></audio>
 
-    <!-- 引入通用JS -->
     <script src="../js/note.js"></script>
     <script>
-        // 页面自定义配置
         document.addEventListener('DOMContentLoaded', () => {
             const notePage = new NotePage({
                 textContent: {
@@ -45,11 +41,11 @@
                     p3: "我想见见这位樱井先生，但他“恰巧”出差了。秘书透露，樱井先生最近压力很大，似乎很怕接到警方的电话。我只好再回到警局。",
                     p4: "再次听取录音时发现录音笔最后嵌入的时间码显示为23:08，这应该就是安宅准确的死亡时间。警方的记录中显示，山本当天在外地出差，第二天才回到本市；藤堂不住在本地，但家人证明她22点前一直在家，而且“那晚她在自己房间练习配音片段，我们听到了好几次重复的台词”；樱井二十三点前都待在公司聚会的现场，时间上的确来得及。"
                 },
-                hasImage: false // 无图片
+                hasImage: false
             });
-            // 初始化页面
             notePage.init();
         });
     </script>
 </body>
+
 </html>
