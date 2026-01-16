@@ -18,7 +18,6 @@
     <div class="grid-bg"></div>
     <div id="dynamic-bg"></div>
 
-    <!-- 固化DOM结构（全程无需修改） -->
     <div class="evidence-container">
         <div class="evidence-header">
             <h1 class="evidence-title">录音文件·新</h1>
@@ -53,7 +52,6 @@
     <script src="../js/evidence.js"></script>
     <script>
         window.onload = function () {
-            // 页面1的文本内容（唯一需要修改的地方）
             const textSegments = [
                 { time: 0.5, text: '……我受够了<br>' },
                 { time: 2.0, text: '我对我的所作所为感到后悔<br>' },
@@ -67,11 +65,11 @@
                 { time: 16.5, text: '就在……等我吧' }
             ];
 
-            // 初始化播放器（无需修改）
             new AudioTextPlayer(textSegments);
         };
     </script>
 
 </body>
+
 
 </html>
