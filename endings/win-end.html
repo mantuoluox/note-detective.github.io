@@ -21,7 +21,6 @@
 
     <script>
         const specialText = document.getElementById('specialText');
-        // 保存原始内容和样式
         const originalText = specialText.textContent;
         const originalColor = specialText.style.color;
 
@@ -31,7 +30,6 @@
         });
 
         specialText.addEventListener('mouseout', () => {
-            // 鼠标移开时恢复原始状态
             specialText.textContent = originalText;
             specialText.style.color = originalColor;
         });
@@ -43,3 +41,4 @@
 </body>
 
 </html>
+
