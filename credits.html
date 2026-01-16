@@ -50,7 +50,6 @@
                 opacity: 1;
             }
         }
-        /* 适配移动端 */
         @media (max-width: 768px) {
             .title {
                 font-size: 5vw;
@@ -75,25 +74,26 @@
     </div>
 
     <script>
-        // 读取index页面存储在localStorage中的initialInput数据
+        // 读取存储数据
         const getInitialInput = () => {
             return localStorage.getItem('initialInput') || '你';
         };
 
-        // 实现逐行渐入效果
+        // 逐行渐入效果
         const creditItems = document.querySelectorAll('.credit-item');
-        // 定位QA项并填充数据
+        // 定位并填充数据
         const qaContent = document.getElementById('qa-content');
         qaContent.textContent = getInitialInput();
         
-        // 标题加载完成后开始逐行显示
+        // 逐行显示
         setTimeout(() => {
             creditItems.forEach((item, index) => {
                 setTimeout(() => {
                     item.classList.add('active');
-                }, index * 1000); // 每行间隔1秒
+                }, index * 1000); // 间隔
             });
-        }, 1500); // 标题显示1.5秒后开始显示名单
+        }, 1500); // 标题显示后开始
     </script>
 </body>
+
 </html>
