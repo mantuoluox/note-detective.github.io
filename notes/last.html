@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>笔记侦探 - 最后的谜题</title>
-    <!-- 引入通用CSS -->
     <link rel="stylesheet" href="../css/note.css">
 </head>
 <body>
@@ -14,7 +13,7 @@
         <div class="loader-text">LOADING...</div>
     </div>
     
-    <!-- 网格背景 -->
+    <!-- 背景 -->
     <div class="grid-bg"></div>
     <!-- 动态背景容器 -->
     <div id="dynamic-bg"></div>
@@ -24,7 +23,6 @@
         <div class="note-content">
             <p id="p1"></p>
             <p id="p2"></p>
-            <!-- 有图片 -->
             <img src="../images/ao.jpg" loading="lazy" alt="ao" class="note-img" id="mainImage">
         </div>
     </div>
@@ -43,22 +41,20 @@
     <!-- 音频 -->
     <audio id="typeAudio" src="../audio/type1.mp3" loop></audio>
 
-    <!-- 引入通用JS -->
     <script src="../js/note.js"></script>
     <script>
-        // 页面自定义配置
         document.addEventListener('DOMContentLoaded', () => {
             const notePage = new NotePage({
                 textContent: {
                     p1: "能看到这篇笔记，说明你已经获得了看破真相的所有条件。",
                     p2: "破解这最后的谜题，见证真相吧。"
                 },
-                hasImage: true // 有图片
+                hasImage: true
             });
-            // 初始化页面
             notePage.init();
         });
     </script>
 </body>
 
 </html>
+
