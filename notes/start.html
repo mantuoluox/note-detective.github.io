@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>笔记侦探 - 委托开始</title>
-    <!-- 引入通用CSS -->
     <link rel="stylesheet" href="../css/note.css">
 </head>
 <body>
@@ -14,7 +13,7 @@
         <div class="loader-text">LOADING...</div>
     </div>
     
-    <!-- 网格背景 -->
+    <!-- 背景 -->
     <div class="grid-bg"></div>
     <!-- 动态背景容器 -->
     <div id="dynamic-bg"></div>
@@ -28,7 +27,6 @@
             <p id="p4"></p>
             <p id="p5"></p>
             <p id="p6"></p>
-            <!-- 有图片 -->
             <img src="../images/lake250228.jpg" loading="lazy" alt="lake250228" class="note-img" id="mainImage">
         </div>
     </div>
@@ -47,10 +45,8 @@
     <!-- 音频 -->
     <audio id="typeAudio" src="../audio/type1.mp3" loop></audio>
 
-    <!-- 引入通用JS -->
     <script src="../js/note.js"></script>
     <script>
-        // 页面自定义配置
         document.addEventListener('DOMContentLoaded', () => {
             const notePage = new NotePage({
                 textContent: {
@@ -61,13 +57,13 @@
                     p5: "据山本说，安宅在樱井集团工作，直属上司是樱井玲司（Sakurai Reiji）。与她关系最亲密的则是高中时的闺蜜藤堂七海（Toudou Nanami）。",
                     p6: "接下委托后我去了警局，托关系从早瀬（Hayase）那要来了案件档案复印件。这份档案一定能帮我继续探索这起案件的秘密。"
                 },
-                hasImage: true // 有图片
+                hasImage: true
             });
-            // 初始化页面
             notePage.init();
         });
     </script>
 </body>
 
 </html>
+
 
