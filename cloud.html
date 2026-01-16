@@ -14,7 +14,7 @@
         调试：清除同步记录
     </button> -->
     
-    <!-- 电脑弹窗样式的错误提示框 -->
+    <!-- 错误提示框 -->
     <div id="errorToast" class="error-toast">
         <div class="toast-header">
             <span class="toast-title">错误提示</span>
@@ -28,11 +28,11 @@
         </div>
     </div>
     
-    <!-- 全局粒子容器（与首页一致） -->
+    <!-- 全局粒子容器 -->
     <div id="globalDotsContainer"></div>
 
     <div class="cloud-container">
-        <!-- 顶部云端同步栏 -->
+        <!-- 同步栏 -->
         <div class="sync-bar">
             <div class="sync-icon"></div>
             <div class="sync-text">云端文件同步中 · 已解锁内容自动保存</div>
@@ -48,9 +48,7 @@
         <h2 class="notes-header">已解锁文件</h2>
         <div class="notes-list-container">
             <ul id="notesList" class="notes-list">
-                <!-- 已解锁笔记将通过JS动态渲染 -->
                 <li class="empty-state" id="emptyState">
-                    <!-- 替换为主题色文件夹SVG图标 -->
                     <svg class="empty-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 7H21L19 13H5L3 7Z" stroke="#00FFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M3 7V5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5V7" stroke="#00FFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -62,11 +60,12 @@
         </div>
     </div>
 
-    <!-- 音频资源（解锁音效） -->
+    <!-- 音频资源 -->
     <audio id="unlockAudio" src="audio/unlock.mp3" preload="auto"></audio>
     <script src="js/cloud.js"></script>
 </body>
 
 
 </html>
+
 
