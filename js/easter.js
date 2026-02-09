@@ -1,4 +1,3 @@
-// 冷笑话库
 const jokes = [
     "为什么撒谎的人写出来的字都没墨水？<br><br>因为心虚到墨（没）底气啦！",
     "我家的盆栽为什么都软趴趴的？<br><br>它们都没我有梗啊！",
@@ -6,7 +5,6 @@ const jokes = [
     "两个i人谈恋爱为什么会有一个e人暴富？<br><br>当然是因为i2=-1哦！"
 ];
 
-// DOM元素
 const loader = document.getElementById('loader');
 const writeText = document.getElementById('writeText');
 const content = document.getElementById('content');
@@ -22,7 +20,6 @@ const mottoText = document.getElementById('mottoText');
 const secretContent = document.getElementById('secretContent');
 const highlightTexts = document.querySelectorAll('.highlight-text');
 
-// 仅保留烟花音效元素
 const fireworkSound = document.getElementById('fireworkSound');
 
 // 生成樱花花瓣
@@ -37,7 +34,6 @@ function createPetals() {
             petal.style.transform = `rotate(${Math.random() * 360}deg)`;
             petalContainer.appendChild(petal);
 
-            // 随机移除花瓣
             setTimeout(() => {
                 petal.remove();
             }, 15000);
@@ -53,11 +49,9 @@ function createFirework(x, y) {
     firework.style.top = `${y}px`;
     fireworkContainer.appendChild(firework);
 
-    // 播放烟花音效（仅保留这处音效）
     fireworkSound.currentTime = 0;
     fireworkSound.play();
 
-    // 移除烟花元素
     setTimeout(() => {
         firework.remove();
     }, 3000);
@@ -71,7 +65,6 @@ function createPenTrail(x, y) {
     trail.style.top = `${y}px`;
     document.body.appendChild(trail);
 
-    // 移除轨迹
     setTimeout(() => {
         trail.remove();
     }, 1000);
@@ -85,13 +78,12 @@ function createInkSpot() {
     inkSpot.style.top = `${Math.random() * 100}%`;
     secretContent.appendChild(inkSpot);
 
-    // 移除墨水点
     setTimeout(() => {
         inkSpot.remove();
     }, 4000);
 }
 
-// 加载动画：钢笔写字效果（移除写字音效）
+// 加载动画
 function typeWrite(text, element, speed = 150) {
     let i = 0;
     element.textContent = '';
@@ -101,16 +93,13 @@ function typeWrite(text, element, speed = 150) {
             i++;
         } else {
             clearInterval(interval);
-            // 加载完成，显示内容
             setTimeout(() => {
                 loader.style.opacity = 0;
                 setTimeout(() => {
                     loader.style.display = 'none';
                     content.style.opacity = 1;
                     content.style.transform = 'translateY(0)';
-                    // 启动花瓣生成（移除花瓣音效）
                     createPetals();
-                    // 随机生成墨水点
                     setInterval(createInkSpot, 8000);
                 }, 1000);
             }, 800);
@@ -124,31 +113,27 @@ function getRandomJoke() {
     jokeContent.innerHTML = jokes[randomIndex];
 }
 
-// 事件绑定
-// 鼠标移动生成钢笔轨迹
+// 钢笔轨迹
 document.addEventListener('mousemove', (e) => {
     if (Math.random() > 0.7) {
         createPenTrail(e.clientX, e.clientY);
     }
 });
 
-// 点击任意位置触发烟花
+// 触发烟花
 document.addEventListener('click', (e) => {
-    // 排除弹窗区域
     if (!jokeModal.classList.contains('active')) {
         createFirework(e.clientX, e.clientY);
     }
 });
 
-// 钢笔点击触发冷笑话（移除笑话音效）
+// 触发冷笑话
 jokePen.addEventListener('click', () => {
     getRandomJoke();
     jokeModal.classList.add('active');
-    // 同时触发烟花
     createFirework(jokePen.getBoundingClientRect().left, jokePen.getBoundingClientRect().top);
 });
 
-// 关闭冷笑话弹窗
 jokeClose.addEventListener('click', () => {
     jokeModal.classList.remove('active');
 });
@@ -167,7 +152,6 @@ magnifier.addEventListener('click', () => {
 // 侦探徽章点击效果
 detectiveBadge.addEventListener('click', () => {
     createFirework(detectiveBadge.getBoundingClientRect().left + 35, detectiveBadge.getBoundingClientRect().top + 35);
-    // 随机改变页面主题色
     const colors = ['#ffc1e9', '#87ceeb', '#ffd700', '#ff69b4', '#8b5a2b'];
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
     document.body.style.backgroundColor = `rgba(${hexToRgb(randomColor).r}, ${hexToRgb(randomColor).g}, ${hexToRgb(randomColor).b}, 0.05)`;
@@ -187,7 +171,6 @@ highlightTexts.forEach(text => {
     });
 });
 
-// 十六进制转RGB
 function hexToRgb(hex) {
     const r = parseInt(hex.slice(1, 3), 16);
     const g = parseInt(hex.slice(3, 5), 16);
@@ -195,7 +178,7 @@ function hexToRgb(hex) {
     return { r, g, b };
 }
 
-// 页面加载完成后执行
 window.addEventListener('DOMContentLoaded', () => {
     typeWrite('Yao Meko', writeText, 200);
+
 });
