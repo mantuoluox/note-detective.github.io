@@ -1,4 +1,3 @@
-/* 基础样式 */
 * {
     margin: 0;
     padding: 0;
@@ -25,7 +24,6 @@ body {
     cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-new' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2.5' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow-new)'%3E%3Cline x1='12' y1='4' x2='12' y2='8' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='12' y1='16' x2='12' y2='20' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='4' y1='12' x2='8' y2='12' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='16' y1='12' x2='20' y2='12' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='12' cy='12' r='2.5' fill='%2300ffff' /%3E%3C/g%3E%3C/svg%3E") 12 12, auto;
 }
 
-/* 页面加载动画 */
 .loader-container {
     position: fixed;
     top: 0;
@@ -67,7 +65,6 @@ body {
     }
 }
 
-/* 动态背景元素 */
 .cloud-particle {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.03);
@@ -138,12 +135,10 @@ body {
     transform: translateY(20px);
     animation: fadeInUp 1s forwards 0.3s;
     transition: filter 0.3s ease;
-    /* 添加边框动态效果相关样式 */
     border: 1px solid transparent;
     cursor: url("data:image/svg+xml,%3Csvg width='18' height='22' viewBox='0 0 18 22' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-text' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Crect x='7' y='3' width='4' height='16' rx='1' fill='%2300ffff' filter='url(%23glow-text)'/%3E%3Cline x1='7' y1='3' x2='7' y2='19' stroke='%2300ffff' stroke-width='1' opacity='0.8'/%3E%3Cline x1='11' y1='3' x2='11' y2='19' stroke='%2300ffff' stroke-width='1' opacity='0.8'/%3E%3C/svg%3E") 9 11, text;
 }
 
-/* 边框动态效果 */
 .note-container::before {
     content: '';
     position: absolute;
@@ -163,7 +158,6 @@ body {
     mask:
         linear-gradient(#fff 0 0) padding-box,
         linear-gradient(#fff 0 0);
-    /* 添加标准属性 */
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
 }
@@ -216,29 +210,20 @@ body {
     opacity: 0;
     transform: translateX(-10px);
     animation: slideIn 0.8s forwards;
-    /* 初始隐藏段落 */
     display: none;
     user-select: text;
     -webkit-user-select: text;
     white-space: normal !important;
-    /* 覆盖原有white-space，允许自动换行 */
     word-wrap: break-word;
-    /* 长单词/连续字符强制换行 */
     overflow-wrap: break-word;
-    /* 溢出时换行（兼容多浏览器） */
     line-height: 1.8;
-    /* 提升可读性 */
     word-break: break-all;
-    /* 极端场景下强制拆分字符换行 */
 }
 
 .highlight-char {
     color: #00ffff !important;
-    /* 强制青色，和整体风格统一 */
     font-weight: bold;
-    /* 加粗 */
     text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
-    /* 发光效果 */
 }
 
 .typing-text {
@@ -271,7 +256,6 @@ body {
     transition: all 0.5s ease;
     cursor: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-btn' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='3' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow-btn)'%3E%3Ccircle cx='14' cy='14' r='8' fill='transparent' stroke='%2300ffff' stroke-width='1.5' opacity='0.6'/%3E%3Ccircle cx='14' cy='14' r='10' fill='transparent' stroke='%2300ffff' stroke-width='1' opacity='0.4'/%3E%3Cpath d='M14 6 L18 14 L14 22 L10 14 Z' fill='%2300ffff' /%3E%3Ccircle cx='14' cy='14' r='3' fill='%2300ffff' /%3E%3C/g%3E%3C/svg%3E") 14 14, pointer;
     border: 1px solid rgba(0, 255, 255, 0.2);
-    /* 初始隐藏图片 */
     display: none;
 }
 
@@ -392,41 +376,27 @@ audio:hover {
     transform: scale(1.05);
 }
 
-/* 结局链接容器：居中 + 间距 */
 #endEntry {
     text-align: center;
-    /* 核心：文本居中 */
     margin-top: 30px;
-    /* 加大上下间距，更美观 */
     margin-bottom: 20px;
     display: none;
 }
 
-/* 结局链接样式 */
 #endEntry a {
     color: #00ffff;
-    /* 青色调 */
     text-decoration: none;
-    /* 取消下划线 */
     font-size: 1.5em;
-    /* 放大字体 */
     font-weight: bold;
-    /* 可选：加粗字体，更醒目 */
     letter-spacing: 1px;
-    /* 可选：增加字间距，提升质感 */
     cursor: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-btn' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='3' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow-btn)'%3E%3Ccircle cx='14' cy='14' r='8' fill='transparent' stroke='%2300ffff' stroke-width='1.5' opacity='0.6'/%3E%3Ccircle cx='14' cy='14' r='10' fill='transparent' stroke='%2300ffff' stroke-width='1' opacity='0.4'/%3E%3Cpath d='M14 6 L18 14 L14 22 L10 14 Z' fill='%2300ffff' /%3E%3Ccircle cx='14' cy='14' r='3' fill='%2300ffff' /%3E%3C/g%3E%3C/svg%3E") 14 14, pointer;
 }
 
-/* 可选：鼠标悬停效果，增强交互 */
 #endEntry a:hover {
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-    /* 发光效果 */
     transform: scale(1.05);
-    /* 轻微放大 */
     display: inline-block;
-    /* 让transform生效 */
     transition: all 0.3s ease;
-    /* 过渡动画 */
 }
 
 @keyframes fadeInUp {
@@ -472,7 +442,6 @@ audio:hover {
     }
 }
 
-/* 移除点击提示样式 */
 
 @media (max-width: 768px) {
     .note-container {
@@ -510,3 +479,4 @@ audio:hover {
         transform: translateY(0);
     }
 }
+
