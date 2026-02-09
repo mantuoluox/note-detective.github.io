@@ -2,7 +2,6 @@ body {
     cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-new' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2.5' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow-new)'%3E%3Cline x1='12' y1='4' x2='12' y2='8' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='12' y1='16' x2='12' y2='20' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='4' y1='12' x2='8' y2='12' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='16' y1='12' x2='20' y2='12' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='12' cy='12' r='2.5' fill='%2300ffff' /%3E%3C/g%3E%3C/svg%3E") 12 12, auto;
 }
 
-/* 全局粒子容器（与首页一致，保持风格统一） */
 #globalDotsContainer {
     position: fixed;
     top: 0;
@@ -57,7 +56,6 @@ body {
     }
 }
 
-/* 云端页面核心样式 */
 .cloud-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -78,7 +76,6 @@ body {
     }
 }
 
-/* 顶部同步栏（云端风格） */
 .sync-bar {
     display: flex;
     align-items: center;
@@ -144,7 +141,6 @@ body {
     }
 }
 
-/* 搜索区域（与弹窗输入框风格统一） */
 .search-wrapper {
     position: relative;
     margin-bottom: 30px;
@@ -201,7 +197,6 @@ body {
     }
 }
 
-/* 笔记列表（云端文件风格） */
 .notes-header {
     color: #00ffff;
     font-size: 20px;
@@ -237,7 +232,6 @@ body {
     padding-right: 10px;
 }
 
-/* 自定义滚动条 */
 .notes-list-container::-webkit-scrollbar {
     width: 6px;
 }
@@ -296,7 +290,6 @@ body {
     transform: translateX(100%);
 }
 
-/* 笔记项渐入动画（依次延迟） */
 .note-item:nth-child(1) {
     animation-delay: 0.1s;
 }
@@ -331,7 +324,6 @@ body {
     background: rgba(0, 255, 255, 0.08);
 }
 
-/* 已查看笔记样式修改 - 用背景色和边框区分 */
 .note-item.viewed {
     background: rgba(0, 30, 30, 0.5);
     border-color: rgba(0, 255, 255, 0.1);
@@ -375,14 +367,12 @@ body {
     transform: scale(1.1);
 }
 
-/* 空状态提示 - 优化为占满列表区并使用主题色图标 */
 .empty-state {
     text-align: center;
     padding: 80px 20px;
     color: #666;
     font-size: 16px;
     grid-column: 1 / -1;
-    /* 占满所有列 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -423,7 +413,6 @@ body {
     animation: pulse 2s infinite alternate;
 }
 
-/* 修改弹窗样式，使其更贴近页面风格 */
 .error-toast {
     position: fixed;
     bottom: 20px;
@@ -520,7 +509,6 @@ body {
     box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
 }
 
-/* 全局基础样式 */
 body {
     background: #000;
     color: #fff;
@@ -529,3 +517,4 @@ body {
     padding: 0;
     overflow-x: hidden;
 }
+
