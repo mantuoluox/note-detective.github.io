@@ -18,7 +18,6 @@ body {
     cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-new' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2.5' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow-new)'%3E%3Cline x1='12' y1='4' x2='12' y2='8' stroke='%23ff0040' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='12' y1='16' x2='12' y2='20' stroke='%23ff0040' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='4' y1='12' x2='8' y2='12' stroke='%23ff0040' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='16' y1='12' x2='20' y2='12' stroke='%23ff0040' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='12' cy='12' r='2.5' fill='%23ff0040' /%3E%3C/g%3E%3C/svg%3E") 12 12, auto;
 }
 
-/* 背景动画1：红色渐变流动 */
 .bg-gradient {
     position: fixed;
     top: 0;
@@ -46,7 +45,6 @@ body {
     }
 }
 
-/* 背景动画2：红色扫描线 */
 .bg-scanline {
     position: fixed;
     top: 0;
@@ -72,7 +70,6 @@ body {
     }
 }
 
-/* 背景动画3：红色粒子浮动 */
 .bg-particles {
     position: fixed;
     top: 0;
@@ -111,22 +108,18 @@ body {
     }
 }
 
-/* 角落禁止更改文字样式 - 大幅强化视觉反馈 */
 .corner-text {
     position: fixed;
     color: rgba(255, 0, 0, 0);
-    /* 初始完全透明 */
     font-size: 20rem;
     font-weight: bold;
     pointer-events: none;
     z-index: 0;
     transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-    /* 非线性动画更突兀 */
     text-shadow: 0 0 30px rgba(255, 0, 0, 0);
     transform: scale(0.5) rotate(var(--rotate, 0deg)) skew(0deg);
 }
 
-/* 四个角落定位+不同旋转/倾斜增强诡异感 */
 .corner-top-left {
     top: -2rem;
     left: -2rem;
@@ -157,17 +150,13 @@ body {
     --rotate: -8deg;
 }
 
-/* 激活后视觉剧变 - 核心修改 */
 .corner-text.active {
     color: rgba(255, 0, 0, 0.4);
-    /* 透明度提高到0.4，明显可见 */
     text-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
-    /* 红色光晕强化 */
     transform: scale(1) rotate(var(--rotate, 0deg)) skew(var(--skew, 0deg));
     animation: textGlitch 0.3s infinite alternate, textFlicker 4s infinite alternate;
 }
 
-/* 故障抖动动画（点击后瞬间抖动） */
 @keyframes textGlitch {
     0% {
         transform: scale(1) rotate(var(--rotate, 0deg)) skew(0deg);
@@ -182,7 +171,6 @@ body {
     }
 }
 
-/* 闪烁动画强化 - 明暗交替更明显 */
 @keyframes textFlicker {
 
     0%,
@@ -197,7 +185,6 @@ body {
     }
 }
 
-/* 输入框抖动动画 - 移到CSS中（核心修复！） */
 @keyframes inputShake {
 
     0%,
@@ -214,7 +201,6 @@ body {
     }
 }
 
-/* 容器整体居中 */
 .ending-container {
     width: 100%;
     max-width: 700px;
@@ -226,7 +212,6 @@ body {
     z-index: 1;
 }
 
-/* 装饰元素 - 红色脉冲圆 */
 .decor {
     position: absolute;
     border: 1px solid rgba(178, 34, 34, 0.2);
@@ -267,7 +252,6 @@ body {
     }
 }
 
-/* 提示文字 - 浅猩红，带浮动+闪烁 */
 .hint-text {
     color: #ff6b6b;
     font-size: 1.2rem;
@@ -289,7 +273,6 @@ body {
     }
 }
 
-/* 搜索框容器 */
 .search-wrapper {
     width: 100%;
     display: flex;
@@ -299,7 +282,6 @@ body {
     animation: fadeIn 1s ease-out forwards 0.5s;
 }
 
-/* 搜索框样式 - 点击时也有反馈 */
 #fileInput {
     flex: 1;
     height: 55px;
@@ -319,14 +301,12 @@ body {
 #fileInput:focus {
     border-color: #ff4444;
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
-    /* 点击时边框发光 */
 }
 
 #fileInput:read-only {
     background: rgba(139, 0, 0, 0.1);
 }
 
-/* 按钮样式 - 箭头替代文字 */
 #submitBtn {
     padding: 0 1.5rem;
     height: 55px;
@@ -368,7 +348,6 @@ body {
     transform: translateY(0);
 }
 
-/* 警告文字 - 分层红色，带浮动+阴影 */
 .warning-text {
     width: 100%;
     color: #cd5c5c;
@@ -380,7 +359,6 @@ body {
     text-shadow: 0 0 10px rgba(205, 92, 92, 0.1);
 }
 
-/* 模糊的"你"字 - 高亮红，hover效果强化 */
 .blur-you {
     color: #ff6b6b;
     filter: blur(3px);
@@ -409,7 +387,6 @@ body {
     transform: scaleX(1);
 }
 
-/* 基础渐显动画 */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -422,7 +399,6 @@ body {
     }
 }
 
-/* 响应式调整 */
 @media (max-width: 768px) {
     .hint-text {
         font-size: 1rem;
@@ -446,8 +422,8 @@ body {
         letter-spacing: 2px;
     }
 
-    /* 移动端角落文字调整 - 仍保持明显 */
     .corner-text {
         font-size: 4rem;
     }
 }
+
