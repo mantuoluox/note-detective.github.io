@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. 加载动画控制
     const loader = document.getElementById('loader');
 
-    // 模拟加载完成（2秒后隐藏加载动画）
+    // 模拟加载
     setTimeout(() => {
         loader.style.opacity = 0;
         setTimeout(() => {
@@ -13,26 +12,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 class AudioTextPlayer {
   constructor(textSegments) {
-    // 1. 强制绑定this，避免指向异常
     this._handlePlayClick = this._handlePlayClick.bind(this);
     this._updateTotalPlayTime = this._updateTotalPlayTime.bind(this);
     this.resetState = this.resetState.bind(this);
 
-    // 2. 固化所有配置（无需修改）
     this.config = {
       playButtonId: 'playButton',
       audioVisualizerId: 'audioVisualizer',
       recordingTextId: 'recordingText',
       dynamicBgId: 'dynamic-bg',
-      startAudioSrc: '../audio/bi.mp3',       // 固化音频路径（确保文件存在）
-      recordingAudioSrc: '../audio/fire.mp3', // 固化音频路径（确保文件存在）
+      startAudioSrc: '../audio/bi.mp3',      
+      recordingAudioSrc: '../audio/fire.mp3', 
       startAudioVolume: 0.1,
       recordingAudioVolume: 0.1,
       playButtonKeepHidden: true,
-      textSegments: textSegments || [] // 仅接收文本片段参数
+      textSegments: textSegments || [] 
     };
 
-    // 播放控制变量
     this.isPlaying = false;
     this.visualizerInterval = null;
     this.textUpdateInterval = null;
@@ -41,7 +37,6 @@ class AudioTextPlayer {
     this.totalPlayTime = 0;
     this.lastCurrentTime = 0;
 
-    // DOM元素缓存
     this.playButton = null;
     this.startAudio = null;
     this.recordingAudio = null;
@@ -49,11 +44,9 @@ class AudioTextPlayer {
     this.visualizer = null;
     this.bars = [];
 
-    // 延迟初始化，确保DOM加载完成
     setTimeout(() => this.init(), 100);
   }
 
-  // 初始化入口
   init() {
     try {
       this._checkDOMElements();
@@ -67,7 +60,6 @@ class AudioTextPlayer {
     }
   }
 
-  // 检查DOM元素（固化ID，无需修改）
   _checkDOMElements() {
     this.playButton = document.getElementById(this.config.playButtonId);
     this.textElement = document.getElementById(this.config.recordingTextId);
@@ -79,7 +71,6 @@ class AudioTextPlayer {
     if (!this.visualizer) missing.push('audioVisualizer');
     if (missing.length > 0) throw new Error(`缺失DOM元素：${missing.join(', ')}`);
 
-    // 静态创建音频元素
     if (!document.getElementById('startAudio')) {
       const el = document.createElement('audio');
       el.id = 'startAudio';
@@ -96,7 +87,7 @@ class AudioTextPlayer {
     this.recordingAudio = document.getElementById('recordingAudio');
   }
 
-  // 创建动态背景
+  // 动态背景
   _createDynamicBg() {
     const bg = document.getElementById(this.config.dynamicBgId);
     if (!bg) return;
@@ -131,7 +122,7 @@ class AudioTextPlayer {
     document.head.appendChild(style);
   }
 
-  // 创建可视化柱形
+  // 可视化柱形
   _createVisualizer() {
     if (this.bars.length > 0) return;
     for (let i = 0; i < 30; i++) {
@@ -142,20 +133,17 @@ class AudioTextPlayer {
     }
   }
 
-  // 初始化音频
   _initAudio() {
     this.startAudio.src = this.config.startAudioSrc;
     this.recordingAudio.src = this.config.recordingAudioSrc;
     this.startAudio.volume = this.config.startAudioVolume;
     this.recordingAudio.volume = this.config.recordingAudioVolume;
 
-    // 音频错误监听
     this.startAudio.addEventListener('error', () => alert('提示音文件缺失：bi.mp3'));
     this.recordingAudio.addEventListener('error', () => alert('主音频文件缺失：fire.mp3'));
 
   }
 
-  // 绑定事件
   _bindEvents() {
     this.playButton.removeEventListener('click', this._handlePlayClick);
     this.playButton.addEventListener('click', this._handlePlayClick);
@@ -163,7 +151,7 @@ class AudioTextPlayer {
     window.addEventListener('beforeunload', this.resetState);
   }
 
-  // 播放按钮点击逻辑
+  // 按钮点击
   _handlePlayClick() {
     if (this.playButton.classList.contains('loading')) return;
 
@@ -174,7 +162,6 @@ class AudioTextPlayer {
       this.isPlaying = true;
       this.playButton.classList.add('loading');
 
-      // 播放提示音
       this.startAudio.currentTime = 0;
       this.startAudio.play()
         .then(() => {
@@ -189,7 +176,6 @@ class AudioTextPlayer {
             this.recordingAudio.removeEventListener('timeupdate', this._updateTotalPlayTime);
             this.recordingAudio.addEventListener('timeupdate', this._updateTotalPlayTime);
 
-            // 播放主音频
             this.recordingAudio.currentTime = 0;
             this.recordingAudio.play()
               .then(() => {
@@ -226,7 +212,6 @@ class AudioTextPlayer {
     }
   }
 
-  // 可视化动画
   _animateVisualizer() {
     if (this.visualizerInterval) clearInterval(this.visualizerInterval);
     this.visualizerInterval = setInterval(() => {
@@ -236,7 +221,6 @@ class AudioTextPlayer {
     }, 80);
   }
 
-  // 停止可视化
   _stopVisualizer() {
     clearInterval(this.visualizerInterval);
     this.visualizerInterval = null;
@@ -269,7 +253,7 @@ class AudioTextPlayer {
     }, 100);
   }
 
-  // 更新累计播放时间
+  // 播放时间
   _updateTotalPlayTime() {
     if (!this.isPlaying) return;
     const curr = this.recordingAudio.currentTime;
@@ -277,7 +261,6 @@ class AudioTextPlayer {
     this.lastCurrentTime = curr;
   }
 
-  // 重置状态
   resetState() {
     this.isPlaying = false;
     this.textComplete = false;
@@ -304,4 +287,5 @@ class AudioTextPlayer {
 }
 
 // 暴露到全局
+
 window.AudioTextPlayer = AudioTextPlayer;
