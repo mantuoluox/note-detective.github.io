@@ -2,7 +2,6 @@ body {
     cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-new' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2.5' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow-new)'%3E%3Cline x1='12' y1='4' x2='12' y2='8' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='12' y1='16' x2='12' y2='20' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='4' y1='12' x2='8' y2='12' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='16' y1='12' x2='20' y2='12' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='12' cy='12' r='2.5' fill='%2300ffff' /%3E%3C/g%3E%3C/svg%3E") 12 12, auto;
 }
 
-/* 全局粒子容器（覆盖整个页面） */
 #globalDotsContainer {
     position: fixed;
     top: 0;
@@ -10,9 +9,7 @@ body {
     width: 100vw;
     height: 100vh;
     z-index: -9999;
-    /* 最低层级，不遮挡任何内容 */
     pointer-events: none;
-    /* 不影响点击交互 */
 }
 
 .bg-dot {
@@ -59,7 +56,6 @@ body {
     }
 }
 
-/* 1. 初始开始游戏页面（降低刺眼度） */
 .init-start-container {
     position: fixed;
     top: 0;
@@ -78,17 +74,14 @@ body {
     font-size: 72px;
     color: #00ffff;
     text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
-    /* 降低阴影强度 */
     margin-bottom: 20px;
     letter-spacing: 8px;
     opacity: 0.9;
-    /* 降低不透明度 */
 }
 
 .init-subtitle {
     font-size: 16px;
     color: #aaa;
-    /* 稍微提亮，减少对比度 */
     margin-bottom: 80px;
     letter-spacing: 4px;
     animation: fadeSub 3s infinite alternate;
@@ -112,7 +105,6 @@ body {
     font-size: 24px;
     transition: all 0.3s;
     text-shadow: 0 0 8px #00ffff;
-    /* 降低阴影强度 */
     position: relative;
     overflow: hidden;
     cursor: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-btn' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='3' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow-btn)'%3E%3Ccircle cx='14' cy='14' r='8' fill='transparent' stroke='%2300ffff' stroke-width='1.5' opacity='0.6'/%3E%3Ccircle cx='14' cy='14' r='10' fill='transparent' stroke='%2300ffff' stroke-width='1' opacity='0.4'/%3E%3Cpath d='M14 6 L18 14 L14 22 L10 14 Z' fill='%2300ffff' /%3E%3Ccircle cx='14' cy='14' r='3' fill='%2300ffff' /%3E%3C/g%3E%3C/svg%3E") 14 14, pointer;
@@ -131,10 +123,8 @@ body {
 
 .init-start-btn:hover {
     background: rgba(0, 255, 255, 0.1);
-    /* 降低背景强度 */
     color: #00ffff;
     box-shadow: 0 0 20px #00ffff;
-    /* 降低阴影强度 */
     transform: scale(1.05);
 }
 
@@ -163,7 +153,6 @@ body {
     }
 }
 
-/* 2. 加载动画样式 */
 .loading-container {
     position: fixed;
     top: 0;
@@ -182,18 +171,15 @@ body {
 .loading-text {
     font-size: 18px;
     color: #00ffff;
-    /* 主题色 */
     margin-bottom: 20px;
     text-shadow: 0 0 5px #00ffff;
     min-height: 24px;
-    /* 固定高度防止抖动 */
 }
 
 .loading-bar {
     width: 300px;
     height: 20px;
     border: 1px solid #00ffff;
-    /* 主题色边框 */
     margin-top: 20px;
     overflow: hidden;
 }
@@ -205,7 +191,6 @@ body {
     transition: width 3s linear;
 }
 
-/* 3. 弹窗样式（边框契合主题色） */
 .popup {
     position: fixed;
     top: 0;
@@ -224,10 +209,8 @@ body {
     width: 600px;
     padding: 40px;
     border: 5px solid #00ffff;
-    /* 主题色边框 */
     text-align: center;
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-    /* 主题色阴影 */
 }
 
 .popup-title {
@@ -284,9 +267,7 @@ body {
     padding: 10px 30px;
     background: transparent;
     border: 1px solid #00ffff;
-    /* 主题色边框 */
     color: #00ffff;
-    /* 主题色文字 */
     font-size: 16px;
     transition: all 0.3s;
     cursor: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-btn' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='3' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow-btn)'%3E%3Ccircle cx='14' cy='14' r='8' fill='transparent' stroke='%2300ffff' stroke-width='1.5' opacity='0.6'/%3E%3Ccircle cx='14' cy='14' r='10' fill='transparent' stroke='%2300ffff' stroke-width='1' opacity='0.4'/%3E%3Cpath d='M14 6 L18 14 L14 22 L10 14 Z' fill='%2300ffff' /%3E%3Ccircle cx='14' cy='14' r='3' fill='%2300ffff' /%3E%3C/g%3E%3C/svg%3E") 14 14, pointer;
@@ -299,7 +280,6 @@ body {
     box-shadow: 0 0 15px #00ffff;
 }
 
-/* 4. 正文样式（关键词倾斜） */
 .note-container {
     width: 100%;
     max-width: 800px;
@@ -359,7 +339,6 @@ body {
     }
 }
 
-/* 5. 按钮样式 */
 .btn-fade {
     opacity: 0;
     transform: translateY(20px);
@@ -370,9 +349,7 @@ body {
     font-size: 18px;
     background: transparent;
     border: 1px solid #00ffff;
-    /* 主题色边框 */
     color: #00ffff;
-    /* 主题色文字 */
     cursor: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-btn' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='3' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow-btn)'%3E%3Ccircle cx='14' cy='14' r='8' fill='transparent' stroke='%2300ffff' stroke-width='1.5' opacity='0.6'/%3E%3Ccircle cx='14' cy='14' r='10' fill='transparent' stroke='%2300ffff' stroke-width='1' opacity='0.4'/%3E%3Cpath d='M14 6 L18 14 L14 22 L10 14 Z' fill='%2300ffff' /%3E%3Ccircle cx='14' cy='14' r='3' fill='%2300ffff' /%3E%3C/g%3E%3C/svg%3E") 14 14, pointer;
 }
 
@@ -388,7 +365,6 @@ body {
     transform: translateY(0);
 }
 
-/* 全局基础样式 */
 body {
     background: #000;
     color: #fff;
@@ -397,3 +373,4 @@ body {
     padding: 0;
     overflow-x: hidden;
 }
+
