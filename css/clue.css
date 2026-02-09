@@ -12,7 +12,6 @@ body {
     cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-new' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2.5' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow-new)'%3E%3Cline x1='12' y1='4' x2='12' y2='8' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='12' y1='16' x2='12' y2='20' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='4' y1='12' x2='8' y2='12' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='16' y1='12' x2='20' y2='12' stroke='%2300ffff' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='12' cy='12' r='2.5' fill='%2300ffff' /%3E%3C/g%3E%3C/svg%3E") 12 12, auto;
 }
 
-/* 页面加载动画 */
 .loader-container {
     position: fixed;
     top: 0;
@@ -54,7 +53,6 @@ body {
     }
 }
 
-/* 主体容器 - 添加高度过渡动画 */
 .evidence-container {
     max-width: 800px;
     margin: 2rem auto;
@@ -78,7 +76,6 @@ body {
     transform: translateY(0);
 }
 
-/* 头部样式 */
 .page-header {
     padding-bottom: 1.2rem;
     margin-bottom: 1.8rem;
@@ -122,11 +119,9 @@ body {
     opacity: 0;
 }
 
-/* 线索列表样式 - 添加高度过渡 */
 .clue-list {
     margin-top: 1.5rem;
     display: none;
-    /* 默认隐藏线索列表 */
     transform: scale(0.98);
     opacity: 0;
     transition: all 0.6s ease-out;
@@ -156,7 +151,6 @@ body {
     opacity: 1;
     transform: translateX(0) scale(1);
     max-height: 300px;
-    /* 足够容纳内容的高度 */
 }
 
 .clue-item:hover {
@@ -174,10 +168,8 @@ body {
 
 .clue-item .annotation-content {
     display: none;
-    /* 隐藏线索中的批注内容 */
 }
 
-/* 批注对话框样式 - 优化滑入动画 */
 .annotation-modal {
     position: fixed;
     background: rgba(15, 20, 30, 0.98);
@@ -191,13 +183,10 @@ body {
     box-shadow: 0 5px 15px rgba(0, 255, 255, 0.15);
     opacity: 0;
     pointer-events: none;
-    /* 核心：修改过渡为 translateX 为主 */
     transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transform: translateY(0);
-    /* 移除固定的垂直居中 */
 }
 
-/* 气泡箭头 */
 .annotation-modal::after {
     content: '';
     position: absolute;
@@ -210,10 +199,8 @@ body {
     transform: rotate(45deg);
 }
 
-/* 左侧弹窗：初始在屏幕外左侧，激活后滑入 */
 .annotation-modal.left {
     left: -100%;
-    /* 初始在左侧外 */
     right: auto;
 }
 
@@ -225,13 +212,10 @@ body {
 
 .annotation-modal.left.active {
     left: 2% !important;
-    /* 滑入到左侧随机位置 */
 }
 
-/* 右侧弹窗：初始在屏幕外右侧，激活后滑入 */
 .annotation-modal.right {
     right: -100%;
-    /* 初始在右侧外 */
     left: auto;
 }
 
@@ -243,10 +227,8 @@ body {
 
 .annotation-modal.right.active {
     right: 2% !important;
-    /* 滑入到右侧随机位置 */
 }
 
-/* 弹窗激活状态 - 保持发光效果 */
 .annotation-modal.active {
     opacity: 1;
     pointer-events: all;
@@ -265,19 +247,16 @@ body {
     }
 }
 
-/* 移除背景调暗效果 */
 .modal-overlay {
     display: none;
 }
 
-/* 弹窗文字样式 */
 .annotation-content {
     color: #ffffff;
     font-size: 1.25rem;
     line-height: 1.8;
 }
 
-/* 底部提示 */
 .page-footer {
     margin-top: 2.5rem;
     padding-top: 1rem;
@@ -312,7 +291,6 @@ body {
     }
 }
 
-/* 响应式适配 */
 @media (max-width: 768px) {
     .evidence-container {
         padding: 1.5rem;
@@ -344,3 +322,4 @@ body {
         right: 1% !important;
     }
 }
+
