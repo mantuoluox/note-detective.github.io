@@ -115,7 +115,6 @@ body::before {
     box-shadow: 0 0 30px rgba(0, 255, 255, 0.08);
 }
 
-/* 进度条样式 */
 .progress-container {
     width: 100%;
     max-width: 600px;
@@ -375,3 +374,4 @@ body::before {
         font-size: 0.98rem;
     }
 }
+
