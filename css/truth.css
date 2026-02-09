@@ -19,7 +19,6 @@ body {
     position: relative;
 }
 
-/* 背景粒子动画 */
 .particles {
     position: fixed;
     top: 0;
@@ -59,7 +58,6 @@ body {
     }
 }
 
-/* 点击波纹效果 */
 .ripple {
     position: absolute;
     border-radius: 50%;
@@ -76,7 +74,6 @@ body {
     }
 }
 
-/* 加载动画 - 云端同步效果 */
 .sync-loader {
     position: fixed;
     top: 0;
@@ -151,7 +148,6 @@ body {
     }
 }
 
-/* 内容容器 - 初始隐藏 */
 .content-container {
     width: 100%;
     max-width: 700px;
@@ -160,16 +156,13 @@ body {
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-/* 系统日志样式 - 居中显示（移除竖线） */
 .system-log {
     margin-bottom: 3rem;
     padding-left: 1.5rem;
     text-align: center;
-    /* 文本居中 */
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* 容器内元素居中 */
 }
 
 .log-title {
@@ -184,11 +177,9 @@ body {
     font-size: 1.1rem;
     line-height: 1.8;
     text-align: center;
-    /* 日志内容居中 */
     animation: subtleFlicker 4s ease-in-out infinite;
 }
 
-/* 文字闪烁动画 */
 @keyframes textFlicker {
 
     0%,
@@ -215,7 +206,6 @@ body {
     }
 }
 
-/* 录音文本样式 */
 .recording {
     margin-bottom: 3rem;
     padding: 2rem;
@@ -228,7 +218,6 @@ body {
     cursor: url("data:image/svg+xml,%3Csvg width='18' height='22' viewBox='0 0 18 22' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow-text' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Crect x='7' y='3' width='4' height='16' rx='1' fill='%2300ffff' filter='url(%23glow-text)'/%3E%3Cline x1='7' y1='3' x2='7' y2='19' stroke='%2300ffff' stroke-width='1' opacity='0.8'/%3E%3Cline x1='11' y1='3' x2='11' y2='19' stroke='%2300ffff' stroke-width='1' opacity='0.8'/%3E%3C/svg%3E") 9 11, text;
 }
 
-/* 呼吸边框动画 */
 @keyframes breathBorder {
 
     0%,
@@ -263,7 +252,6 @@ body {
     animation: subtleFlicker 4s ease-in-out infinite;
 }
 
-/* 离开按钮 */
 .leave-btn {
     display: block;
     margin: 0 auto;
@@ -309,7 +297,6 @@ body {
     transform: scale(0.98);
 }
 
-/* 逐字显示容器 */
 .typing-container {
     overflow: hidden;
     height: fit-content;
@@ -338,3 +325,4 @@ body {
         font-size: 1rem;
     }
 }
+
