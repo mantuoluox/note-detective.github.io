@@ -1,4 +1,3 @@
-// 人物页面路径映射
 const characterPages = [
     'characters/yao.html',
     'characters/hayase.html',
@@ -8,7 +7,7 @@ const characterPages = [
     'characters/atagi.html'
 ];
 
-// 初始化电子粒子
+// 电子粒子
 function createParticles() {
     const container = document.getElementById('particle-container');
     const count = 30;
@@ -47,7 +46,6 @@ function createParticles() {
 //     // window.location.reload();
 // }
 
-// 初始化页面
 window.onload = function () {
     createParticles();
 
@@ -62,7 +60,6 @@ window.onload = function () {
     checkAllVisited();
 };
 
-// 辅助函数：根据页面路径获取文件夹ID
 function getFolderIdByPage(page) {
     switch (page) {
         case 'characters/yao.html': return 'yaomeko';
@@ -75,7 +72,7 @@ function getFolderIdByPage(page) {
     }
 }
 
-// 打开文件夹并记录访问
+// 记录访问
 function openFolder(pageUrl) {
     const visitedPages = JSON.parse(localStorage.getItem('visitedCharacters') || '[]');
     if (!visitedPages.includes(pageUrl)) {
@@ -85,7 +82,6 @@ function openFolder(pageUrl) {
     window.location.href = pageUrl;
 }
 
-// 检查是否所有人物都已访问
 function checkAllVisited() {
     const visitedPages = JSON.parse(localStorage.getItem('visitedCharacters') || '[]');
     const allVisited = characterPages.every(page => visitedPages.includes(page));
@@ -93,4 +89,5 @@ function checkAllVisited() {
     if (allVisited) {
         document.getElementById('credits-folder').style.display = 'flex';
     }
+
 }
