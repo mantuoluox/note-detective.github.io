@@ -1,4 +1,3 @@
-// 攻略数据：核心保留 unlockKey（对应cloud存储的URL）
 const guideData = [
     { file: "委托开始", unlockKey: "notes/start.html", content: "查看图片得知案件编号，在搜索框中输入：<br><span>lake250228</span>-解锁笔记“案件资料”" },
     { file: "案件资料", unlockKey: "notes/material.html", content: "根据笔记中提到的录音笔相关信息，在搜索框中输入：<br><span>px470</span>-解锁笔记“录音笔”<br><span>tape01</span>-解锁证物“录音文件”" },
@@ -25,7 +24,6 @@ function updateProgress() {
     document.getElementById('progressText').textContent = `已解锁: ${unlockedCount + 1}/${totalItems + 1}`;
 }
 
-// 核心修改：直接读取cloud存储的URL列表（无需转换）
 function getUnlockedUrls() {
     let unlocked = localStorage.getItem('unlockedPages');
     if (!unlocked) return [];
@@ -33,7 +31,6 @@ function getUnlockedUrls() {
     let unlockedUrls = [];
     try {
         unlockedUrls = JSON.parse(unlocked);
-        // 过滤非URL数据（兜底）
         unlockedUrls = unlockedUrls.filter(url => url.includes('.html'));
     } catch (e) {
         console.error('解析URL列表失败：', e);
@@ -42,15 +39,13 @@ function getUnlockedUrls() {
     return unlockedUrls;
 }
 
-// 核心修改：根据URL匹配攻略项
 function renderDynamicGuideItems() {
-    const unlockedUrls = getUnlockedUrls(); // 读取URL列表
+    const unlockedUrls = getUnlockedUrls(); 
     const dynamicGuideItems = document.getElementById('dynamicGuideItems');
     dynamicGuideItems.innerHTML = '';
 
-    // 遍历攻略数据，匹配URL
     guideData.forEach(guide => {
-        if (unlockedUrls.includes(guide.unlockKey)) { // 关键：匹配unlockKey（URL）
+        if (unlockedUrls.includes(guide.unlockKey)) { 
             const guideItem = document.createElement('div');
             guideItem.className = 'guide-item dynamic-item';
             guideItem.innerHTML = `
@@ -64,8 +59,8 @@ function renderDynamicGuideItems() {
             dynamicGuideItems.appendChild(guideItem);
         }
     });
-    bindAllGuideToggle(); // 重新绑定点击事件
-    updateProgress(); // 更新进度条
+    bindAllGuideToggle(); 
+    updateProgress(); 
 }
 
 // 绑定展开/收起事件
@@ -91,7 +86,7 @@ function bindAllGuideToggle() {
 //     alert('解锁进度已同步！');
 // });
 
-// 页面加载逻辑
+// 页面加载
 document.addEventListener('DOMContentLoaded', () => {
     const loader = document.getElementById('loader');
     const guideContainer = document.getElementById('guideContainer');
@@ -102,11 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             loader.style.display = 'none';
             guideContainer.classList.add('visible');
-            renderDynamicGuideItems(); // 初始渲染
+            renderDynamicGuideItems();
         }, 800);
     }, 1600);
 
-    // 监听storage变化（URL更新时同步）
     window.addEventListener('storage', (e) => {
         if (e.key === 'unlockedPages') {
             setTimeout(() => renderDynamicGuideItems(), 100);
@@ -114,3 +108,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
