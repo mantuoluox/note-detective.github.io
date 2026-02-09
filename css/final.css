@@ -6,7 +6,6 @@
 }
 
 body {
-    /* 替换黑色背景为柔和蓝紫渐变，无黑色调 */
     background: linear-gradient(135deg, #f0f5ff 0%, #f5f0ff 50%, #f8f2ff 100%);
     background-image:
         radial-gradient(circle at 20% 30%, rgba(136, 192, 255, 0.1) 0%, transparent 60%),
@@ -19,7 +18,6 @@ body {
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='8' cy='8' r='4' fill='url(%23cursorGradient)'/%3E%3Cdefs%3E%3ClinearGradient id='cursorGradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%236a8ee8'/%3E%3Cstop offset='100%25' stop-color='%238d78e6'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E") 4 4, default;
 }
 
-/* 背景粒子动画（柔和蓝紫调，无黑色） */
 .bg-particles {
     position: fixed;
     top: 0;
@@ -34,7 +32,6 @@ body {
     position: absolute;
     border-radius: 50%;
     animation: floatWander linear infinite;
-    /* 柔和粒子渐变，无黑色阴影 */
     background: linear-gradient(135deg, rgba(136, 192, 255, 0.5), rgba(145, 130, 255, 0.5));
     box-shadow: 0 0 15px rgba(136, 192, 255, 0.3);
 }
@@ -59,7 +56,6 @@ body {
     }
 }
 
-/* 流动光效（柔和蓝紫调） */
 .light-flow {
     position: fixed;
     top: 0;
@@ -86,7 +82,6 @@ body {
     }
 }
 
-/* 滚动文字容器（无黑色背景） */
 .credits-container {
     position: absolute;
     top: 100%;
@@ -96,7 +91,6 @@ body {
     padding: 2rem 0;
     animation: scrollPrevText 80s ease-out forwards;
     will-change: top;
-    /* 柔和渐变背景，无黑色 */
     background: linear-gradient(180deg, transparent 0%, rgba(145, 130, 255, 0.05) 50%, transparent 100%);
     padding: 4rem 0;
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='26' viewBox='0 0 22 26' fill='none'%3E%3Cfilter id='textGlow' x='-10%25' y='-10%25' width='120%25' height='120%25'%3E%3CfeGaussianBlur stdDeviation='1' result='blur'/%3E%3CfeComposite in='SourceGraphic' in2='blur' operator='over'/%3E%3C/filter%3E%3Crect x='4' y='4' width='4' height='18' rx='1' fill='url(%23textGradient)' filter='url(%23textGlow)'/%3E%3Crect x='3' y='3' width='6' height='20' rx='1.5' fill='none' stroke='url(%23textGradient)' stroke-width='0.8' opacity='0.6'/%3E%3Cdefs%3E%3ClinearGradient id='textGradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%236a8ee8'/%3E%3Cstop offset='100%25' stop-color='%238d78e6'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E") 6 20, text;
@@ -120,7 +114,6 @@ body {
     font-size: 2.2rem;
     margin-bottom: 3rem;
     letter-spacing: 5px;
-    /* 统一文字渐变（柔和蓝紫） */
     background: linear-gradient(90deg, #6a8ee8, #8d78e6);
     -webkit-background-clip: text;
     background-clip: text;
@@ -153,7 +146,6 @@ body {
     }
 }
 
-/* 文字光泽动画 */
 @keyframes textShine {
     to {
         background-position: 200% center;
@@ -168,7 +160,6 @@ body {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    /* 柔和文字颜色，无黑色 */
     color: #6a8ee8;
     animation: fadeIn 5s ease-out, textPulse 10s ease-in-out infinite;
 }
@@ -185,7 +176,6 @@ body {
     }
 }
 
-/* 最后文字（无黑色背景） */
 .final-text {
     position: fixed;
     top: 50%;
@@ -203,9 +193,7 @@ body {
     animation: softPulse 3s ease-in-out infinite;
     transition: opacity 1.5s ease-out, transform 1.5s ease-out;
     backdrop-filter: blur(10px);
-    /* 柔和背景，无黑色 */
     background: linear-gradient(135deg, rgba(240, 245, 255, 0.9), rgba(245, 240, 255, 0.9));
-    /* 统一文字渐变 */
     background: linear-gradient(90deg, #6a8ee8, #8d78e6);
     -webkit-background-clip: text;
     background-clip: text;
@@ -231,7 +219,6 @@ body {
     }
 }
 
-/* 提前出现的文字（柔和色调） */
 .flash-text {
     position: fixed;
     top: 50%;
@@ -239,7 +226,6 @@ body {
     transform: translate(-50%, -50%);
     font-size: 2rem;
     font-family: "Comic Sans MS", "幼圆", "思源柔黑", sans-serif;
-    /* 柔和闪现文字颜色 */
     color: rgba(145, 130, 255, 0.1);
     text-shadow: 0 0 40px rgba(145, 130, 255, 0.3);
     opacity: 0;
@@ -282,7 +268,6 @@ body {
     }
 }
 
-/* 彩蛋弹窗（无黑色背景） */
 .easter-egg-modal {
     position: fixed;
     top: 2rem;
@@ -295,9 +280,7 @@ body {
     pointer-events: none;
     transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform: translateX(120%) rotate(10deg);
-    /* 柔和弹窗背景，无黑色 */
     background: linear-gradient(135deg, rgba(240, 245, 255, 0.95), rgba(245, 240, 255, 0.9));
-    /* 统一边框渐变 */
     border-image: linear-gradient(135deg, #8d78e6, #6a8ee8) 1;
     box-shadow: 0 0 25px rgba(145, 130, 255, 0.15),
         inset 0 0 10px rgba(100, 80, 200, 0.08);
@@ -341,7 +324,6 @@ body {
     text-align: center;
     font-weight: bold;
     animation: bounce 2s ease-in-out infinite;
-    /* 统一标题渐变 */
     background: linear-gradient(90deg, #6a8ee8, #8d78e6);
     -webkit-background-clip: text;
     background-clip: text;
@@ -363,7 +345,6 @@ body {
 .modal-content {
     font-size: 1.1rem;
     line-height: 2.2;
-    /* 统一列表文字颜色 */
     color: #5a7bc8;
     list-style: none;
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='26' viewBox='0 0 22 26' fill='none'%3E%3Cfilter id='textGlow' x='-10%25' y='-10%25' width='120%25' height='120%25'%3E%3CfeGaussianBlur stdDeviation='1' result='blur'/%3E%3CfeComposite in='SourceGraphic' in2='blur' operator='over'/%3E%3C/filter%3E%3Crect x='4' y='4' width='4' height='18' rx='1' fill='url(%23textGradient)' filter='url(%23textGlow)'/%3E%3Crect x='3' y='3' width='6' height='20' rx='1.5' fill='none' stroke='url(%23textGradient)' stroke-width='0.8' opacity='0.6'/%3E%3Cdefs%3E%3ClinearGradient id='textGradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%236a8ee8'/%3E%3Cstop offset='100%25' stop-color='%238d78e6'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E") 6 20, text;
@@ -380,7 +361,6 @@ body {
 }
 
 .modal-content li:hover {
-    /* 统一悬停颜色 */
     color: #8d78e6;
     transform: translateX(5px);
 }
@@ -428,7 +408,6 @@ body {
     }
 }
 
-/* 按钮容器 */
 .buttons-container {
     position: fixed;
     bottom: 3rem;
@@ -448,7 +427,6 @@ body {
     transform: translateX(-50%) translateY(0);
 }
 
-/* 按钮样式（无黑色背景） */
 .action-btn {
     padding: 1rem 3rem;
     border-radius: 50px;
@@ -457,9 +435,7 @@ body {
     transition: all 0.4s ease;
     animation: hoverPulse 3s ease-in-out infinite, fadeIn 1s ease-out forwards;
     opacity: 0;
-    /* 柔和按钮背景，无黑色 */
     background: linear-gradient(135deg, rgba(136, 192, 255, 0.1), rgba(145, 130, 255, 0.15));
-    /* 统一按钮文字颜色 */
     color: #6a8ee8;
     border: #f0f5ff 1px solid;
     position: relative;
@@ -467,7 +443,6 @@ body {
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28' fill='none'%3E%3Cfilter id='btnGlow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E%3CfeGaussianBlur stdDeviation='1.2' result='blur'/%3E%3CfeComposite in='SourceGraphic' in2='blur' operator='over'/%3E%3C/filter%3E%3Cg filter='url(%23btnGlow)'%3E%3C!-- 外层半透明渐变圆环 --%3E%3Ccircle cx='14' cy='14' r='9' fill='none' stroke='url(%23btnGradient)' stroke-width='1.5' opacity='0.7'/%3E%3C!-- 内层实心渐变圆点 --%3E%3Ccircle cx='14' cy='14' r='4.5' fill='url(%23btnGradient)'/%3E%3C!-- 中层细圆环（增强层次感） --%3E%3Ccircle cx='14' cy='14' r='6.5' fill='none' stroke='url(%23btnGradient)' stroke-width='0.8' opacity='0.9'/%3E%3C/g%3E%3Cdefs%3E%3ClinearGradient id='btnGradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%236a8ee8'/%3E%3Cstop offset='100%25' stop-color='%238d78e6'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E") 14 14, pointer;
 }
 
-/* 按钮内部光效 */
 .action-btn::after {
     content: '';
     position: absolute;
@@ -524,7 +499,6 @@ body {
     transform: scale(0.98);
 }
 
-/* 响应式适配 */
 @media (max-width: 768px) {
     .credits-title {
         font-size: 1.8rem;
@@ -570,3 +544,4 @@ body {
         font-size: 1rem;
     }
 }
+
