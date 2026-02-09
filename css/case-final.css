@@ -4,9 +4,7 @@
     box-sizing: border-box;
 }
 
-/* 初始电子科技风格 - 全局样式 */
 body {
-    /* 电子科技背景 */
     background-color: #0a1929;
     background-image:
         radial-gradient(circle, rgba(52, 152, 219, 0.1) 1px, transparent 1px),
@@ -19,14 +17,12 @@ body {
     line-height: 2.2;
     position: relative;
     overflow-x: hidden;
-    /* 风格过渡动画 */
     transition:
         background-color 1.5s ease-out,
         background-image 1.5s ease-out,
         color 1.5s ease-out;
 }
 
-/* 手写笔记风格 - 切换后添加此类 */
 body.handwritten-style {
     background-color: #f5f1e9;
     background-image:
@@ -36,7 +32,6 @@ body.handwritten-style {
     color: #3e2723;
 }
 
-/* 加载容器 - 覆盖全屏 */
 .loader-container {
     position: fixed;
     top: 0;
@@ -49,18 +44,15 @@ body.handwritten-style {
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    /* 加载容器过渡 */
     transition:
         opacity 1s ease-out,
         background-color 1.5s ease-out;
 }
 
-/* 手写风格下的加载容器 */
 .loader-container.handwritten-style {
     background: #f5f1e9;
 }
 
-/* 电子科技风格加载动画 */
 .digital-loader {
     width: 180px;
     height: 4px;
@@ -103,7 +95,6 @@ body.handwritten-style {
     }
 }
 
-/* 手写风格加载动画 */
 .pen-loader {
     width: 120px;
     height: 40px;
@@ -159,12 +150,10 @@ body.handwritten-style {
     }
 }
 
-/* 加载文字 - 电子/手写风格过渡 */
 .loader-text {
     font-size: 1.2rem;
     letter-spacing: 2px;
     animation: fadePulse 1.5s ease-in-out infinite;
-    /* 文字颜色过渡 */
     transition: color 1.5s ease-out;
 }
 
@@ -190,7 +179,6 @@ body.handwritten-style {
     }
 }
 
-/* 纸张容器 - 初始隐藏，过渡显示 */
 .paper-container {
     max-width: 900px;
     margin: 0 auto;
@@ -233,7 +221,6 @@ body.handwritten-style {
     pointer-events: none;
 }
 
-/* 标题样式 - 非手写体 */
 .report-title {
     font-size: 2rem;
     color: #8b5a2b;
@@ -257,14 +244,12 @@ body.handwritten-style {
     border-radius: 1px;
 }
 
-/* 正文样式 - 仅此处使用手写体 */
 .report-content {
     font-size: 1.2rem;
     text-align: justify;
     margin-bottom: 3rem;
     position: relative;
     letter-spacing: 0.5px;
-    /* 仅正文使用手写字体 */
     font-family: 'Ma Shan Zheng', 'Kalam', '手写体', '微软雅黑', cursive;
 }
 
@@ -274,11 +259,9 @@ body.handwritten-style {
     position: relative;
     overflow: hidden;
     height: fit-content;
-    /* 初始隐藏段落内容 */
     opacity: 0;
 }
 
-/* 段落显示时的样式 */
 .report-content p.visible {
     opacity: 1;
 }
@@ -296,7 +279,6 @@ body.handwritten-style {
     box-shadow: 0 0 2px rgba(255, 105, 180, 0.3);
 }
 
-/* 按钮样式 - 非手写体 */
 .btn-container {
     text-align: center;
     margin-top: 4rem;
@@ -327,7 +309,6 @@ body.handwritten-style {
     transform: rotate(0deg) scale(0.98);
 }
 
-/* 装饰元素 */
 .decor-element {
     position: absolute;
     pointer-events: none;
@@ -351,7 +332,6 @@ body.handwritten-style {
     filter: blur(0.5px);
 }
 
-/* 响应式调整 */
 @media (max-width: 768px) {
     body {
         padding: 2rem 1rem;
@@ -389,4 +369,5 @@ body.handwritten-style {
     .stamp {
         width: 90px;
     }
+
 }
