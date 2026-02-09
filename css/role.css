@@ -1,30 +1,20 @@
-/* 全局重置 & 基础风格 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* 手绘漫画风格字体 */
     font-family: "微软雅黑", "幼圆", "Comic Sans MS", sans-serif;
 }
 
-/* 手绘纸张背景 - 纯CSS生成，无超长Base64 */
 body {
-    /* 基础纸张色 */
     background-color: #f9f9f9;
-    /* 手绘纸张纹理：轻微网格+噪点+纸张纹理 */
     background-image:
-        /* 细网格（模拟漫画稿纸） */
         linear-gradient(rgba(200, 200, 200, 0.1) 1px, transparent 1px),
         linear-gradient(90deg, rgba(200, 200, 200, 0.1) 1px, transparent 1px),
-        /* 轻微纸张噪点 */
         radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.02) 0.5px, transparent 0.5px);
-    /* 纹理尺寸 */
     background-size:
         20px 20px,
-        /* 网格大小 */
         20px 20px,
         50px 50px;
-    /* 噪点密度 */
     min-height: 100vh;
     padding: 2rem;
     position: relative;
@@ -32,7 +22,6 @@ body {
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M4 12l10 6v-4h6v-4h-6v-4z' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' stroke-dasharray='1,1'/%3E%3C/svg%3E") 0 24, auto;
 }
 
-/* 动态水墨波纹背景（增强效果） */
 body::before {
     content: '';
     position: fixed;
@@ -49,7 +38,6 @@ body::before {
     transition: background 0.3s ease;
 }
 
-/* 档案卡片容器 */
 .character-card {
     max-width: 1000px;
     margin: 0 auto;
@@ -63,7 +51,6 @@ body::before {
     animation: cardFadeIn 1s ease-out 0.3s forwards;
 }
 
-/* 卡片头部 - 手绘标题栏 */
 .card-header {
     background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
     border-bottom: 2px solid #333;
@@ -71,7 +58,6 @@ body::before {
     position: relative;
 }
 
-/* 标题栏手绘装饰线 */
 .card-header::before,
 .card-header::after {
     content: '';
@@ -99,7 +85,6 @@ body::before {
     position: relative;
 }
 
-/* 卡片主体 - 网格布局 */
 .card-body {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -107,7 +92,6 @@ body::before {
     padding: 2rem;
 }
 
-/* 人物头像容器（手绘相框） */
 .avatar-container {
     display: flex;
     flex-direction: column;
@@ -123,19 +107,16 @@ body::before {
     background: #f5f5f5;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     position: relative;
-    /* 手绘相框轻微倾斜 */
     transform: rotate(-1deg);
     transition: transform 0.5s ease;
 }
 
-/* 相框hover交互 */
 .avatar-frame:hover {
     transform: rotate(0deg) scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65' stroke='%23333' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") 12 12, zoom-in;
 }
 
-/* 相框手绘装饰角 */
 .avatar-frame::before,
 .avatar-frame::after {
     content: '';
@@ -177,7 +158,6 @@ body::before {
     border-bottom: 1px dashed #666;
 }
 
-/* 人物信息面板 */
 .info-panel {
     display: flex;
     flex-direction: column;
@@ -185,14 +165,12 @@ body::before {
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cline x1='12' y1='4' x2='12' y2='20' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-dasharray='2,1'/%3E%3C/svg%3E") 12 0, text;
 }
 
-/* 信息模块 - 手绘边框 */
 .info-module {
     border: 2px solid #333;
     border-radius: 4px;
     padding: 1.2rem;
     background: #fafafa;
     position: relative;
-    /* 逐个渐入动画 */
     opacity: 0;
     transform: translateX(20px);
     animation: moduleFadeIn 0.8s ease-out forwards;
@@ -210,7 +188,6 @@ body::before {
     animation-delay: 1.2s;
 }
 
-/* 模块标题（手绘标签） */
 .module-title {
     position: absolute;
     top: -12px;
@@ -222,11 +199,9 @@ body::before {
     color: #222;
     border: 2px solid #333;
     border-radius: 4px;
-    /* 手绘标签倾斜 */
     transform: rotate(-1deg);
 }
 
-/* 基础信息列表 - 调整布局 */
 .basic-info-list {
     list-style: none;
     display: grid;
@@ -234,7 +209,6 @@ body::before {
     gap: 1rem;
 }
 
-/* 让爱好、特长、性格单独占一行 */
 .basic-info-item.full-width {
     grid-column: 1 / -1;
 }
@@ -245,7 +219,6 @@ body::before {
     gap: 0.8rem;
 }
 
-/* 手绘图标占位 */
 .info-icon {
     width: 24px;
     height: 24px;
@@ -274,24 +247,20 @@ body::before {
     border-bottom: 1px dotted #999;
 }
 
-/* 删除线样式增强 */
 .info-value del {
     color: #999;
     text-decoration: line-through #666;
     text-decoration-thickness: 2px;
 }
 
-/* 性格/经历文本 */
 .text-content {
     line-height: 1.8;
     color: #333;
     text-indent: 2em;
     padding: 0.5rem 0;
-    /* 手绘文字轻微不规则 */
     transform: scale(1, 1.02);
 }
 
-/* 交互效果：文本hover高亮 */
 .text-content:hover {
     background: rgba(200, 200, 200, 0.1);
     padding: 0.5rem;
@@ -299,7 +268,6 @@ body::before {
     transition: background 0.3s ease;
 }
 
-/* 返回按钮（手绘风格） */
 .back-btn {
     display: block;
     width: 120px;
@@ -314,7 +282,6 @@ body::before {
     font-weight: bold;
     margin: 2rem auto;
     transition: all 0.3s ease;
-    /* 手绘按钮倾斜 */
     transform: rotate(1deg);
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M7 11v2h3v7h4v-7h3v-2h-3V7a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v4H7z' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 8 0, pointer;
 }
@@ -325,8 +292,6 @@ body::before {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* 动画定义 */
-/* 卡片整体渐入 */
 @keyframes cardFadeIn {
     to {
         opacity: 1;
@@ -334,7 +299,6 @@ body::before {
     }
 }
 
-/* 信息模块渐入 */
 @keyframes moduleFadeIn {
     to {
         opacity: 1;
@@ -342,7 +306,6 @@ body::before {
     }
 }
 
-/* 响应式适配 */
 @media (max-width: 768px) {
     .card-body {
         grid-template-columns: 1fr;
@@ -361,3 +324,4 @@ body::before {
         font-size: 1.6rem;
     }
 }
+
