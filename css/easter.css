@@ -16,7 +16,6 @@ body {
     cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="6" stroke="%2387ceeb" stroke-width="2" fill="transparent"/><line x1="16.5" y1="16.5" x2="21" y2="21" stroke="%2387ceeb" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="2" fill="%234fc3f7"/></svg>'), auto;
 }
 
-/* 樱花花瓣飘落 */
 .petal-container {
     position: fixed;
     top: 0;
@@ -57,7 +56,6 @@ body {
     }
 }
 
-/* 烟花动画 */
 .firework-container {
     position: fixed;
     top: 0;
@@ -121,7 +119,6 @@ body {
     }
 }
 
-/* 鼠标跟随钢笔轨迹 */
 .pen-trail {
     position: fixed;
     width: 3px;
@@ -146,7 +143,6 @@ body {
     }
 }
 
-/* 加载动画 */
 .loader-container {
     position: fixed;
     top: 0;
@@ -201,7 +197,6 @@ body {
     letter-spacing: 2px;
 }
 
-/* 书桌背景元素 */
 .desk-decoration {
     position: fixed;
     z-index: 0;
@@ -269,7 +264,6 @@ body {
     }
 }
 
-/* 互动小元素 */
 .interactive-element {
     position: fixed;
     z-index: 2;
@@ -329,7 +323,6 @@ body {
     filter: drop-shadow(0 5px 8px rgba(255, 215, 0, 0.4));
 }
 
-/* 主体内容 */
 .content-container {
     max-width: 800px;
     margin: 0 auto;
@@ -405,7 +398,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* 内容段落 */
 .secret-content {
     background: #fff;
     border-radius: 12px;
@@ -496,7 +488,6 @@ body {
     width: 100%;
 }
 
-/* 互动钢笔 */
 .interactive-pen {
     position: absolute;
     bottom: -20px;
@@ -512,7 +503,6 @@ body {
     filter: drop-shadow(0 5px 8px rgba(139, 90, 43, 0.3));
 }
 
-/* 冷笑话弹窗 */
 .joke-modal {
     position: fixed;
     top: 50%;
@@ -584,7 +574,6 @@ body {
     box-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
 }
 
-/* 随机出现的墨水点 */
 .ink-spot {
     position: absolute;
     width: 15px;
@@ -617,7 +606,6 @@ body {
     }
 }
 
-/* 响应式调整 */
 @media (max-width: 768px) {
     .content-container {
         padding: 0 1rem;
@@ -644,3 +632,4 @@ body {
         width: 50px;
     }
 }
+
