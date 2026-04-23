@@ -480,3 +480,67 @@ audio:hover {
     }
 }
 
+/* 点击提示样式 */
+.click-prompt {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+}
+
+.prompt-icon {
+    content: '';
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='glow' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='4' result='blur' /%3E%3CfeMerge%3E%3CfeMergeNode in='blur' /%3E%3CfeMergeNode in='SourceGraphic' /%3E%3C/feMerge%3E%3C/filter%3E%3Cg filter='url(%23glow)'%3E%3Cpath d='M24 8L24 16M12 24L20 24M28 24L36 24M24 32L24 40' stroke='%2300ffff' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='24' r='4' fill='%2300ffff' /%3E%3C/g%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-size: 0;
+    color: #00ffff;
+    text-shadow: 0 0 25px rgba(0, 255, 255, 0.9), 0 0 40px rgba(0, 255, 255, 0.6);
+    animation: pulse 2s infinite ease-in-out, clickIndicator 1.5s infinite ease-in-out;
+}
+
+/* 指示动画 */
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
+@keyframes clickIndicator {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 20px rgba(0, 255, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 255, 0);
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .prompt-icon {
+        font-size: 3rem;
+    }
+}
