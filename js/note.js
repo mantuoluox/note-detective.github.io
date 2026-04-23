@@ -168,6 +168,15 @@ class NotePage {
     }
 
     async startTextDisplay() {
+        // 隐藏点击提示
+        const clickPrompt = document.getElementById('clickPrompt');
+        if (clickPrompt) {
+            clickPrompt.style.opacity = 0;
+            setTimeout(() => {
+                clickPrompt.style.display = 'none';
+            }, 500);
+        }
+        
         if (this.hasClicked) return;
         this.hasClicked = true;
 
